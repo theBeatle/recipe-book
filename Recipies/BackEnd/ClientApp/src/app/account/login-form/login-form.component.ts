@@ -19,9 +19,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   SignIn(Email: string, Password: string) {
-    this.Auth.login({Email, Password} as CredentialsModel).subscribe((data) => {
-        console.log(data);
-    });
+    this.Auth.login({Email, Password} as CredentialsModel);
   }
 
 }
