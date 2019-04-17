@@ -14,7 +14,10 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
+//mycomponents
 import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-info.component';
+import { RecipeGalleriaComponent } from './recipe-detailed-info/recipe-galleria/recipe-galleria.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,7 @@ import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-i
     CounterComponent,
     FetchDataComponent,
     RecipeInfoComponent,
+    RecipeGalleriaComponent,
     
   ],
   imports: [
