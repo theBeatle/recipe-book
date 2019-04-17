@@ -46,6 +46,10 @@ namespace BackEnd
 
             var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin", b => b.AllowAnyOrigin());
+            });
 
             services.Configure<JwtIssuerOptions>(options =>
             {
@@ -113,7 +117,12 @@ namespace BackEnd
             {
                 app.UseHsts();
             }
-
+            app.UseCors(builder => builder
+                 .AllowAnyOrigin()
+                 .AllowAnyHeader()
+                 .AllowAnyMethod()
+                 .AllowCredentials()
+            );
 
             app.UseExceptionHandler(
                      builder =>

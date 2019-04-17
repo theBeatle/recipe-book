@@ -19,6 +19,7 @@ namespace BackEnd
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseUrls(new string[] { "https://*:5000", "https://*:4200" })
                 .UseStartup<Startup>();
     }
 }
