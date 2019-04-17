@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {AccordionModule} from 'primeng/accordion';
-
+import {GalleriaModule} from 'primeng/galleria';
 
 
 
@@ -31,6 +31,7 @@ import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-i
     HttpClientModule,
     FormsModule,
     AccordionModule,
+    GalleriaModule,
     
 
     RouterModule.forRoot([
