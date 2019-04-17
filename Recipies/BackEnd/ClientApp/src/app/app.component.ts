@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RecipeService } from './recipe.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  // title = 'app';
+  recipes: Array<Recipe>;
+  statusMessage: string;
+
+
+  constructor(private serv: RecipeService) {
+    this.recipes = new Array<Recipe>();
+  }
+  private loadRecipes() {
+    this.serv.getRecipes().subscribe((data: Recipe[]) => {
+      this.recipes = data;
+    });
+  }
+  
+  deleteRecipe(recipe: Recipe) {
+    this.serv.deleteRecipe(recipe.Id).subscribe(data => {
+      this.statusMessage = 'Delete',
+        this.loadRecipes();
+    });
 }
