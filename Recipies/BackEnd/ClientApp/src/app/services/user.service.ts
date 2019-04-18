@@ -7,12 +7,10 @@ import { UserRegistration } from '../models/user.registration';
 
 
 
-// Add the RxJS Observable operators we need in this app.
-import '../../rxjs-operators';
 
 @Injectable()
 export class UserService  {
-  url = 'http://localhost:5000/api';
+  url = 'http://localhost:44322/api';
 
 
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
@@ -20,7 +18,7 @@ export class UserService  {
   constructor(private http: HttpClient) { }
 
   register(user: UserRegistration): Observable<UserRegistration> {
-    return this.http.post<UserRegistration>(this.url + '/accounts/', user, this.httpOptions);
+    return this.http.post<UserRegistration>(this.url + '/Accounts/', user, this.httpOptions);
   }
 
 }
