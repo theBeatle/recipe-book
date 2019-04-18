@@ -15,8 +15,8 @@ export class RecipeService {
     return this.http.get(this.url);
   }
 
-  deleteRecipe(id: Int32Array) {
-    const urlParams = new HttpParams().set("id", id.toString());
-    return this.http.delete(this.url, { params: urlParams });
+  deleteRecipe(id: number) {
+   // const urlParams = new HttpParams().set("id", id.toString());
+   // return this.http.delete(this.url, { params: urlParams });
   }
 }

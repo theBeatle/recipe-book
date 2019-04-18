@@ -17,14 +17,15 @@ export class AppComponent {
     this.recipes = new Array<Recipe>();
   }
   private loadRecipes() {
-    this.serv.getRecipes().subscribe((data: Recipe[]) => {
+    this.serv.getAllRecipes().subscribe((data: Recipe[]) => {
       this.recipes = data;
     });
   }
   
   deleteRecipe(recipe: Recipe) {
-    this.serv.deleteRecipe(recipe.Id).subscribe(data => {
+   // this.serv.deleteRecipe(recipe.Id).subscribe(data => {
       this.statusMessage = 'Delete',
         this.loadRecipes();
-    });
+   // });
+ }
 }
