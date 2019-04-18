@@ -14,10 +14,10 @@ namespace BackEnd.Controllers
         {
             return View();
         }
-        //public IActionResult Get()
-        //{
-        //    return Ok(db.Users.ToList());
-        //}
+        public IActionResult Get()
+        {
+            return Ok(db.Resipes.ToList());
+        }
 
         public IActionResult Delete(int id)
         {
