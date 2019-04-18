@@ -2,14 +2,25 @@
 <div>
 
     <div class="ui-g">
-     <div class="ui-g-10">
+     <div class="ui-g-8" style="border-right-style:solid;border-color: #A6ABB3;border-width: 0.1rem">
 
-        <h1>Bombay Halwa Or Karachi Halwa</h1>
-     
-        <app-recipe-galleria class="col-g-10 col-md-10 col-lg-12"></app-recipe-galleria>
-       
+        <!--Topic -->
+       <h1 style="text-align: center">Bombay Halwa Or Karachi Halwa</h1>
+
+        <!-- galleria -->
+        <app-recipe-galleria ></app-recipe-galleria>
+
+       <!-- Description -->
+        <div style="margin-top:3rem">
+            <h2>Description:</h2>
+            <p class="p-description">Chicken Chettinad or Chettinad chicken is a classic Indian recipe, from the cuisine of Chettinad. It consists of chicken marinated in yogurt, turmeric and a paste of red chillies, kalpasi, coconut, poppy seeds, coriander seeds, cumin seeds, fennel seeds, black pepper, ground nuts, onions, garlic and gingelly oil. It is served hot and garnished with coriander leaves, accompanied with boiled rice or paratha.</p>
+        </div>
         
-        <h2 style="margin-top:2rem;">Cooking Time:</h2>
+
+
+        <!-- Cooking Time-->
+        <h2 style="margin-top:2rem">Cooking Time:</h2>
+        
         <div class="ui-g" >
             
             <div class="ui-g-12 ui-md-6 ui-lg-3">
@@ -20,9 +31,26 @@
       
         </div>
 
-
+        <!-- Ingradients -->
         <app-recipe-ingradients></app-recipe-ingradients>
+
+
+        <!-- Directions -->
         <app-recipe-directions></app-recipe-directions>
+
+        <div class="ui-g ui-xl">
+        <div class="ui-xl-6">
+
+        <!-- Raiting-->
+        <app-recipe-raiting></app-recipe-raiting>
+
+        <!--Count views -->
+        </div>
+        <div class="ui-xl-6">
+            <p style="font-size: 1.5rem; color:black">Count views: 15</p> 
+        </div>
+        </div>
+        
      </div>
     </div>
    
