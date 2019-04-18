@@ -24,7 +24,7 @@ export class AuthenticationService {
 
     login(data: CredentialsModel) {
         return this.http.post<any>(`${this.ApiUrl}/Auth/login`, data, this.httpOptions).subscribe((x) => {
-          localStorage.setItem('Token', JSON.stringify(x.auth_token));
+          localStorage.setItem('Token', JSON.stringify(x));
         });
            /* .pipe(map(user => {
                 if (user.token) {
