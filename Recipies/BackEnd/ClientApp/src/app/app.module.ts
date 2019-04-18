@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {AccordionModule} from 'primeng/accordion';
-
+import {GalleriaModule} from 'primeng/galleria';
 
 
 
@@ -14,7 +14,12 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
+//mycomponents
 import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-info.component';
+import { RecipeGalleriaComponent } from './recipe-detailed-info/recipe-galleria/recipe-galleria.component';
+import { RecipeIngradientsComponent } from './recipe-detailed-info/recipe-ingradients/recipe-ingradients.component';
+import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directions/recipe-directions.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +29,9 @@ import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-i
     CounterComponent,
     FetchDataComponent,
     RecipeInfoComponent,
+    RecipeGalleriaComponent,
+    RecipeIngradientsComponent,
+    RecipeDirectionsComponent,
     
   ],
   imports: [
@@ -31,6 +39,7 @@ import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-i
     HttpClientModule,
     FormsModule,
     AccordionModule,
+    GalleriaModule,
     
 
     RouterModule.forRoot([
