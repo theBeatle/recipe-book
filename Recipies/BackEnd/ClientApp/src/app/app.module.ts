@@ -18,6 +18,8 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 //mycomponents
 import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-info.component';
 import { RecipeGalleriaComponent } from './recipe-detailed-info/recipe-galleria/recipe-galleria.component';
+import { RecipeIngradientsComponent } from './recipe-detailed-info/recipe-ingradients/recipe-ingradients.component';
+import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directions/recipe-directions.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { RecipeGalleriaComponent } from './recipe-detailed-info/recipe-galleria/
     FetchDataComponent,
     RecipeInfoComponent,
     RecipeGalleriaComponent,
+    RecipeIngradientsComponent,
+    RecipeDirectionsComponent,
     
   ],
   imports: [
