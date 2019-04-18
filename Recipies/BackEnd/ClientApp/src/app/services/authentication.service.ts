@@ -4,39 +4,39 @@ import { HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User } from '../models/user';
+
 import { CredentialsModel } from '../models/credentials-model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-    private currentUserSubject: BehaviorSubject<User>;
-    public currentUser: Observable<User>;
+    private currentUserSubject: BehaviorSubject<Object>;
+    public currentUser: Observable<Object>;
+
     private ApiUrl = 'http://localhost:5000/api';
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('Token')));
+        this.currentUserSubject = new BehaviorSubject<Object>(JSON.parse(localStorage.getItem('access_token')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    public get currentUserValue(): User {
+    public get currentUserValue(): Object {
         return this.currentUserSubject.value;
+    }
+
+    GetUID(): string {
+        return localStorage.getItem('user_id');
     }
 
     login(data: CredentialsModel) {
         return this.http.post<any>(`${this.ApiUrl}/Auth/login`, data, this.httpOptions).subscribe((x) => {
-          localStorage.setItem('Token', JSON.stringify(x.auth_token));
+          localStorage.setItem('access_token', JSON.stringify(x.auth_token));
+          localStorage.setItem('user_id', JSON.stringify(x.id));
         });
-           /* .pipe(map(user => {
-                if (user.token) {
-                    localStorage.setItem('currentUser', JSON.stringify(user.token));
-                    this.currentUserSubject.next(user);
-                }
-                return user;
-            })); */
     }
 
     logout() {
-        localStorage.removeItem('Token');
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('user_id');
         this.currentUserSubject.next(null);
     }
 }

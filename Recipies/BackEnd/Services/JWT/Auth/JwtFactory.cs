@@ -1,4 +1,6 @@
-﻿using BackEnd.Services.JWT.Models;
+﻿using BackEnd.Models;
+using BackEnd.Services.JWT.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using System;
 using System.IdentityModel.Tokens.Jwt;
@@ -11,9 +13,10 @@ namespace BackEnd.Services.JWT.Auth
     public class JwtFactory : IJwtFactory
     {
         private readonly JwtIssuerOptions _jwtOptions;
-
-        public JwtFactory(IOptions<JwtIssuerOptions> jwtOptions)
+        private readonly UserManager<User> _userManager;
+        public JwtFactory(IOptions<JwtIssuerOptions> jwtOptions, UserManager<User> userManager)
         {
+            _userManager = userManager;
             _jwtOptions = jwtOptions.Value;
             ThrowIfInvalidOptions(_jwtOptions);
         }
