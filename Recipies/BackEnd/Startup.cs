@@ -20,7 +20,7 @@ namespace BackEnd
 {
     public class Startup
     {
-        private const string SecretKey = "iNivDmHLpUA223sqsfhqGbMRdRj1PVkH"; //Secure code
+        private const string SecretKey = "VERY_SECRET_CODE_DONT_SHARE_228"; //Secure code
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
         public IConfiguration Configuration { get; }
 
@@ -37,7 +37,7 @@ namespace BackEnd
             services.AddDefaultIdentity<User>().AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddSingleton<IJwtFactory, JwtFactory>();
-            services.AddSingleton<UserManager<User>>();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
