@@ -61,17 +61,17 @@ namespace BackEnd
 
             var tokenValidationParameters = new TokenValidationParameters
             {
-                ValidateIssuer = true,
+                ValidateIssuer = false,
                 ValidIssuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)],
 
-                ValidateAudience = true,
+                ValidateAudience = false,
                 ValidAudience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)],
 
                 ValidateIssuerSigningKey = true,
                 IssuerSigningKey = _signingKey,
 
                 RequireExpirationTime = false,
-                ValidateLifetime = true,
+                ValidateLifetime = false,
                 ClockSkew = TimeSpan.Zero
             };
 

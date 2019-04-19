@@ -30,7 +30,7 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: LoginFormComponent},
+      { path: '', component: HomeComponent},
       { path: 'counter', component: CounterComponent },
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
