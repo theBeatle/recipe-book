@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from './../../services/authentication.service';
 import { CredentialsModel } from './../../models/credentials-model';
-
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-form',
@@ -11,21 +11,53 @@ import { CredentialsModel } from './../../models/credentials-model';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-  LoginForm: FormGroup;
-  constructor(private Auth: AuthenticationService, private fb: FormBuilder) { }
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  error = '';
+
+  constructor(
+      private formBuilder: FormBuilder,
+      private route: ActivatedRoute,
+      private router: Router,
+      private authenticationService: AuthenticationService
+  ) { }
 
   ngOnInit() {
-    this.LoginForm = this.fb.group({
-      Email: ['', [Validators.email]],
-      Password: ['', [Validators.required]],
-    });
+      this.loginForm = this.formBuilder.group({
+          email: ['', Validators.required],
+          password: ['', Validators.required]
+      });
+
+      // reset login status
+      this.authenticationService.logout();
+
+      // get return url from route parameters or default to '/'
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
   }
 
-  SignIn(Email: string, Password: string) {
-    this.Auth.login({Email, Password} as CredentialsModel);
-  }
-  SubmitForm() {
-    const data = this.LoginForm.value;
-    this.Auth.login(data as CredentialsModel);
+  // convenience getter for easy access to form fields
+  get f() { return this.loginForm.controls; }
+
+  onSubmit() {
+      this.submitted = true;
+
+      // stop here if form is invalid
+      if (this.loginForm.invalid) {
+          return;
+      }
+
+      this.loading = true;
+      this.authenticationService.login(this.loginForm.value as CredentialsModel)
+          .pipe(first())
+          .subscribe(
+              data => {
+                  this.router.navigate(['/counter']);
+              },
+              error => {
+                  console.log(error);
+                  this.loading = false;
+              });
   }
 }

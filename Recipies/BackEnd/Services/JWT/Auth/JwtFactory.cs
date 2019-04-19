@@ -13,10 +13,10 @@ namespace BackEnd.Services.JWT.Auth
     public class JwtFactory : IJwtFactory
     {
         private readonly JwtIssuerOptions _jwtOptions;
-        private readonly UserManager<User> _userManager;
-        public JwtFactory(IOptions<JwtIssuerOptions> jwtOptions, UserManager<User> userManager)
+       
+        public JwtFactory(IOptions<JwtIssuerOptions> jwtOptions)
         {
-            _userManager = userManager;
+           
             _jwtOptions = jwtOptions.Value;
             ThrowIfInvalidOptions(_jwtOptions);
         }
