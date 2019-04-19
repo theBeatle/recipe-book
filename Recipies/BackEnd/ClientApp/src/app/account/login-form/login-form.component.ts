@@ -21,7 +21,7 @@ export class LoginFormComponent implements OnInit {
       private formBuilder: FormBuilder,
       private route: ActivatedRoute,
       private router: Router,
-      private authenticationService: AuthenticationService
+      private authenticationService: AuthenticationService,
   ) { }
 
   ngOnInit() {
@@ -53,7 +53,7 @@ export class LoginFormComponent implements OnInit {
           .pipe(first())
           .subscribe(
               data => {
-                  this.router.navigate(['/counter']);
+                  this.router.navigate(['/home']);
               },
               error => {
                   console.log(error);
