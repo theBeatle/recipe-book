@@ -37,7 +37,7 @@ namespace BackEnd
             services.AddDefaultIdentity<User>().AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddSingleton<IJwtFactory, JwtFactory>();
-
+            services.AddSingleton<UserManager<User>>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });

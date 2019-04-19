@@ -1,3 +1,8 @@
-<p>
-  login-form works!
-</p>
+<form [formGroup]="LoginForm" (ngSubmit)="SubmitForm(LoginForm.value)">
+<input formControlName="Email" placeholder="Email">
+<br>
+<input formControlName="Password" type="password" placeholder="Password">
+<br>
+<button [disabled]="!LoginForm.valid">Sign In</button>
+
+</form>
