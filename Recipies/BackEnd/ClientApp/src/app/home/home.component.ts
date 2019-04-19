@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private test: TestAuthService) {}
 
+
   ngOnInit(): void {
     this.test.getData();
   }
