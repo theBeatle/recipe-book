@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace BackEnd
 {
@@ -63,6 +64,11 @@ namespace BackEnd
 
                 if (env.IsDevelopment())
                 {
+                    //spa.UseAngularCliServer(npmScript: "start");
+
+                    //Time limit extended
+                    spa.Options.StartupTimeout = new TimeSpan(days: 0, hours: 0, minutes: 1, seconds: 30);
+                    //Time limit extended
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
