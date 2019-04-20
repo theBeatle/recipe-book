@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { UserRegistration } from '../../models/user.registration';
+import { RegistrationService } from '../../../services/registration.service';
+import { UserRegistration } from '../../../models/user.registration';
+
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+  selector: 'app-reg-form',
+  templateUrl: './reg-form.component.html',
+  styleUrls: ['./reg-form.component.css']
 })
-export class AccountComponent implements OnInit {
+export class RegistrationFormComponent implements OnInit {
 
   userForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private cS: UserService, ) { }
+  constructor(private fb: FormBuilder, private cS: RegistrationService, ) { }
 
   ngOnInit() {
     this.userForm=this.fb.group({
