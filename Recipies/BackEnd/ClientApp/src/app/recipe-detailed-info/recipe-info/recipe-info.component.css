@@ -1,9 +1,13 @@
+
+/* ui-lg */
+@media screen and (min-width: 1025px ) and (max-width: 1441px) {
+
 .pt{
 color: #A6ABB3;
 font-size: 1.5rem;
 }
 .ct{
-    color: #A6ABB3;
+    color: rgb(147, 154, 167);
     font-size: 1.5rem;
 }
 .tt{
@@ -13,5 +17,91 @@ font-size: 1.5rem;
 
 .p-description{
     color: #323C41;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
+
+.dp{
+    font-size: 1.5rem; 
+    color:black
+}
+
+.cv{
+    font-size: 1.5rem; 
+    color:black
+}
+
+};
+
+
+
+/* ui-md */
+@media screen and (min-width: 641px) and (max-width: 1025px) {
+
+    .pt{
+    color: #A6ABB3;
+    font-size: 1.3rem;
+    }
+    .ct{
+        color: rgb(147, 154, 167);
+        font-size: 1.3rem;
+    }
+    .tt{
+        color:#323C41;
+        font-size:  1.3rem;
+    }
+    
+    .p-description{
+        color: #323C41;
+        font-size: 1.3rem;
+    }
+
+
+
+    .dp{
+        font-size: 1.3rem; 
+        color:black
+    }
+
+    .cv{
+        font-size: 1.3rem; 
+        color:black
+    }
+    
+    };
+
+
+
+    @media screen and (max-width: 640px)  {
+
+        .pt{
+        color: #A6ABB3;
+        font-size: 1.1rem;
+        }
+        .ct{
+            color: rgb(147, 154, 167);
+            font-size: 1.1rem;
+        }
+        .tt{
+            color:#323C41;
+            font-size:  1.1rem;
+        }
+        
+        .p-description{
+            color: #323C41;
+            font-size: 1.1rem;
+        }
+    
+    
+    
+        .dp{
+            font-size: 1.1rem; 
+            color:black
+        }
+    
+        .cv{
+            font-size: 1.1rem; 
+            color:black
+        }
+        
+        };
+    

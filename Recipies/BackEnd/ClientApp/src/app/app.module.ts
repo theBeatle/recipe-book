@@ -12,6 +12,7 @@ import {RatingModule} from 'primeng/rating';
 
 
 
+
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -25,6 +26,10 @@ import { RecipeGalleriaComponent } from './recipe-detailed-info/recipe-galleria/
 import { RecipeIngradientsComponent } from './recipe-detailed-info/recipe-ingradients/recipe-ingradients.component';
 import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directions/recipe-directions.component';
 import { RecipeRaitingComponent } from './recipe-detailed-info/recipe-raiting/recipe-raiting.component';
+
+//myservices
+import { RecipeService } from './recipe-detailed-info/recipe.service';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +63,7 @@ import { RecipeRaitingComponent } from './recipe-detailed-info/recipe-raiting/re
     ])
    
   ],
-  providers: [],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
