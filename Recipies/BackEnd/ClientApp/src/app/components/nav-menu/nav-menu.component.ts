@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../../services/authentication.service';
+import { Observable  } from 'rxjs';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,7 +9,18 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  isAuthorized: boolean;
+  constructor(
+    private authenticationService: AuthenticationService,
+  ) { }
 
+  ngOnInit() {
+console.log(this.authenticationService.currentUserValue);
+
+    if (this.authenticationService.currentUserValue) {
+      this.isAuthorized = true;
+    }
+  }
   collapse() {
     this.isExpanded = false;
   }
