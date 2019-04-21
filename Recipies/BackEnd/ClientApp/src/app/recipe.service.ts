@@ -11,12 +11,13 @@ export class RecipeService {
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
   constructor(private http: HttpClient) { }
 
-  getAllRecipes() {
-    return this.http.get(this.url);
+  getAllRecipes():Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.url);
   }
 
   deleteRecipe(id: number) {
    // const urlParams = new HttpParams().set("id", id.toString());
    // return this.http.delete(this.url, { params: urlParams });
+   return this.http.delete<number>(this.url , this.httpOptions);  //+ '/DeleteWorkerById/' + recipeId
   }
 }

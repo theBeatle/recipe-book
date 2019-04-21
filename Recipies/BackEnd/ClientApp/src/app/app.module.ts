@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import {RecipeComponent} from './recipes/recipe.component';
 import {CardModule} from 'primeng/card';
+import {ButtonModule} from 'primeng/button';
 import { RecipeService } from './recipe.service';
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RecipeService } from './recipe.service';
     HttpClientModule,
     AccordionModule,
     CardModule,
+    ButtonModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
