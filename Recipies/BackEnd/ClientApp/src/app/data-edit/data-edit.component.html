@@ -1,0 +1,19 @@
+<diV>
+    <p-fileUpload mode="basic" name="myfile[]" customUpload="true" (onSelect)="myUploader($event, document.getElementById('pidar'))" (onClear)="myUploader($event)"></p-fileUpload>
+    <span class="ui-float-label">
+        <input id="float-input" type="text" size="30" pInputText> 
+        <label for="float-input">First Name</label>
+        <p-calendar [(ngModel)]="value"></p-calendar>
+    </span>
+    <span class="ui-float-label">
+        <input id="float-input" type="text" size="30" pInputText> 
+        <label for="float-input">Last Name</label>
+    </span>
+    <span class="ui-float-label">
+        <input id="float-input" type="text" size="30" pInputText> 
+        <label for="float-input">Email</label>
+    </span>
+    <span class="ui-float-label">
+        <p-autoComplete [(ngModel)]="texts" [suggestions]="results" (completeMethod)="search($event)" [multiple]="true"></p-autoComplete>
+    </span>
+</diV>
