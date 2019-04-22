@@ -16,10 +16,14 @@ export class NavMenuComponent {
 
   ngOnInit() {
 console.log(this.authenticationService.currentUserValue);
+    this.authenticationService.currentUser.subscribe((x)=>{
+      if (x != null) {
+        this.isAuthorized = true;
+      } else {
+        this.isAuthorized = false;
+      }
+    })
 
-    if (this.authenticationService.currentUserValue) {
-      this.isAuthorized = true;
-    }
   }
   collapse() {
     this.isExpanded = false;
