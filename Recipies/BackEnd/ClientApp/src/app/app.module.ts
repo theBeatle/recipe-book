@@ -7,7 +7,7 @@ import {AccordionModule} from 'primeng/accordion';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MenuItem} from 'primeng/api';     
+     
 import {CardModule} from 'primeng/card';
 
 import { IngredientsService } from './ingredients.service';
@@ -19,9 +19,11 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import {IngredientComponent } from './ingredients/ingredient.component';
+import { IngredientComponent } from './ingredients/ingredient.component';
 import { VitaminComponent } from './vitamins/vitamin.component';
 import { MicroElementComponent } from './micro-elements/microelement.component';
+
+
 
 
 @NgModule({
