@@ -62,7 +62,9 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'registration', component: RegistrationFormComponent }
+      { path: 'registration', component: RegistrationFormComponent },
+      { path: 'feature', component: IngredientComponent }
+
 
     ])
   ],
