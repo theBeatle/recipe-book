@@ -28,8 +28,6 @@
     "core-js": "^2.5.4",
     "jquery": "3.3.1",
     "popper.js": "^1.14.3",
-    "primeicons": "^1.0.0",
-    "primeng": "^7.1.1",
     "rxjs": "^6.4.0",
     "zone.js": "^0.8.29"
   },
