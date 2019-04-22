@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeGalleriaComponent implements OnInit {
   
-  images: any[];
+  public images: any[];
   
   constructor() { }
   

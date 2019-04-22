@@ -1,3 +1,11 @@
-<div class="content-section implementation">
-    <!-- <p-galleria   [images]="images" styleClass="uigalleria"   panelWidth="50%" ></p-galleria> -->
-</div>
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner" *ngFor="let item of images">
+
+     
+      <div class="carousel-item">
+        <img src={{item}} class="d-block w-100" alt="...">
+      </div>
+      
+   
+  </div>
+  </div>

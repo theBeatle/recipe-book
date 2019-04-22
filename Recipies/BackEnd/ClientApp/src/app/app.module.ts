@@ -80,9 +80,10 @@ import { RecipeService } from './recipe-detailed-info/recipe.service';
     RegistrationFormComponent,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    RecipeService,
 
   ],
-  providers: [RecipeService],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule {
