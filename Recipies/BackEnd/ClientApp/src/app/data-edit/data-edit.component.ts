@@ -14,10 +14,4 @@ export class DataEditComponent implements OnInit {
 
   ngOnInit() {
   }
-
-  myUploader(event) {
-    for (let file of event.files) {
-      this.uploadedFiles.push(file);
-    }
-  }
 }

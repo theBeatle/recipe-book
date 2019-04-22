@@ -1,5 +1,5 @@
-<diV>
-    <p-fileUpload mode="basic" name="myfile[]" customUpload="true" (onSelect)="myUploader($event, document.getElementById('pidar'))" (onClear)="myUploader($event)"></p-fileUpload>
+<!-- <diV>
+    <p-fileUpload mode="basic" name="myfile[]" customUpload="true" (onSelect)="myUploader($event)"></p-fileUpload>
     <span class="ui-float-label">
         <input id="float-input" type="text" size="30" pInputText> 
         <label for="float-input">First Name</label>
@@ -16,4 +16,10 @@
     <span class="ui-float-label">
         <p-autoComplete [(ngModel)]="texts" [suggestions]="results" (completeMethod)="search($event)" [multiple]="true"></p-autoComplete>
     </span>
-</diV>
+</diV> -->
+<div>
+    <div class="custom-file">
+        <input type="file" class="custom-file-input" id="customFile">
+        <label class="custom-file-label btn btn-primary" for="customFile">Choose file</label>
+    </div>
+</div>
