@@ -6,15 +6,15 @@
 </head>
 <body>
 
-  <div >
+  <div class="container" *ngFor="let recipe of allRecipes | async">
 
     <p-card subheader="Subheader" [style]="{width: '360px'}" styleClass="ui-card-shadow">
       <p-header>
-      <h3 >{recipe.Topic}</h3>
+      <h3 >Topic:{{recipe.Topic}</h3>
       </p-header>
       <div>
-      <p>{{recipe.Description}}</p>
-      <p>{{recipe.CookingProcess}}</p>
+      <p>Description: {{recipe.Description}}</p>
+      <p>CookingProcess:{{recipe.CookingProcess}}</p>
       </div>
 
       <button pButton type="button" class="ui-button-rounded ui-button-danger" label="delete" (click)="deleteRecipe()" name="deleteRecipe">

@@ -8,7 +8,7 @@ import { Recipe } from './recipe';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  // title = 'app';
+  title = 'app';
   recipes: Array<Recipe>;
   statusMessage: string;
 

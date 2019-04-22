@@ -12,6 +12,7 @@ import { Recipe } from '../recipe';
 export class RecipeComponent implements OnInit {
   
   allRecipes: Observable<Recipe[]>;
+
   message=null;
 
   constructor( private iS: RecipeService) { }
@@ -24,7 +25,7 @@ export class RecipeComponent implements OnInit {
   loadAllRecipes() {
     this.allRecipes = this.iS.getAllRecipes();
   }
-  deleteWorker(workerId: string) {
+  deleteRecipe(workerId: string) {
     // if (confirm('Are you sure you want to delete this ?')) {
     //   this.iS.deleteWorkerById(workerId).subscribe(() => {
     //     this.message = 'Record Deleted Succefully';
