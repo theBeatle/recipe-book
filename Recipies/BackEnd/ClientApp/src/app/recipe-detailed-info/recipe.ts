@@ -8,7 +8,7 @@ export class Recipe {
     public CreationDate:Date;
     public CookingProcess:string;
     public Images:Array<string>;
-    public Raiting:string;
+    public Raiting:number;
     public Ingredients:Array<string>;
 
 

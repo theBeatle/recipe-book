@@ -5,14 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
-//primeng module
-import {AccordionModule} from 'primeng/accordion';
-import {GalleriaModule} from 'primeng/galleria';
-import {RatingModule} from 'primeng/rating';
-
-
-
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -50,9 +42,7 @@ import { RecipeService } from './recipe-detailed-info/recipe.service';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    AccordionModule,
-    GalleriaModule,
-    RatingModule,
+    
     
 
     RouterModule.forRoot([

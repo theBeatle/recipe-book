@@ -10,13 +10,16 @@ import { Observable } from 'rxjs';
 })
 export class RecipeInfoComponent implements OnInit {
   
-  service:RecipeService;
-  recipe:Recipe;
-  constructor() { }
+  
+  recipe:Observable<Recipe>;
+  constructor() {
+    // private Rs:RecipeService,private RecipeId:string
+   }
   
   ngOnInit() {
-   
+   //this.recipe=this.Rs.getRecipeById(this.RecipeId);
   }
+  
   }
 
 
