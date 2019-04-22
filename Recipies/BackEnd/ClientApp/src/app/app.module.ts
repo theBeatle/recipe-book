@@ -3,8 +3,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+
+
+//primeng module
 import {AccordionModule} from 'primeng/accordion';
 import {GalleriaModule} from 'primeng/galleria';
+import {RatingModule} from 'primeng/rating';
 
 
 
@@ -15,11 +19,17 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
+
 //mycomponents
 import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-info.component';
 import { RecipeGalleriaComponent } from './recipe-detailed-info/recipe-galleria/recipe-galleria.component';
 import { RecipeIngradientsComponent } from './recipe-detailed-info/recipe-ingradients/recipe-ingradients.component';
 import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directions/recipe-directions.component';
+import { RecipeRaitingComponent } from './recipe-detailed-info/recipe-raiting/recipe-raiting.component';
+
+//myservices
+import { RecipeService } from './recipe-detailed-info/recipe.service';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +42,8 @@ import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directi
     RecipeGalleriaComponent,
     RecipeIngradientsComponent,
     RecipeDirectionsComponent,
+    RecipeRaitingComponent,
+  
     
   ],
   imports: [
@@ -40,6 +52,7 @@ import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directi
     FormsModule,
     AccordionModule,
     GalleriaModule,
+    RatingModule,
     
 
     RouterModule.forRoot([
@@ -50,7 +63,7 @@ import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directi
     ])
    
   ],
-  providers: [],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
