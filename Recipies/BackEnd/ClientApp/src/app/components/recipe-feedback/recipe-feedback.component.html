@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="card text-black bg-light mb-3 col-md-6 col-12 left" *ngFor="let item of FeedBacks">
+    <div class="card-header bg-light">{{item.FirstName}}  {{item.LastName}}</div>
+    <div class="card-body">
+      <p class="card-text">{{item.Text}}</p>
+    </div>
+  </div>
+
+  <div class="card text-black bg-light mb-3 col-md-6 col-12 float-right">
+    <div class="card-body">
+      <div class="card-text">
+        <form class="form-group row" [formGroup]="FeedBackForm" (ngSubmit)="SendFeedBack()">
+          <textarea  formControlName="Text" row="3" placeholder="Some Text" class="bg-light text-black form-control col-10"
+            style="resize:none"></textarea>
+          <button [disabled]="!isAuth"  class="col-2 btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+        </form>
+        <div>
+        </div>
+      </div>
+
+    </div>
