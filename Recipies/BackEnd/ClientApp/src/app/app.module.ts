@@ -14,6 +14,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { LoginFormComponent } from './components/account/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/account/reg-form/reg-form.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
@@ -27,7 +28,8 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
     FetchDataComponent,
     CounterComponent,
     HomeComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    ContactUsComponent
   ],
 
 
@@ -48,13 +50,14 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'registration', component: RegistrationFormComponent }
-
+      { path: 'registration', component: RegistrationFormComponent },
+      { path: 'contact', component: ContactUsComponent}
     ])
   ],
   providers: [
     HttpClientModule,
     FetchDataComponent,
+    ContactUsComponent,
     LoginFormComponent,
     RegistrationFormComponent,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
