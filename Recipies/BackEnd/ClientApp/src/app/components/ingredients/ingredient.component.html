@@ -4,48 +4,14 @@
     <meta charset="utf-8" />
     <title></title>
 </head>
-<body>  <div class="container">
- <div class="container" *ngFor="let ingredient of allIngredients | async"> 
-      <h1>Ingredients</h1>
-      <div class="card" style="width: 18rem;">
-        <div class="card-header">
-            <h2 >{ingredient.Name}</h2>
-        </div>
+<body>  
+    <div class="card" style="width: 20rem;" *ngFor="let ingredient of allIngredients ">
+        <h2 class="card-title" style="text-align: center">Card title</h2>
         <div class="card-body">
-          <p>{ingredient.Description}</p>
-          <p>Kkal (100gr): {ingredient.Kkal_100g}</p>
-          <p>Fats (100gr): {ingredient.Fats_100g}</p>
-          <p>Proteins (100gr): {ingredient.Proteins_100g}</p>
-          <p>Carbonydrates (100gr): {ingredient.Carbohydrates_100g}</p>
-          <div>  
-              <app-vitamin></app-vitamin>  
-            </div>
-            <div>  
-              <app-microelement></app-microelement>  
-            </div>
+         
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
-      </div>
-    <!-- <p-card subheader="Subheader" [style]="{width: '360px'}" styleClass="ui-card-shadow">
-      <p-header>
-      <h3 >{ingredient.Name}</h3>
-      </p-header>
-      <div>
-      <p>{{ingredient.Description}}</p>
-      <p>Kkal (100gr): {{ingredient.Kkal_100g}}</p>
-      <p>Fats (100gr): {{ingredient.Fats_100g}</p>
-      <p>Proteins (100gr): {{ingredient.Proteins_100g}}</p>
-      <p>Carbonydrates (100gr): {{ingredient.Carbohydrates_100g}}</p>
-      <div>  
-        <app-vitamin></app-vitamin>  
-      </div>
-      <div>  
-        <app-microelement></app-microelement>  
-      </div>
-      </div>
-      <p-footer>
-        
-      </p-footer>
-    </p-card> -->
- 
+    </div>
 </body>
 </html>
