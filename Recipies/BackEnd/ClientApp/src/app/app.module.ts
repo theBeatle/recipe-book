@@ -1,97 +1,68 @@
+import { AuthGuard } from './guard/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
-
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { MyrecipesComponent} from './myrecipes/myrecipes.component';
-import { EditprofileComponent } from './editprofile/editprofile.component';
-import { FavouriteRecipesComponent } from './favourite-recipes/favourite-recipes.component';
-//PrimeNG
-import {BlockUIModule} from 'primeng/blockui';
-import {ButtonModule} from 'primeng/button';
-import {RatingModule} from 'primeng/rating';
-import {InputTextModule} from 'primeng/inputtext';
-import {TabMenuModule} from 'primeng/tabmenu';
-import {FileUploadModule} from 'primeng/fileupload';
-import {MessageModule} from 'primeng/message';
 
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { CounterComponent } from './components/counter/counter.component';
+import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
+import { LoginFormComponent } from './components/account/login-form/login-form.component';
+import { RegistrationFormComponent } from './components/account/reg-form/reg-form.component';
 
-// i  mport {MenuItem} from 'primeng/api';
-//////Routes
-import { RouterModule, Routes } from '@angular/router';
-
-
-
-const appRoutes: Routes =[
-{
- path:'favourite-recipes',
- component: FavouriteRecipesComponent
-},
-{
- path: 'user-profile',
-  component: UserProfileComponent
-},
-{
-  path: 'myrecipes',
-  component: MyrecipesComponent
-},
-{
-  path: 'editprofile',
-  component: EditprofileComponent
-}
-
-];
-
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { JwtInterceptor } from './helpers/JWT.interceptor';
 
 @NgModule({
+
   declarations: [
     AppComponent,
+    RegistrationFormComponent,
     NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
     FetchDataComponent,
-    UserProfileComponent,
-    MyrecipesComponent,
-    EditprofileComponent,
-    FavouriteRecipesComponent,
-    //BrowserAnimationsModule
+    CounterComponent,
+    HomeComponent,
+    LoginFormComponent
   ],
+
+
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+
+  BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    BlockUIModule,
-    ButtonModule,
-    InputTextModule,
-    FileUploadModule,
-    
-    TabMenuModule,
-    MessageModule,
-  //  TabMenuModule,
-    RatingModule,
-  
-    //CardModule,
-   // AccordionModule,
+    ReactiveFormsModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    RouterModule.forRoot([
+      { path: '', component: HomeComponent},
+      { path: 'counter', component: CounterComponent },
+      { path: 'login', component: LoginFormComponent },
+      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'registration', component: RegistrationFormComponent }
 
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
-    )
-    
-    //   { path: '', component: HomeComponent, pathMatch: 'full' },
-    //   { path: 'counter', component: CounterComponent },
-    //   { path: 'fetch-data', component: FetchDataComponent },
-    //   { path: 'user-profile', component: UserProfileComponent },
-    // )
+    ])
   ],
-  providers: [],
+  providers: [
+    HttpClientModule,
+    FetchDataComponent,
+    LoginFormComponent,
+    RegistrationFormComponent,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}
