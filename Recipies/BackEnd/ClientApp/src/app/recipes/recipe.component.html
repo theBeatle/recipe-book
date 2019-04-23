@@ -7,22 +7,17 @@
 <body>
 
   <div class="container" *ngFor="let recipe of allRecipes | async">
-
-    <p-card subheader="Subheader" [style]="{width: '360px'}" styleClass="ui-card-shadow">
-      <p-header>
-      <h3 >Topic:{{recipe.Topic}</h3>
-      </p-header>
-      <div>
-      <p>Description: {{recipe.Description}}</p>
-      <p>CookingProcess:{{recipe.CookingProcess}}</p>
+    <div class="card" style="width: 18rem;">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Topic:{{recipe.Topic}</h5>
+        <p class="card-text">Description: {{recipe.Description}}</p>
+        <p class="card-text">CookingProcess:{{recipe.CookingProcess}}</p>
+ 
+        <!-- <a href="#" class="btn btn-primary" onClick="deleteRecipe()">Delete</a> -->
+        <button class="btn btn-primary" (click)="deleteRecipe()">Delete</button>
       </div>
-
-      <button pButton type="button" class="ui-button-rounded ui-button-danger" label="delete" (click)="deleteRecipe()" name="deleteRecipe">
-   
-      </button>
-      <p-footer>
-      </p-footer>
-    </p-card>
+    </div>
   </div>
 </body>
 </html>
