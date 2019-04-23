@@ -12,23 +12,33 @@ import { UserRegistration } from '../../../models/user.registration';
 export class RegistrationFormComponent implements OnInit {
 
   userForm: FormGroup;
-
-  constructor(private fb: FormBuilder, private cS: RegistrationService, ) { }
+  loading = false;
+  submitted = false;
+  error = '';
+  constructor(private fb: FormBuilder,
+     private cS: RegistrationService,
+     private router: Router,
+      ) { }
 
   ngOnInit() {
-    this.userForm=this.fb.group({
-      Email: [''],
-      Password: [''],
-      FirstName: [''],
-      LastName: [''],
+    this.userForm = this.fb.group({
+      Email: ['', Validators.required],
+      Password: ['', Validators.required],
+      FirstName: ['', Validators.required],
+      LastName: ['', Validators.required],
 
-    })
+    });
   }
   onFormSubmit() {
+    this.submitted = true;
+    if (this.userForm.invalid) {
+      return;
+  }
 
+  this.loading = true;
     const contact = this.userForm.value;
     this.CreateUser(contact as UserRegistration);
-    this.userForm.reset();
+
   }
   CreateUser(user: UserRegistration) {
 
@@ -37,7 +47,7 @@ export class RegistrationFormComponent implements OnInit {
 
           console.log("OK");
 
-          this.userForm.reset();
+          this.router.navigate(['/login']);
         }
       );
 
