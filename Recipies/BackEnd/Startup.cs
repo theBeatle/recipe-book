@@ -18,6 +18,8 @@ using BackEnd.Services.JWT.Auth;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
+using Microsoft.AspNetCore.Builder.Internal;
 
 namespace BackEnd
 {
@@ -174,7 +176,17 @@ namespace BackEnd
 
             app.UseAuthentication();
             app.UseMvc();
-         
+        }
+
+        private static void InitializeMigrations(IApplicationBuilder app)
+        {
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                DatabaseContext dbContext = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
+                dbContext.Database.Migrate();
+
+                // TODO: Use dbContext if you want to do seeding etc.
+            }
         }
     }
 }

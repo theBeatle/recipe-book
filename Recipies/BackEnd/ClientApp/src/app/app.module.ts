@@ -17,6 +17,9 @@ import { RegistrationFormComponent } from './components/account/reg-form/reg-for
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
+import { DataEditComponent } from './components/data-edit/data-edit.component';
+
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 
@@ -27,13 +30,14 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
     FetchDataComponent,
     CounterComponent,
     HomeComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    DataEditComponent
   ],
 
 
   imports: [
-
-  BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    NgbModule,
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -48,8 +52,8 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'registration', component: RegistrationFormComponent }
-
+      { path: 'registration', component: RegistrationFormComponent },
+      { path: 'data-edit', component: DataEditComponent }
     ])
   ],
   providers: [
