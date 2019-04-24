@@ -1,4 +1,40 @@
 
+
+/* ui-xl */
+@media screen and (min-width: 1441px ) {
+
+    .pt{
+    color: #A6ABB3;
+    font-size: 1.7rem;
+    }
+    .ct{
+        color: rgb(147, 154, 167);
+        font-size: 1.7rem;
+    }
+    .tt{
+        color:#323C41;
+        font-size: 1.7rem;
+    }
+    
+    .p-description{
+        color: #323C41;
+        font-size: 1.7rem;
+    }
+    
+    .dp{
+        font-size: 1.7rem; 
+        color:black
+    }
+    
+    .cv{
+        font-size: 1.7rem; 
+        color:black
+    }
+    
+    }
+
+
+
 /* ui-lg */
 @media screen and (min-width: 1025px ) and (max-width: 1441px) {
 
@@ -30,7 +66,7 @@ font-size: 1.5rem;
     color:black
 }
 
-};
+}
 
 
 
@@ -55,8 +91,6 @@ font-size: 1.5rem;
         font-size: 1.3rem;
     }
 
-
-
     .dp{
         font-size: 1.3rem; 
         color:black
@@ -66,8 +100,12 @@ font-size: 1.5rem;
         font-size: 1.3rem; 
         color:black
     }
+     
+    #htop{
+        font-size: 1.6rem;
+    }
     
-    };
+    }
 
 
 
@@ -75,33 +113,38 @@ font-size: 1.5rem;
 
         .pt{
         color: #A6ABB3;
-        font-size: 1.1rem;
+        font-size: 1rem;
         }
         .ct{
             color: rgb(147, 154, 167);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         .tt{
             color:#323C41;
-            font-size:  1.1rem;
+            font-size:  1rem;
         }
         
         .p-description{
             color: #323C41;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
     
     
     
         .dp{
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             color:black
         }
     
         .cv{
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             color:black
         }
+
+
+        #htop{
+            font-size: 1.3rem;
+        }
         
-        };
+        }
     

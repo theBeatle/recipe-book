@@ -11,6 +11,24 @@
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
           </li>
+
+          <div *ngIf="(isAuthorized ); then thenBlock else elseBlock"></div>
+          <ng-template #thenBlock>
+            <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a class="nav-link text-dark" [routerLink]='["/login"]'>Log Out</a>
+            </li>
+          </ng-template>
+
+          <ng-template #elseBlock>
+            <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <a class="nav-link text-dark" [routerLink]='["/login"]'>Sign In</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+            <a class="nav-link text-dark" [routerLink]='["/registration"]'>Sign Up</a>
+          </li>
+        </ng-template>
+
+
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
             <a class="nav-link text-dark" [routerLink]='["/counter"]'>Counter</a>
           </li>
