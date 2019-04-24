@@ -15,6 +15,11 @@ namespace BackEnd.Models
         }
 
         public new DbSet<User> Users { get; set; }
+        public new DbSet<Ingredient> Ingredients { get; set; }
+        public new DbSet<Vitamin> Vitamins { get; set; }
+        public new DbSet<MicroElement> MicroElements { get; set; }
+
+
     }
 }
 
