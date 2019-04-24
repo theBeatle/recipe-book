@@ -131,7 +131,7 @@ namespace BackEnd
             app.UseExceptionHandler(
                      builder =>
                      {
-                         builder.Run(
+                        builder.Run(
                         async context =>
                                  {
                                      context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
