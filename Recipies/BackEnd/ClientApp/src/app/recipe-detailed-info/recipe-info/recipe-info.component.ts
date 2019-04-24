@@ -10,14 +10,14 @@ import { Observable } from 'rxjs';
 })
 export class RecipeInfoComponent implements OnInit {
   
-  
+  recipestr:string="fsdafsdfdsfsdf";
   public recipe:Recipe;
-  constructor( private rS:RecipeService,private RecipeId:number) {
+  constructor(private rS:RecipeService,private RecipeId:string ) {
     
    }
   
   ngOnInit() {
-   this.GetRecipeById('1');
+    this.GetRecipeById('1');
    
   }
 
@@ -32,10 +32,12 @@ export class RecipeInfoComponent implements OnInit {
      this.recipe.Raiting=w.Raiting;
      this.recipe.Topic=w.Topic;
      this.recipe.ViewsCounter=w.ViewsCounter;
+     console.log(w.Description);
     });
   }
   
-  }
+  
+}
 
 
 

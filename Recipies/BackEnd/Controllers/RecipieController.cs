@@ -8,25 +8,29 @@ using BackEnd.Models;
 
 namespace BackEnd.Controllers
 {
-    [Route("api/Recipe")]
+    [Route("api/[controller]")]
     [ApiController]
     public class RecipieController : ControllerBase
     {
-        [HttpGet]
-        [Route("ReadRecipeById")]
-        public Recipe GetRecipeById(int RecipeId)
+
+     
+
+
+
+        [HttpGet("{id}")]
+        public IActionResult ReadRecipeById(int id)
         {
-            Recipe recipe=new Recipe();
+            Recipe recipe = new Recipe();
             recipe.Topic = "Test Recipe";
             recipe.Rating = 5;
             recipe.ViewsCounter = 15;
-            recipe.Gallery.Photo.Path = "";
+            //recipe.Gallery.Photo.Path = "ewerwer";
             recipe.Description = "Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description";
             recipe.CreationDate = DateTime.Now;
-            recipe.Country.Name = "Ukraine";
-            recipe.CookingProcess = "";
-            recipe.Category.Name = "TestCategory";
-            return recipe;
+           // recipe.Country.Name = "Ukraine";
+            recipe.CookingProcess = "Test Cooking process";
+            recipe.Category = new Category { Id = 1, Name = "TestCategory" };
+            return new ObjectResult(recipe);
         }
     }
 }
