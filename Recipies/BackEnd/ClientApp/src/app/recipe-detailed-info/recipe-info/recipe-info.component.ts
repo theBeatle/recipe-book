@@ -11,14 +11,28 @@ import { Observable } from 'rxjs';
 export class RecipeInfoComponent implements OnInit {
   
   
-  public recipe:Observable<Recipe>;
-  constructor() {
-    // private Rs:RecipeService,private RecipeId
+  public recipe:Recipe;
+  constructor( private rS:RecipeService,private RecipeId:number) {
+    
    }
   
   ngOnInit() {
-   //this.recipe=this.Rs.getRecipeById(this.RecipeId);
+   this.GetRecipeById('1');
    
+  }
+
+
+  GetRecipeById(RecipeId:string){
+    this.rS.getRecipeById(RecipeId).subscribe( w => {
+     this.recipe.Category=w.Category;
+     this.recipe.CookingProcess=w.CookingProcess;
+     this.recipe.Country=w.Country;
+     this.recipe.CreationDate=w.CreationDate;
+     this.recipe.Description=w.Description;
+     this.recipe.Raiting=w.Raiting;
+     this.recipe.Topic=w.Topic;
+     this.recipe.ViewsCounter=w.ViewsCounter;
+    });
   }
   
   }

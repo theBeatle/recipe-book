@@ -13,17 +13,17 @@
        <!-- Description -->
         <div style="margin-top:3rem">
             <h2>Description:</h2>
-            <p class="p-description">Chicken Chettinad or Chettinad chicken is a classic Indian recipe, from the cuisine of Chettinad. It consists of chicken marinated in yogurt, turmeric and a paste of red chillies, kalpasi, coconut, poppy seeds, coriander seeds, cumin seeds, fennel seeds, black pepper, ground nuts, onions, garlic and gingelly oil. It is served hot and garnished with coriander leaves, accompanied with boiled rice or paratha.</p>
+            <p class="p-description">{{recipe.Description}}</p>
         </div>
         
 
 
         <!-- Ingradients -->
-        <app-recipe-ingradients  [Ingradients]="Ingradients"></app-recipe-ingradients>
+        <app-recipe-ingradients  [Ingradients]="recipe.Ingradients"></app-recipe-ingradients>
 
 
         <!-- Cooking process -->
-        <app-recipe-directions></app-recipe-directions>
+        <app-recipe-directions [Directions]="recipe.Directions"></app-recipe-directions>
 
       
         

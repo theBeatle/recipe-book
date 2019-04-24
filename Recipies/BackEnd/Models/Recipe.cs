@@ -31,7 +31,7 @@ namespace BackEnd.Models
 
         public double Rating { get; set; }
 
-        public Ingredient[] Ingredients { get; set; }
+        //public Ingredient[] Ingredients { get; set; }
 
 
 
