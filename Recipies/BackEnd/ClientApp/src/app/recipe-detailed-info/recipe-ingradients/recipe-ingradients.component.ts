@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-recipe-ingradients',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeIngradientsComponent implements OnInit {
 
-  constructor() { }
+  
+  @Input() Ingradients:string[];
+  constructor() { 
+  }
 
   ngOnInit() {
+    
   }
 
 }
