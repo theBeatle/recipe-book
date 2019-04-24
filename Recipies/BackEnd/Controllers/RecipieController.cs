@@ -12,6 +12,25 @@ namespace BackEnd.Controllers
     [ApiController]
     public class RecipieController : ControllerBase
     {
+
+
+        private readonly DatabaseContext _appDbContext;
+
+        public RecipieController(DatabaseContext appDbContext)
+        {
+            this._appDbContext = appDbContext;
+        }
+
+
+
+        [HttpGet]
+        [Route("all")]
+        public ICollection<Recipe> GetAllRecipies()
+        {
+            return _appDbContext.Recipes.ToArray();
+        }
+
+
         [HttpGet]
         [Route("ReadRecipeById")]
         public Recipe GetRecipeById(int RecipeId)
@@ -20,7 +39,7 @@ namespace BackEnd.Controllers
             recipe.Topic = "Test Recipe";
             recipe.Rating = 5;
             recipe.ViewsCounter = 15;
-            recipe.Gallery.Photo.Path = "";
+            
             recipe.Description = "Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description";
             recipe.CreationDate = DateTime.Now;
             recipe.Country.Name = "Ukraine";
