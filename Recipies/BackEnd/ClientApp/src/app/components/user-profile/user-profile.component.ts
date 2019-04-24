@@ -2,6 +2,8 @@ import {Component} from '@angular/core/'
 
 
 
+
+
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -10,8 +12,11 @@ import {Component} from '@angular/core/'
 export class UserProfileComponent  {
   title="app";
   val: number=3;
-
+ 
     
+      gOnInit() {
+  }
+ 
  
 }
 

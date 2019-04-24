@@ -1,19 +1,20 @@
-<!-- <!-- 
-<style>
+ <style>
   #backgroundUserfield {
     border: 0;
     height: 100px;
     opacity: 0.9;
-    background-image: url(https://images.media-allrecipes.com/ar-images/profiles/covers/radishes-header.jpg );
+    background-image: url(https://c.pxhere.com/photos/b7/67/background_tree_wood_boards_texture_wooden_background_old_brown-1370489.jpg!d );
     background-repeat: no-repeat;
     width: 100%;
-  }
+    padding: 0;
+  
+    }
   .stPhotoUser{
     opacity: 0.9;
     border-radius: 50%;
     height: 80px;
     width: 80px;
-   
+   margin: 5px;
     /* https://images.wallpaperscraft.ru/image/stvol_derevo_tekstura_119590_1280x720.jpg */
   }
 .stText{
@@ -35,88 +36,137 @@ margin-top: 5px;
 margin-left: 15px;
 display: inline-block;
 }
-
+.stDiv{
+  padding: 0;
+}
+.storange{
+ color:rgb(180, 82, 2);
+}
+.stCard{ 
+  height: 250px;
+}
   </style>
- <style type="text/css">
-  body .ui-tabs.ui-tabs-top .ui-tabs-nav li.ui-state-active,
-  body .ui-tabs.ui-tabs-bottom .ui-tabs-nav li.ui-state-active,
-  body .ui-tabs.ui-tabs-left .ui-tabs-nav li.ui-state-active, 
-  body .ui-tabs.ui-tabs-right .ui-tabs-nav li.ui-state-active{
-      background: #ff8800;
-  }
-</style>
-  <body>
-    
+<div class="container">
+ 
   <div >
-    <div class="ui-g">
-        <div class="ui-g-12"  style="padding:0%;" >
-          <section id="backgroundUserfield">
-            <div class="stText">
-                <div class="ui-g">
-                    <div class="ui-g-4">
-           <ul class="StUls" style="list-style-type: none;" >
-           
-             <li class=" StLis">
-               <img  class="stPhotoUser" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/V_logo.png">
-             </li>
-            <li class=" StLis"><h4 class="stLi">UserName</h4></li>
-            <li class=" StLis"><h4 class="stLi" >LastName</h4></li>
-            <li style="color:white;">
-                <p style="margin-left: 20%"><p-rating style=" color: white;" [(ngModel)]="val"></p-rating></p>
-             </li>
-          
-           </ul>
-          </div>
-        
-          </div>
-
-          </div>
-          </section>
-          
-          
+    <div class="row">
+      <div class="col-sm-12">
+        <section id="backgroundUserfield">
+          <div class="stText">
+            <div class="row">
+                <div class="col-sm-4">
+       <ul class="StUls" style="list-style-type: none;" >
        
+         <li class=" StLis">
+           <img  class="stPhotoUser" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/V_logo.png">
+         </li>
+        <li class=" StLis"><h4 class="stLi">UserName:</h4></li>
+        <li class=" StLis"><h4 class="stLi" >LastName:</h4></li>
+        <li style="color:white;">
+          
+         </li>
+      
+       </ul>
+      </div>
+            </div>
+          </div>
+        </section>
+    
+    </div>
+<div class="container">
+    <ul class="nav nav-tabs" routerLinkActive="active">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/user-profile">User Profile</a>
+      </li>
+      <li class="nav-item">
+         <a class="nav-link" routerLink="/editprofile">Edit Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/myrecipes">My recipes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/favourite-recipes">Favourite recipes</a>
+      </li>
+    </ul>
+  </div>  
+  <div class="container ">
+    <div class="text-primary" style="text-align:center;">
+        <h3>It's your profile</h3>
+      </div>
+      <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+      <div class="row">
+
+          <div class="col-sm-4">
+          <p><span class="text-primary">N</span>ickName<span class="text-primary">:</span></p>
+          </div>
+          <div class="col-sm-4">
+          <p><span class="text-primary">U</span>serName<span class="text-primary">:</span></p>
+          </div>
+          <div class="col-sm-4">
+          <p><span class="text-primary">L</span>astName<span class="text-primary">:</span></p>
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-4">
+          <p><span class="text-primary">E</span>-mail<span class="text-primary">:</span></p>
+          </div>
+          <div class="col-sm-4">
+          <p><span class="text-primary">C</span>ountry<span class="text-primary">:</span></p>
+          </div>
+          <div class="col-sm-4">
+          <p><span class="text-primary">R</span>aiting<span class="text-primary">:</span></p>
+          </div>
+      </div>
     </div>
     
-  
+  </div>
+ 
     
-  
+
   </div>
-  <div>
   
+<div>
+    <div class="text-primary" style="text-align:center;">
+        <h3>Your posibility</h3>
+      </div>
+      <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    
+        <div style="margin-top: 10px;">
+    <div class="row" >
+        <div class="col-sm-4">
+    <div class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem;">
+        <div class="card-header">Posibility</div>
+        <div class="card-body">
+          <h4 class="card-title">Your opportunities:</h4>
+          <p class="card-text">-Create recipes</p>
+          <p class="card-text">-Add recipes for your favourite list</p>
+          <p class="card-text">-You can write a review</p>
+        </div>
+      </div>
+     
+      </div>
+   
+      <div class="col-sm-4">
+        <div class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem;">
+          <div class="card-header">Rules</div>
+          <div class="card-body">
+            <h4 class="card-title">All rules in the cite</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+
+
+      </div>
 </div>
-<p-tabMenu [model]="items1" [activeItem]="items1[0]" >
 
-</p-tabMenu>
-
+   
 
 
-
-  </div>
-
- <div style="text-align:center;">
-   <h3>It's your profile</h3>
- </div>
-  <div class="ui-g">
-      <div class="ui-g-4">
-      <p>NickName:</p>
-      </div>
-      <div class="ui-g-4">
-      <p>UserName:</p>
-      </div>
-      <div class="ui-g-4">
-      <p>LastName:</p>
-      </div>
-  </div>
-  <div class="ui-g">
-      <div class="ui-g-4">
-      <p>E-mail:</p>
-      </div>
-      <div class="ui-g-4">
-      <p>Country:</p>
-      </div>
-      <div class="ui-g-4">
-      <p>Raiting:</p>
-      </div>
-  </div>
-
- -->
