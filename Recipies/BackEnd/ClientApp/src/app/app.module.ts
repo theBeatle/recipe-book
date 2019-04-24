@@ -14,20 +14,11 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { LoginFormComponent } from './components/account/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/account/reg-form/reg-form.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component'
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
 
-
-//mycomponents
-import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-info.component';
-import { RecipeGalleriaComponent } from './recipe-detailed-info/recipe-galleria/recipe-galleria.component';
-import { RecipeIngradientsComponent } from './recipe-detailed-info/recipe-ingradients/recipe-ingradients.component';
-import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directions/recipe-directions.component';
-import { RecipeRaitingComponent } from './recipe-detailed-info/recipe-raiting/recipe-raiting.component';
-
-//myservices
-import { RecipeService } from './services/recipe.service';
 
 
 @NgModule({
@@ -39,15 +30,9 @@ import { RecipeService } from './services/recipe.service';
     FetchDataComponent,
     CounterComponent,
     FetchDataComponent,
-    RecipeInfoComponent,
-    RecipeGalleriaComponent,
-    RecipeIngradientsComponent,
-    RecipeDirectionsComponent,
-    RecipeRaitingComponent,
-  
-    
     HomeComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RecipeListComponent
   ],
 
 
@@ -63,15 +48,16 @@ import { RecipeService } from './services/recipe.service';
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
+      { path: '', component: HomeComponent , canActivate: [AuthGuard]},
       { path: 'counter', component: CounterComponent },
       { path: 'login', component: LoginFormComponent },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
+      { path: 'recipe-list', component: RecipeListComponent },
       { path: 'registration', component: RegistrationFormComponent }
 
     ])
-   
+
   ],
   providers: [
     HttpClientModule,
@@ -80,10 +66,9 @@ import { RecipeService } from './services/recipe.service';
     RegistrationFormComponent,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    RecipeService,
 
   ],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule {
