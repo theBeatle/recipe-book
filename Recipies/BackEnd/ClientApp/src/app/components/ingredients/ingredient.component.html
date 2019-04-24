@@ -5,14 +5,32 @@
     <title></title>
 </head>
 <body>  
-      <div class="card" style="width: 20rem;">
-    <!-- <div class="card" style="width: 20rem;" *ngFor="let ingredient of allIngredients "> -->
-        <h2 class="card-title" style="text-align: center">Card title</h2>
-        <div class="card-body">
-         
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
+      <div class="container">
+        
+            <div class="card" style="width: 18rem;"  >
+               
+                <div class="card-body"  *ngFor="let ingredient of allIngredients | async">
+                    <!-- <h2 class="card-title" style="text-align: center">{{ingredient.Name}}</h2> -->
+          <p > Decription: </p>
+          <p > Fats_100g: </p>
+          <p > Proteins_100g: </p>
+        
+          <p > Carbohydrates_100g: </p>
+            </div>
+          
+          <!-- <p class="card-text"> Decription: {{ingredient.Decription}}</p> -->
+          <!-- <p class="card-text"> Kkal_100g: {{ingredient.Kkal_100g}}</p>
+          <p class="card-text"> Fats_100g: {{ingredient.Fats_100g}}</p>
+          <p class="card-text"> Proteins_100g: {{ingredient.Proteins_100g}}</p>
+          <p class="card-text"> Carbohydrates_100g: {{ingredient.Carbohydrates_100g}}</p> -->
+          <!-- <div >
+            <app-vitamin></app-vitamin>
+          </div>
+          <div>
+            <app-microelement></app-microelement>
+          </div> -->
+    
+        </div>  
     </div>
 </body>
 </html>

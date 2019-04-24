@@ -14,6 +14,7 @@ export class IngredientComponent implements OnInit {
   
   allIngredients: Observable<Ingredient[]>;
   
+  
 
   constructor( private iS: IngredientsService) { }
 
