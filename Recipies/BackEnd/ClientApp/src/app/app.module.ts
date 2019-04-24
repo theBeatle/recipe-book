@@ -43,10 +43,10 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
+      { path: '', component: HomeComponent , canActivate: [AuthGuard]},
       { path: 'counter', component: CounterComponent },
       { path: 'login', component: LoginFormComponent },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationFormComponent }
 

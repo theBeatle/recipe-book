@@ -1,8 +1,8 @@
 export class User {
   Id: string;
   IdentityId: string;
-  FirstName: string;
-  LastName: string;
+  firstName: string;
+  lastName: string;
   NickName: string;
   Raiting: string;
 }
