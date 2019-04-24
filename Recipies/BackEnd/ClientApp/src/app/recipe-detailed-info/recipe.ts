@@ -1,15 +1,15 @@
 export class Recipe {
-    public Country:string;
-    public User:any;
-    public Category:string;
-    public Topic:string;
-    public Description:string;
-    public ViewsCounter:number;
-    public CreationDate:Date;
-    public CookingProcess:string;
-    public Images:Array<string>;
-    public Raiting:number;
-    public Ingredients:Array<string>;
+    public country:any;
+    public user:any;
+    public category:any;
+    public topic:string;
+    public description:string;
+    public viewsCounter:number;
+    public creationDate:Date;
+    public cookingProcess:Array<string>;
+    public images:any;
+    public raiting:number;
+    public ingredients:Array<any>;
 
 
 }
