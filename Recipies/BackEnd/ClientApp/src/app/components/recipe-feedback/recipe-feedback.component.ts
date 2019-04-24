@@ -24,9 +24,8 @@ export class RecipeFeedbackComponent implements OnInit {
       }
       console.log(this.isAuth);
     });
-    this.fS.GetFeedBacks(1);
-    this.fS.FeedBacks.subscribe((x) => {
-      this.FeedBacks = x;
+    this.fS.GetFeedBacks(1).subscribe((x) => {
+        this.FeedBacks = x;
     });
     this.FeedBackForm = this.fb.group({
      Text: ['', [Validators.required]],
@@ -35,5 +34,9 @@ export class RecipeFeedbackComponent implements OnInit {
   SendFeedBack() {
     const value = this.FeedBackForm.value;
     this.fS.SendFeedBack(value.Text, 1);
+    this.FeedBackForm.reset();
+    this.fS.GetFeedBacks(1).subscribe((x) => {
+      this.FeedBacks = x;
+  });
   }
 }

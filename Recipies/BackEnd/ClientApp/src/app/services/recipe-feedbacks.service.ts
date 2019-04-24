@@ -9,18 +9,14 @@ import { HOST_URL } from '../config';
   providedIn: 'root'
 })
 export class RecipeFeedbacksService {
-  FeedBacks: Observable<FeedbackRecipe[]>;
   constructor(private AuthS: AuthenticationService, private http: HttpClient) { }
-  GetFeedBacks(id: number) {
-    this.FeedBacks = this.http.get<FeedbackRecipe[]>(HOST_URL + '/api/RecipeFeedBacks/GetComments/' + id);
+  GetFeedBacks(id: number): Observable<FeedbackRecipe[]> {
+    return this.http.get<FeedbackRecipe[]>(HOST_URL + '/api/RecipeFeedBacks/GetComments/' + id);
   }
   SendFeedBack(text: string, rid: number) {
     const body = {text: text, uid: this.AuthS.currentUserValue.id, rid: rid };
     this.http.post(HOST_URL + '/api/RecipeFeedBacks/PostComment', body ).subscribe((x) => {
      console.log('ok');
     });
-    this.GetFeedBacks(rid);
-    // console.log(body);
-    // this.GetFeedBacks(rid);
   }
 }

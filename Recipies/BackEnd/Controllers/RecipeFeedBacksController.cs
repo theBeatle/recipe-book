@@ -26,7 +26,7 @@ namespace BackEnd.Controllers
         [HttpGet("{RecipeId}", Name = "GetComments")]
         public IEnumerable<FeedBackRecipeModel> GetComments(int RecipeId)
         {
-            var comments = this._context.Comments.Include("recipe").Include("user").Where(x => x.Id == RecipeId).ToList();
+            var comments = this._context.Comments.Include("recipe").Include("user").Where(x => x.recipe.Id == RecipeId).ToList();
             var result = new List<FeedBackRecipeModel>();
             foreach (var el in comments)
             {
