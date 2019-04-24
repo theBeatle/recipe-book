@@ -12,7 +12,14 @@
         <form class="form-group row" [formGroup]="FeedBackForm" (ngSubmit)="SendFeedBack()">
           <textarea  formControlName="Text" row="3" placeholder="Some Text" class="bg-light text-black form-control col-10"
             style="resize:none"></textarea>
-          <button [disabled]="!isAuth"  class="col-2 btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+            <ng-container *ngIf="!(isAuth &&  FeedBackForm.valid); else elseTemplate">
+              <button disabled class="col-2 btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <button class="col-2 btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+            </ng-template>
+            
+      
         </form>
         <div>
         </div>

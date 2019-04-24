@@ -22,7 +22,9 @@ export class RecipeFeedbackComponent implements OnInit {
       } else {
         this.isAuth = false;
       }
+      console.log(this.isAuth);
     });
+
     this.FeedBacks = this.fS.GetFeedBacks();
     this.FeedBackForm = this.fb.group({
      Text: ['', [Validators.required]],
