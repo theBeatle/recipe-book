@@ -5,6 +5,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import {RecipeComponent} from './recipes/recipe.component';
+import { RecipeService } from './services/recipe.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -18,14 +21,6 @@ import { RegistrationFormComponent } from './components/account/reg-form/reg-for
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
 
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import {RecipeComponent} from './recipes/recipe.component';
-import {CardModule} from 'primeng/card';
-import {ButtonModule} from 'primeng/button';
-import { RecipeService } from './recipe.service';
 @NgModule({
 
   declarations: [
@@ -35,7 +30,7 @@ import { RecipeService } from './recipe.service';
     FetchDataComponent,
     CounterComponent,
     FetchDataComponent,
-    RecipeComponent
+    RecipeComponent,
     HomeComponent,
     LoginFormComponent
   ],
@@ -45,9 +40,6 @@ import { RecipeService } from './recipe.service';
 
   BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    AccordionModule,
-    CardModule,
-    ButtonModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -61,23 +53,21 @@ import { RecipeService } from './recipe.service';
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'registration', component: RegistrationFormComponent }
+      { path: 'registration', component: RegistrationFormComponent },
+      { path: 'recipes', component: RecipeComponent }
 
     ])
   ],
   providers: [
     HttpClientModule,
+    RecipeService,   
     FetchDataComponent,
     LoginFormComponent,
     RegistrationFormComponent,
+    RecipeComponent,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
-  ],
-  providers: [
-    HttpClientModule,
-    RecipeService
-    
   ],
   bootstrap: [AppComponent]
 })

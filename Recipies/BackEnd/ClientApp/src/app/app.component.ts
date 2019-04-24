@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { RecipeService } from './recipe.service';
-import { Recipe } from './recipe';
+import { RecipeService } from './services/recipe.service';
+import { Recipe } from './models/recipe';
 
 @Component({
   selector: 'app-root',
@@ -9,23 +9,7 @@ import { Recipe } from './recipe';
 })
 export class AppComponent {
   title = 'app';
-  recipes: Array<Recipe>;
-  statusMessage: string;
+ // recipes: Array<Recipe>;
 
-
-  constructor(private serv: RecipeService) {
-    this.recipes = new Array<Recipe>();
-  }
-  private loadRecipes() {
-    this.serv.getAllRecipes().subscribe((data: Recipe[]) => {
-      this.recipes = data;
-    });
-  }
   
-  deleteRecipe(recipe: Recipe) {
-   // this.serv.deleteRecipe(recipe.Id).subscribe(data => {
-      this.statusMessage = 'Delete',
-        this.loadRecipes();
-   // });
- }
 }

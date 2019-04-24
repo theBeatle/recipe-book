@@ -34,8 +34,7 @@ namespace BackEnd
         {
 
             services.AddDbContext<DatabaseContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-              b => b.MigrationsAssembly("BackEnd")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("BackEnd")));
             services.AddDefaultIdentity<User>().AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddSingleton<IJwtFactory, JwtFactory>();

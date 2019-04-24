@@ -1,36 +1,40 @@
 import { Component ,OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
-import { RecipeService } from '../recipe.service';
-import { Recipe } from '../recipe';
+import { RecipeService } from '../services/recipe.service';
+import { Recipe } from '../models/recipe';
 
                                                                                                      
 @Component({
   selector: 'app-recipe',
   templateUrl: './recipe.component.html',
-  styleUrls: ['./recipe.component.css']
+  styleUrls: ['./recipe.component.css'],
+  providers:[RecipeService]
 })
 export class RecipeComponent implements OnInit {
   
-  allRecipes: Observable<Recipe[]>;
+  
+  recipe: Recipe=new Recipe();
+  recipes:Recipe[];
+  // allRecipes: Observable<Recipe[]>;
 
-  message=null;
-
-  constructor( private iS: RecipeService) { }
+  constructor( private recipeService: RecipeService) { }
 
   ngOnInit() {
     
-    this.loadAllRecipes();
+    this.loadRecipes();
   }
+    
+  loadRecipes() {
+    this.recipeService.getRecipes()
+    .subscribe((data: Recipe[]) => this.recipes = data);
+    }
+  
+  deleteRecipe(p: Recipe) {
+    this.recipeService.deleteRecipe(p.Id)
+        .subscribe(data => this.loadRecipes());
 
-  loadAllRecipes() {
-    this.allRecipes = this.iS.getAllRecipes();
-  }
-  deleteRecipe(workerId: string) {
-    // if (confirm('Are you sure you want to delete this ?')) {
-    //   this.iS.deleteWorkerById(workerId).subscribe(() => {
-    //     this.message = 'Record Deleted Succefully';
-    //     this.loadAllRecipes();
-    //   });
-    // }
-  }
+ }
+  
 }                                   
+
+// /api/Recipe/GetRecipes

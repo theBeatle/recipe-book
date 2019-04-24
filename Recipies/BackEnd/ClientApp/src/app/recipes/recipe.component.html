@@ -5,17 +5,21 @@
     <title></title>
 </head>
 <body>
-
-  <div class="container" *ngFor="let recipe of allRecipes | async">
+  <!-- *ngFor="let recipe of recipes | async" -->
+  <div class="container" >
     <div class="card" style="width: 18rem;">
       <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Topic:{{recipe.Topic}</h5>
+      <div class="card-body" *ngFor="let recipe of recipes | async">
+        <h5 class="card-title">Topic:{{recipe.Topic}}</h5>
         <p class="card-text">Description: {{recipe.Description}}</p>
         <p class="card-text">CookingProcess:{{recipe.CookingProcess}}</p>
  
         <!-- <a href="#" class="btn btn-primary" onClick="deleteRecipe()">Delete</a> -->
-        <button class="btn btn-primary" (click)="deleteRecipe()">Delete</button>
+        <button class="btn btn-primary" (click)="deleteRecipe(recipe.id)">Delete</button>
+       
+      </div>
+      <div class="card-footer text-muted">
+        2 days ago
       </div>
     </div>
   </div>
