@@ -1,7 +1,7 @@
 export class FeedbackRecipe {
-    Ava: string;
-    FirstName: string;
-    LastName: string;
-    Text: string;
-    Time: string;
+    ava: string;
+    firstName: string;
+    lastName: string;
+    text: string;
+    time: string;
 }

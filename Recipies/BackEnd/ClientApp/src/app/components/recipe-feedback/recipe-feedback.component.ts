@@ -24,14 +24,16 @@ export class RecipeFeedbackComponent implements OnInit {
       }
       console.log(this.isAuth);
     });
-
-    this.FeedBacks = this.fS.GetFeedBacks();
+    this.fS.GetFeedBacks(1);
+    this.fS.FeedBacks.subscribe((x) => {
+      this.FeedBacks = x;
+    });
     this.FeedBackForm = this.fb.group({
      Text: ['', [Validators.required]],
     });
   }
   SendFeedBack() {
     const value = this.FeedBackForm.value;
-    this.fS.SendFeedBack(value.Text);
+    this.fS.SendFeedBack(value.Text, 1);
   }
 }

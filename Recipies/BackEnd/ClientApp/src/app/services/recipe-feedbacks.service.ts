@@ -1,18 +1,26 @@
 import { Injectable } from '@angular/core';
 import { FeedbackRecipe } from './../models/feedback-recipe';
 import { AuthenticationService } from './authentication.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { HOST_URL } from '../config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeFeedbacksService {
-  FeedBacks: Array<FeedbackRecipe> = [{Ava: 'None', LastName: 'Last', FirstName: 'First', Text: 'Text', Time: '01.01.01'}, ];
-  constructor(private AuthS: AuthenticationService) { }
-  GetFeedBacks(): Array<FeedbackRecipe> {
-    this.FeedBacks.push({Ava: 'None', LastName: '123', FirstName: '321', Text: 'BlaBla', Time: '01.01.01'});
-    return this.FeedBacks;
+  FeedBacks: Observable<FeedbackRecipe[]>;
+  constructor(private AuthS: AuthenticationService, private http: HttpClient) { }
+  GetFeedBacks(id: number) {
+    this.FeedBacks = this.http.get<FeedbackRecipe[]>(HOST_URL + '/api/RecipeFeedBacks/GetComments/' + id);
   }
-  SendFeedBack(text: string) {
-    console.log('text: ' + text + 'UID: ' + this.AuthS.currentUserValue.id);
+  SendFeedBack(text: string, rid: number) {
+    const body = {text: text, uid: this.AuthS.currentUserValue.id, rid: rid };
+    this.http.post(HOST_URL + '/api/RecipeFeedBacks/PostComment', body ).subscribe((x) => {
+     console.log('ok');
+    });
+    this.GetFeedBacks(rid);
+    // console.log(body);
+    // this.GetFeedBacks(rid);
   }
 }
