@@ -1,10 +1,9 @@
 ﻿namespace BackEnd.Models
 {
-    public class Gallery
+    public class Photo
     {
         public int Id { get; set; }
 
-        public Photo Photo { get; set; }
-
+        public string  Path { get; set; }
     }
 }

@@ -1,13 +1,3 @@
-    
-    ol{
-        color:#666666;
-    }
-
-    li{
-        font-size: 1.4rem;
-        color:#323C41;
-        padding-top: 1em;
-    }
 
 
 
@@ -34,7 +24,7 @@
         }
     
         li{
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color:#323C41;
             padding-top: 1em;
         }
@@ -43,15 +33,43 @@
 
 
 
-      @media screen and (max-width: 640px) {
+      @media screen and (max-width: 640px ) and (min-width:400px) {
         ol{
             color:#666666;
         }
     
         li{
-            font-size: 1.2rem;
+            font-size: 1rem;
             color:#323C41;
             padding-top: 1em;
+        }
+
+
+        #cp{
+            font-size: 1.3rem;
+        }
+    
+      }
+
+
+
+
+
+      @media screen and (max-width: 400px ){
+        ol{
+            color:#666666;
+        }
+    
+        li{
+            font-size: 0.8rem;
+            color:#323C41;
+            padding-top: 1em;
+        }
+
+
+        
+        #cp{
+            font-size: 1rem;
         }
     
       }

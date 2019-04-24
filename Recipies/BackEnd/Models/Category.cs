@@ -1,10 +1,13 @@
 ﻿namespace BackEnd.Models
 {
-    public class Gallery
+    public class Category
     {
+
         public int Id { get; set; }
 
-        public Photo Photo { get; set; }
+        public string Name { get; set; }
+
+
 
     }
 }

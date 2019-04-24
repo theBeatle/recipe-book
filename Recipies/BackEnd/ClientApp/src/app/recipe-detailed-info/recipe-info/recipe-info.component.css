@@ -100,7 +100,10 @@ font-size: 1.5rem;
         font-size: 1.3rem; 
         color:black
     }
-
+     
+    #htop{
+        font-size: 1.6rem;
+    }
     
     }
 
@@ -123,7 +126,7 @@ font-size: 1.5rem;
         
         .p-description{
             color: #323C41;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
     
     
@@ -136,6 +139,11 @@ font-size: 1.5rem;
         .cv{
             font-size: 1rem; 
             color:black
+        }
+
+
+        #htop{
+            font-size: 1.3rem;
         }
         
         }

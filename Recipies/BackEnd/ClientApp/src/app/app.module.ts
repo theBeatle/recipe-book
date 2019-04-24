@@ -27,7 +27,7 @@ import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directi
 import { RecipeRaitingComponent } from './recipe-detailed-info/recipe-raiting/recipe-raiting.component';
 
 //myservices
-import { RecipeService } from './recipe-detailed-info/recipe.service';
+import { RecipeService } from './services/recipe.service';
 
 
 @NgModule({
