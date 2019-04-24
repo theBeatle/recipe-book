@@ -6,7 +6,7 @@
     </div>
   </div> -->
   <div  class="col-12" *ngFor="let item of FeedBacks; let i = index">
-    <blockquote class="col-6  float-right" *ngIf="i%2==0">
+    <blockquote class="col-7  float-right" *ngIf="i%2==0">
       <p>{{item.text}}.</p>
       <footer><cite>{{item.firstName}}  {{item.lastName}}</cite></footer>
       <hr>
