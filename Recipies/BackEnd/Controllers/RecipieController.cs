@@ -31,10 +31,7 @@ namespace BackEnd.Controllers
         }
 
 
-        [HttpGet]
-        [Route("ReadRecipeById")]
-        public Recipe GetRecipeById(int RecipeId)
-
+       
      
 
 
@@ -46,7 +43,7 @@ namespace BackEnd.Controllers
             recipe.Topic = "Test Recipe";
             recipe.Rating = 5;
             recipe.ViewsCounter = 15;
-            recipe.Gallery = new Gallery { Id = 1, Photo = new Photo { Path = "https://gastronomicallyyours.blog/wp-content/uploads/2019/01/Chettinad-Chicken-Masala.jpg", Id = 1 } };
+            recipe.Gallery = new Gallery { Id = 1, Photos = new List<Photo> { new Photo{ Path = "https://gastronomicallyyours.blog/wp-content/uploads/2019/01/Chettinad-Chicken-Masala.jpg", Id = 1 } } };
             recipe.Description = "Recipe Test Description | Recipe Test Description | Recipe Test Description  ";
             recipe.CreationDate = DateTime.Now;
             recipe.Country = new Country { Id = 1, Name = "Ukraine" };

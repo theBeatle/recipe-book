@@ -54,7 +54,7 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
       { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationFormComponent },
-      { path:'recipecomp',component:RecipeInfoComponent},
+      // { path:'recipecomp',component:RecipeInfoComponent},
 
     ])
 

@@ -1,5 +1,5 @@
 import { Component, OnInit ,Input} from '@angular/core';
-import { Recipe } from '../recipe';
+import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
