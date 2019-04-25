@@ -1,3 +1,5 @@
 .ta{
-    height: 10rem;
+    height: 15rem;
+    resize: none;
+    outline: none;
 }
