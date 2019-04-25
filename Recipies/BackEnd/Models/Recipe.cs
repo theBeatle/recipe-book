@@ -8,8 +8,6 @@ namespace BackEnd.Models
     public class Recipe
     {
         public int Id { get; set; }
-        //public int CategoryId { get; set; }
-        //public int CountryId { get; set; }
         public string Topic { get; set; }
         public string Description { get; set; }
         public string  CookingProcess {get;set;}

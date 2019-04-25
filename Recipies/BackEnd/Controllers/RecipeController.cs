@@ -18,11 +18,15 @@ namespace BackEnd.Controllers
             db = context;
             if (!db.Recipes.Any())
             {
-                db.Recipes.Add(new Recipe { Topic = "Cake", Description = "with fruits", CookingProcess = "..." });
+                db.Recipes.Add(new Recipe { Topic = "Cake", Description = "with fruits", CookingProcess = "..."});
                 db.Recipes.Add(new Recipe { Topic = "Sushi", Description = "with fish", CookingProcess = "..." });
                 db.Recipes.Add(new Recipe { Topic = "Pizza", Description = "with chiken", CookingProcess = "..." });
                 db.SaveChanges();
             }
+            db.Recipes.Add(new Recipe { Topic = "Cake", Description = "with fruits", CookingProcess = "..." });
+            db.Recipes.Add(new Recipe { Topic = "Sushi", Description = "with fish", CookingProcess = "..." });
+            db.Recipes.Add(new Recipe { Topic = "Pizza", Description = "with chiken", CookingProcess = "..." });
+          //  db.SaveChanges();
         }
         [HttpGet("getRecipes")]
         public IEnumerable<Recipe> getRecipes()

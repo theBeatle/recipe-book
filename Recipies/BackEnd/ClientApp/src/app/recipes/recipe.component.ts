@@ -14,7 +14,7 @@ export class RecipeComponent implements OnInit {
   
   
   recipe: Recipe=new Recipe();
-  recipes:Recipe[];
+  recipes:Recipe[]=[];
   // allRecipes: Observable<Recipe[]>;
 
   constructor( private recipeService: RecipeService) { }

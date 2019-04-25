@@ -15,7 +15,7 @@ namespace BackEnd.Models
         }
 
         public new DbSet<User> Users { get; set; }
-        public new DbSet<Recipe> Recipes { get; set; }
+        public  DbSet<Recipe> Recipes { get; set; }
     }
 }
 
