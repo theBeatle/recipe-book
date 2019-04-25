@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd.Models;
+using AutoMapper;
+using BackEnd.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd.Controllers
 {
@@ -13,21 +16,28 @@ namespace BackEnd.Controllers
     public class RecipieController : ControllerBase
     {
 
-
+        private readonly IMapper _mapper;
         private readonly DatabaseContext _appDbContext;
 
-        public RecipieController(DatabaseContext appDbContext)
+        public RecipieController(DatabaseContext appDbContext, IMapper mapper)
         {
             this._appDbContext = appDbContext;
+            this._mapper = mapper;
         }
 
 
 
         [HttpGet]
         [Route("all")]
-        public ICollection<Recipe> GetAllRecipies()
+        public ICollection<RecipeViewModel> GetAllRecipies()
         {
-            return _appDbContext.Recipes.ToArray();
+            var c = _appDbContext.Recipes.ToList()[0];
+            var list = new List<RecipeViewModel>();
+            foreach(var el in _appDbContext.Recipes.Include(a => a.Country).ToList())
+            {
+                list.Add(_mapper.Map<RecipeViewModel>(el));
+            }
+            return list;
         }
 
 
