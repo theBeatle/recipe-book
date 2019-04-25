@@ -1,0 +1,41 @@
+<div class="container">
+  <!-- <div class="card text-black bg-light mb-3 col-md-6 col-12 left" *ngFor="let item of FeedBacks">
+    <div class="card-header bg-light">{{item.firstName}}  {{item.lastName}}</div>
+    <div class="card-body">
+      <p class="card-text">{{item.text}}</p>
+    </div>
+  </div> -->
+  <div  class="col-12" *ngFor="let item of FeedBacks; let i = index">
+      <blockquote class="col-12  float-left">
+          <p>{{item.text}}.</p>
+          <footer><cite>{{item.firstName}}  {{item.lastName}}</cite></footer>
+          <hr>
+        </blockquote>
+    <!-- <blockquote class="col-12  float-left" *ngIf="i%2==0">
+      <p>{{item.text}}.</p>
+      <footer><cite>{{item.firstName}}  {{item.lastName}}</cite></footer>
+      <hr>
+    </blockquote>
+    <blockquote class="col-12 float-left" *ngIf="i%2!=0">
+        <p>{{item.text}}.</p>
+        <footer><cite>{{item.firstName}}  {{item.lastName}}</cite></footer>
+        <hr>
+      </blockquote> -->
+  </div>
+   
+
+
+
+        <form class="col-12 float-right form-group row" [formGroup]="FeedBackForm" (ngSubmit)="SendFeedBack()">
+          <textarea  formControlName="Text" row="3" placeholder="Some Text" class="bg-light text-black form-control col-11"
+            style="resize:none"></textarea>
+            <ng-container *ngIf="!(isAuth &&  FeedBackForm.valid); else elseTemplate">
+              <button disabled class="text-black  col-1 btn btn-primary" style="background: orange"><i class="fas text-black  fa-paper-plane"></i></button>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <button  class="text-black  col-1 btn btn-primary" style="background: orange"><i class="fas text-black  fa-paper-plane"></i></button>
+            </ng-template>
+            
+      
+        </form>
+    </div>

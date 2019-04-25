@@ -17,7 +17,7 @@ import { RegistrationFormComponent } from './components/account/reg-form/reg-for
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
-
+import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
 @NgModule({
 
   declarations: [
@@ -27,11 +27,13 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
     FetchDataComponent,
     CounterComponent,
     HomeComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RecipeFeedbackComponent,
   ],
 
 
   imports: [
+
 
   BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
@@ -45,6 +47,7 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
     RouterModule.forRoot([
       { path: '', component: HomeComponent},
       { path: 'counter', component: CounterComponent },
+      { path: 'feedback', component: RecipeFeedbackComponent },
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'fetch-data', component: FetchDataComponent },
