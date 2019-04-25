@@ -20,15 +20,23 @@ namespace BackEnd.Controllers
             _context = context;
         }
 
-       /* // GET: api/FeedBackMessages
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<FeedBackMessage>>> GetFeedBackMessage()
-        {
-            return await _context.FeedBackMessage.ToListAsync();
-        }*/
+        /* // GET: api/FeedBackMessages
+         [HttpGet]
+         public async Task<ActionResult<IEnumerable<FeedBackMessage>>> GetFeedBackMessage()
+         {
+             return await _context.FeedBackMessage.ToListAsync();
+         }*/
+
+
 
         // GET: api/FeedBackMessages/5
+        /// <summary>
+        /// just description
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
+        
         public async Task<ActionResult<FeedBackMessage>> GetFeedBackMessage(int id)
         {
             var feedBackMessage = await _context.FeedBackMessages.FindAsync(id);
@@ -71,7 +79,7 @@ namespace BackEnd.Controllers
             return NoContent();
         }*/
 
-        // POST: api/FeedBackMessages
+        // POST: api/Cr
         [HttpPost]
         public async Task<ActionResult<FeedBackMessage>> PostFeedBackMessage(FeedBackMessage feedBackMessage)
         {
