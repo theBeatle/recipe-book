@@ -12,5 +12,6 @@ namespace BackEnd.Models
         public double Raiting { get; set; }
         public byte[] Image { get; set; }
         public string Country { get; set; }
+        public string Age { get; set; }
     }
 }

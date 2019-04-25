@@ -12,6 +12,8 @@ namespace BackEnd.ViewModels
         public string NickName { get; set; }
         public string Password { get; set; }
         public string PasswordConfirmation { get; set; }
+        public string Email { get; set; }
+        public string Age { get; set; }
         public byte[] Image { get; set; }
         public string Country { get; set; }
     }

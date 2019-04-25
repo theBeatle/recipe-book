@@ -1,0 +1,6 @@
+[formGroupName="FileInput"], [formGroupName="DateTimePicker"],
+[formGroupName="NickName"], [formGroupName="Password"],
+[formGroupName="FirstName"], [formGroupName="LastName"],
+[formGroupName="Typehead"], [formGroupName="Email"], #SubmitButton, [formGroupName="PasswordConfirmation"]{
+    margin: 25px;
+}

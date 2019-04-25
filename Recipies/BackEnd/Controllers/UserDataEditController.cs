@@ -29,7 +29,7 @@ namespace BackEnd.Controllers
             _logger = logger;
         }
 
-        [HttpPut]
+        [HttpPut("update")]
         public async Task<IActionResult> EditData([FromBody]UserDataEditViewModel model)
         {
             if (!ModelState.IsValid)
@@ -38,10 +38,10 @@ namespace BackEnd.Controllers
             }
             var userIdentity = _mapper.Map<User>(model);
 
-            var result = await _userManager.CreateAsync(userIdentity, model.Password);
-            _logger.LogInformation("[SIGN-UP] Created new account");
+            //var result = await _userManager.CreateAsync(userIdentity, model.Password);
+            //_logger.LogInformation("[SIGN-UP] Created new account");
 
-            if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
+            //if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
 
             _appDbContext.Users.Update(new User { IdentityId = userIdentity.Id });
             await _appDbContext.SaveChangesAsync();

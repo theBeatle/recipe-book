@@ -1,16 +1,34 @@
-<div>
-  <input id="file-input" type="file">
-  <form class="form-inline">
-     <div class="form-group">
-       <div class="input-group">
-         <input class="form-control" placeholder="yyyy-mm-dd"
-                name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-         <div class="input-group-append">
-           <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+<form [formGroup]="UserEdit" onsubmit="UpdateUserData()">
+  <div class="container">
+      <input placeholder="First Name" formGroupName="FirstName" class="form-control" />
+  
+      <input placeholder="Last Name" formGroupName="LastName" class="form-control" />
+    
+      <input placeholder="Nickname" formGroupName="NickName" class="form-control" />
+
+      <input placeholder="Password" type="password" formGroupName="Password" class="form-control">
+
+      <input placeholder="Password Confirmation" type="password" formGroupName="PasswordConfirmation" class="form-control">
+
+      <input placeholder="Eamil" type="email" formGroupName="Email" class="form-control info">
+    
+    <form class="form-inline" formGroupName="DateTimePicker">
+       <div class="form-group">
+         <div class="input-group">
+           <input formGroupName="Age" class="form-control" placeholder="yyyy-mm-dd"
+                  name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+           <div class="input-group-append">
+             <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+           </div>
          </div>
        </div>
-     </div>
-   </form>
-   <label for="typeahead-basic">Search for a country:</label>
-   <input id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>
- </div>
+     </form>
+
+     <input formGroupName="FileInput" id="file-input" type="file" class="btn btn-primary">
+
+     <input placeholder="Country" formGroupName="Typehead" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>
+
+     <input id="SubmitButton" class="btn btn-primary" type="submit">
+
+   </div>
+</form>
