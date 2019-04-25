@@ -6,7 +6,7 @@ export class Recipe {
     public description:string;
     public viewsCounter:number;
     public creationDate:Date;
-    public cookingProcess:Array<string>;
+    public cookingProcess:string;
     public images:any;
     public raiting:number;
     public ingredients:Array<any>;

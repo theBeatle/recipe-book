@@ -34,6 +34,7 @@ export class RecipeInfoComponent implements OnInit {
      this.recipe.topic=w.topic;
      this.recipe.viewsCounter=w.viewsCounter;
      console.log(w.topic);
+     console.log(w.cookingProcess);
     
     });
 
