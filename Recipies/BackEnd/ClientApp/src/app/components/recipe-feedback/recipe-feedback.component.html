@@ -6,16 +6,21 @@
     </div>
   </div> -->
   <div  class="col-12" *ngFor="let item of FeedBacks; let i = index">
-    <blockquote class="col-7  float-right" *ngIf="i%2==0">
+      <blockquote class="col-12  float-left">
+          <p>{{item.text}}.</p>
+          <footer><cite>{{item.firstName}}  {{item.lastName}}</cite></footer>
+          <hr>
+        </blockquote>
+    <!-- <blockquote class="col-12  float-left" *ngIf="i%2==0">
       <p>{{item.text}}.</p>
       <footer><cite>{{item.firstName}}  {{item.lastName}}</cite></footer>
       <hr>
     </blockquote>
-    <blockquote class="col-7 float-left" *ngIf="i%2!=0">
+    <blockquote class="col-12 float-left" *ngIf="i%2!=0">
         <p>{{item.text}}.</p>
         <footer><cite>{{item.firstName}}  {{item.lastName}}</cite></footer>
         <hr>
-      </blockquote>
+      </blockquote> -->
   </div>
    
 
@@ -28,7 +33,7 @@
               <button disabled class="text-black  col-1 btn btn-primary" style="background: orange"><i class="fas text-black  fa-paper-plane"></i></button>
             </ng-container>
             <ng-template #elseTemplate>
-              <button class="text-black col-2 btn btn-primary"><i class="fas text-black  fa-paper-plane"></i></button>
+              <button  class="text-black  col-1 btn btn-primary" style="background: orange"><i class="fas text-black  fa-paper-plane"></i></button>
             </ng-template>
             
       

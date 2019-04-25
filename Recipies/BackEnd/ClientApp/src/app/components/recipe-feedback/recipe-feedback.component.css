@@ -35,6 +35,8 @@ blockquote {
     margin-top: 0;
     font-size: 24px;
     font-weight: 300;
+    word-wrap: normal;
+    width: 100%;
     }
     blockquote cite {
     font-style: normal;
