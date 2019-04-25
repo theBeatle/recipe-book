@@ -13,6 +13,28 @@ namespace BackEnd.Controllers
     public class RecipieController : ControllerBase
     {
 
+
+        private readonly DatabaseContext _appDbContext;
+
+        public RecipieController(DatabaseContext appDbContext)
+        {
+            this._appDbContext = appDbContext;
+        }
+
+
+
+        [HttpGet]
+        [Route("all")]
+        public ICollection<Recipe> GetAllRecipies()
+        {
+            return _appDbContext.Recipes.ToArray();
+        }
+
+
+        [HttpGet]
+        [Route("ReadRecipeById")]
+        public Recipe GetRecipeById(int RecipeId)
+
      
 
 

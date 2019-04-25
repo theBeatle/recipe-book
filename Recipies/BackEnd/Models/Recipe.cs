@@ -9,8 +9,6 @@ namespace BackEnd.Models
     {
         public int Id { get; set; }
 
-        public  Comment[] Comments { get; set; }
-
         public Country Country { get; set; }
 
         public User User { get; set; }
