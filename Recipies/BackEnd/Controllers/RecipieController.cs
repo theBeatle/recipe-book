@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BackEnd.Models;
-using AutoMapper;
 using BackEnd.ViewModels;
-using Microsoft.EntityFrameworkCore;
+using BackEnd.Services;
+
 
 namespace BackEnd.Controllers
 {
@@ -16,40 +13,30 @@ namespace BackEnd.Controllers
     public class RecipieController : ControllerBase
     {
 
-        private readonly IMapper _mapper;
-        private readonly DatabaseContext _appDbContext;
+        private readonly RecipeService _recipeService;
 
-        public RecipieController(DatabaseContext appDbContext, IMapper mapper)
+        public RecipieController(RecipeService recipeService)
         {
-            this._appDbContext = appDbContext;
-            this._mapper = mapper;
+            _recipeService = recipeService;
         }
-
-
 
         [HttpGet]
         [Route("all")]
-        public ICollection<RecipeViewModel> GetAllRecipies()
+        public async Task<RecipeViewModel> Index(int? category, string name, int page = 1,
+            SortState sortOrder = SortState.TopicAsc)
         {
-            var c = _appDbContext.Recipes.ToList()[0];
-            var list = new List<RecipeViewModel>();
-            foreach(var el in _appDbContext.Recipes.Include(a => a.Country).ToList())
-            {
-                list.Add(_mapper.Map<RecipeViewModel>(el));
-            }
-            return list;
+            return await _recipeService.GetRecipe(category, name, page, sortOrder);
         }
-
 
         [HttpGet]
         [Route("ReadRecipeById")]
         public Recipe GetRecipeById(int RecipeId)
         {
-            Recipe recipe=new Recipe();
+            Recipe recipe = new Recipe();
             recipe.Topic = "Test Recipe";
             recipe.Rating = 5;
             recipe.ViewsCounter = 15;
-            
+
             recipe.Description = "Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description";
             recipe.CreationDate = DateTime.Now;
             recipe.Country.Name = "Ukraine";
@@ -58,4 +45,5 @@ namespace BackEnd.Controllers
             return recipe;
         }
     }
+   
 }

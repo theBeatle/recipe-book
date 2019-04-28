@@ -1,28 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using BackEnd.ViewModels.RecipeViewModels;
 
 namespace BackEnd.ViewModels
 {
     public class RecipeViewModel
     {
-        public string CountryName { get; set; }
-
-        public string CategoryName { get; set; }
-
-        public string Topic { get; set; }
-
-        public string Description { get; set; }
-
-        public int ViewsCounter { get; set; }
-
-        public DateTime CreationDate { get; set; }
-
-        public string CookingProcess { get; set; }
-
-        public ICollection<string> Gallery { get; set; }
-
-        public double Rating { get; set; }
+        public IEnumerable<RecipeListViewModel> Recipes { get; set; }
+        public PageViewModel PageViewModel { get; set; }
+        public FilterViewModel FilterViewModel { get; set; }
+        public SortViewModel SortViewModel { get; set; }
     }
 }
