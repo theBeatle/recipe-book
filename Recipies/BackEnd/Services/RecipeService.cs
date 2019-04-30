@@ -21,10 +21,11 @@ namespace BackEnd.Services
             this._mapper = mapper;
         }
 
+      
         public async Task<RecipeViewModel> GetRecipe(int? category, string name, int page = 1,
             SortState sortOrder = SortState.TopicAsc)
         {
-            int pageSize = 3;
+            int pageSize = 6;
 
             IQueryable<Recipe> RecipeList = _appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a => a.User);
 
@@ -75,7 +76,7 @@ namespace BackEnd.Services
             var mappedList = new List<RecipeListViewModel>();
 
             //Maping RecipeList
-            foreach (var el in RecipeList)
+            foreach (var el in items)
             {
                 mappedList.Add(_mapper.Map<RecipeListViewModel>(el));
             }

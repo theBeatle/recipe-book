@@ -4,10 +4,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CommonModule } from '@angular/common';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
@@ -18,8 +17,8 @@ import { RecipeListComponent } from './components/recipe-list/recipe-list.compon
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
-
-
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import{ RecipeService } from './services/recipe.service';
 
 @NgModule({
 
@@ -37,12 +36,13 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
 
 
   imports: [
-
-  BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    InfiniteScrollModule,
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -64,6 +64,7 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
     FetchDataComponent,
     LoginFormComponent,
     RegistrationFormComponent,
+    RecipeService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 

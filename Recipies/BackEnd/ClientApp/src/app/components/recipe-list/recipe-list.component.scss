@@ -1,19 +1,70 @@
-.card-columns {
-  .card{
 
-    height: 300px;
-    .card-img-top{
-      object-fit: cover;
-      &:hover{
-        -webkit-box-shadow: inset 0px 0px 85px rgba(0,0,0,0.4);
-	-moz-box-shadow:    inset 0px 0px 85px rgba(0,0,0,0.4);
-	box-shadow:         inset 0px 0px 85px rgba(0,0,0,0.4);
-      }
-    }
+
+//page loaded for cards
+@keyframes scale-up-center {
+  0% {
+    transform: scale(0.5);
   }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes text-hover-transparent {
+  0% {
+    color: transparent
+  }
+  100% {
+    color:white;
+  }
+}
+@keyframes shadow-background {
+  0% {
+    filter: brightness(100%);
+  }
+  100% {
+    filter: brightness(50%);
+  }
+}
 
 
+
+.columns{
+  column-gap: 0;
+  margin: 0 !important;
 
 }
+
+.card-img-top{
+
+  margin: 0 !important;
+
+  border-radius: 0px !important;
+  height: 400px;
+  object-fit: cover;
+}
+
+.card{
+  animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  border: 0px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+width:100%;
+  height: 400px;
+  .card-img-overlay{
+    color: transparent;
+  }
+}
+.card:hover{
+  .card-img-overlay:hover{
+    animation:text-hover-transparent 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  .card-img-top{
+    animation: shadow-background  0.3s cubic-bezier(0.455, 0.030, 0.515, 0.955) alternate forwards;
+  }
+
+    cursor: pointer;
+  }
+
 
 

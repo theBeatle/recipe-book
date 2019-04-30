@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using BackEnd.Models;
 using BackEnd.ViewModels;
 using BackEnd.Services;
-
+using System.Collections.Generic;
+using AutoMapper;
+using System.Linq;
 
 namespace BackEnd.Controllers
 {
@@ -15,9 +17,20 @@ namespace BackEnd.Controllers
 
         private readonly RecipeService _recipeService;
 
-        public RecipieController(RecipeService recipeService)
+        private readonly IMapper _mapper;
+        private readonly DatabaseContext _appDbContext;
+        public RecipieController(RecipeService recipeService,DatabaseContext appDbContext, IMapper mapper)
         {
+            this._appDbContext = appDbContext;
+            this._mapper = mapper;
             _recipeService = recipeService;
+        }
+       
+        [HttpGet]
+        [Route("getCategories")]
+        public ICollection<Category> getCategories()
+        {
+            return _appDbContext.Categories.ToList();
         }
 
         [HttpGet]
