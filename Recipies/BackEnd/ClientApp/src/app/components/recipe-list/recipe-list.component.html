@@ -1,38 +1,103 @@
+<div>
+  <div class="row p-2 mr-0 tools-panel">
+    <div class="col-lg-4 col-12 d-flex justify-content-center">
+      <div class="input-group">
+        <select
+          class="custom-select cs"
+          [(ngModel)]="selectedCategory"
+          (change)="onChange()"
+        >
+          <option class="color-gray" [ngValue]="All" selected="selected"
+            >All</option
+          >
+          <option *ngFor="let c of categories" [ngValue]="c">{{
+            c.name
+          }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Category</span>
+        </div>
+      </div>
+      <div class="input-group ml-2">
+        <select class="custom-select cs">
+          <option class="color-gray" selected="selected">All</option>
+          <option *ngFor="let c of countries" [ngValue]="c">{{
+            c.name
+          }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Country</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-12 md-2 md-lg-0 d-flex justify-content-center">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Example: Napaleon cake"
+          (change)="onChange()"
+          [(ngModel)]="search"
+          class="form-control cs"
+        />
+        <div class="input-group-append">
+          <span class="input-group-text">Search</span>
+        </div>
+      </div>
+    </div>
+    <div class="offset-lg-1 col-lg-3  col-12 d-flex justify-content-center">
+      <div class="input-group">
+        <select
+          class="custom-select cs"
+          [(ngModel)]="selectedSort"
+          (change)="onChange()"
+        >
+          <option *ngFor="let c of keys" [value]="c">{{ sorting[c] }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Sort</span>
+        </div>
+      </div>
 
-<div >
+      <button type="button" class="btn ml-2 btn-primary">Clear</button>
+      <button type="button" class="btn ml-2 btn-primary">Clear</button>
+    </div>
+  </div>
+  <app-loader *ngIf="loading"></app-loader>
+  <div
+    infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="300"
+    (scrolled)="onScroll()"
+    [scrollWindow]="true"
+    style="height:100%;"
+  >
+    <div class="row columns">
+      <div
+        *ngFor="let recipe of recipies"
+        class="col-sm-4 d-flex card text-white"
+      >
+        <img
+          class="card-img-top "
+          src="https://cdn.jamieoliver.com/home/wp-content/uploads/2016/06/2.jpg"
+          alt="Card image cap"
+        />
+        <div class="card-img-overlay">
+          <h5 class="card-title">{{ recipe?.topic }}</h5>
+          <p class="card-text">Description: {{ recipe?.description }}</p>
 
-<div class="container row">
-    <select >
-        <option *ngFor="let c of categories" [ngValue]="c">{{c.name}}</option>
-      </select>
-
-</div>
-
-<div infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
-[scrollWindow]="false" style="height: 790px; overflow-y: scroll;">
-<div class="row columns">
-  <div *ngFor="let recipe of recipies"  class="col-sm-4 d-flex card text-white" >
-    <img class="card-img-top " src="https://cdn.jamieoliver.com/home/wp-content/uploads/2016/06/2.jpg" alt="Card image cap">
-    <div class="card-img-overlay">
-      <h5 class="card-title">{{recipe?.topic}}</h5>
-      <p class="card-text">Desc: {{recipe?.description}}</p>
-
-
-        <div class="row">
-          <div class="col-4"><p class="card-text">{{recipe.countryName}}</p></div>
-          <div class="col-4"><p class="card-text">{{recipe.rating}}</p></div>
-          <div class="col-4"><p class="card-text">{{recipe.viewsCounter}}</p></div>
+          <div class="row">
+            <div class="col-4">
+              <p class="card-text">{{ recipe.countryName }}</p>
+            </div>
+            <div class="col-4">
+              <p class="card-text">{{ recipe.rating }}</p>
+            </div>
+            <div class="col-4">
+              <p class="card-text">{{ recipe.viewsCounter }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-</div>
-
-
-
-
-
-
-

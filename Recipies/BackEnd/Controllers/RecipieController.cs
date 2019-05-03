@@ -34,6 +34,13 @@ namespace BackEnd.Controllers
         }
 
         [HttpGet]
+        [Route("getCountries")]
+        public ICollection<Country> getCountries()
+        {
+            return _appDbContext.Countries.ToList();
+        }
+
+        [HttpGet]
         [Route("all")]
         public async Task<RecipeViewModel> Index(int? category, string name, int page = 1,
             SortState sortOrder = SortState.TopicAsc)

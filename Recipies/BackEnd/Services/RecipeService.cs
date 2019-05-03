@@ -25,7 +25,7 @@ namespace BackEnd.Services
         public async Task<RecipeViewModel> GetRecipe(int? category, string name, int page = 1,
             SortState sortOrder = SortState.TopicAsc)
         {
-            int pageSize = 6;
+            int pageSize = 9;
 
             IQueryable<Recipe> RecipeList = _appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a => a.User);
 

@@ -1,12 +1,27 @@
+@keyframes slide-bottom {
+  0% {
+    background-color: transparent;
+    -webkit-transform: translateY(-50px);
+            transform: translateY(-50px);
+  }
+  100% {
+    background-color: #37435B;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
 
 
 //page loaded for cards
-@keyframes scale-up-center {
+@keyframes slide-top {
   0% {
-    transform: scale(0.5);
+    -webkit-transform: translateY(100px);
+            transform: translateY(100px);
   }
   100% {
-    transform: scale(1);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
@@ -27,8 +42,19 @@
   }
 }
 
+.tools-panel{
+  animation: slide-bottom 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  background-color: #37435B;
+  .cs{
 
 
+    color:white;
+    background-color: #37435B;
+  }
+}
+.color-gray{
+  color:gray;
+}
 .columns{
   column-gap: 0;
   margin: 0 !important;
@@ -45,7 +71,7 @@
 }
 
 .card{
-  animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+  animation: slide-top 0.4s cubic-bezier(0.390, 0.605, 0.565, 1.000) both;
   border: 0px !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -65,6 +91,8 @@ width:100%;
 
     cursor: pointer;
   }
+
+
 
 
 

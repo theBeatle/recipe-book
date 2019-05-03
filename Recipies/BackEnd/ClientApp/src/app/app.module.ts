@@ -13,15 +13,15 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { LoginFormComponent } from './components/account/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/account/reg-form/reg-form.component';
-import { RecipeListComponent } from './components/recipe-list/recipe-list.component'
-
+import { LoaderComponent } from './components/recipe-list/loader/loader.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import{ RecipeService } from './services/recipe.service';
+import { RecipeService } from './services/recipe.service';
 
 @NgModule({
-
   declarations: [
     AppComponent,
     RegistrationFormComponent,
@@ -31,9 +31,9 @@ import{ RecipeService } from './services/recipe.service';
     FetchDataComponent,
     HomeComponent,
     LoginFormComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    LoaderComponent
   ],
-
 
   imports: [
     InfiniteScrollModule,
@@ -44,20 +44,19 @@ import{ RecipeService } from './services/recipe.service';
     BrowserModule,
     CommonModule,
     FormsModule,
+    AngularFontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent , canActivate: [AuthGuard]},
+      { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'counter', component: CounterComponent },
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'recipe-list', component: RecipeListComponent },
       { path: 'registration', component: RegistrationFormComponent }
-
     ])
-
   ],
   providers: [
     HttpClientModule,
@@ -66,12 +65,9 @@ import{ RecipeService } from './services/recipe.service';
     RegistrationFormComponent,
     RecipeService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
 
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule {}
