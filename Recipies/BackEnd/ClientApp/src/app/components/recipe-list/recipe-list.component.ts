@@ -3,7 +3,7 @@ import { Country } from './../../models/country';
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../../models/recipe';
-import { SortTypes } from '../../enums/sortTypes'
+import { SortTypes } from '../../enums/sortTypes';
 
 @Component({
   selector: 'app-recipe-list',
@@ -13,18 +13,19 @@ import { SortTypes } from '../../enums/sortTypes'
 })
 export class RecipeListComponent implements OnInit {
   loading = true;
-  recipies: Recipe[] = [];
+
   page = 1;
+  recipies: Recipe[] = [];
   categories: Category[];
   countries: Country[];
+  sorting = SortTypes;
+  keys = Object.keys(this.sorting).filter(f => !isNaN(Number(f)));
 
   selectedCategory: Category | string;
-  selectedCountry: Country;
+  selectedCountry: Country | string;
   selectedSort = SortTypes.Topic;
   search: string;
 
-  sorting = SortTypes;
-  keys = Object.keys(this.sorting).filter(f => !isNaN(Number(f)));
 
   constructor(private rS: RecipeService) {}
 
@@ -41,16 +42,29 @@ export class RecipeListComponent implements OnInit {
     );
   }
   fetchRecipiesWithOptions() {
+
     let categId;
+    let countryId;
 
     if (this.selectedCategory === undefined) {
       categId = '';
     } else {
       categId = (<Category>this.selectedCategory).id;
     }
+    if (this.selectedCountry === undefined) {
+      countryId = '';
+    } else {
+      countryId = (<Country>this.selectedCountry).id;
+    }
 
     this.rS
-      .getAllRecipies(this.page, categId, this.search, this.selectedSort)
+      .getAllRecipies(
+        this.page,
+        categId,
+        countryId,
+        this.search,
+        this.selectedSort
+      )
       .subscribe(
         res => {
           this.recipies = this.recipies.concat(res);
@@ -66,18 +80,28 @@ export class RecipeListComponent implements OnInit {
   ngOnInit() {
     // Init selects
     this.rS.getCategories().subscribe(res => (this.categories = res));
-
     this.rS.getCountries().subscribe(res => (this.countries = res));
+
     this.fetchAllRecipies();
   }
   onChange() {
+
     this.recipies = [];
     this.page = 1;
     this.fetchRecipiesWithOptions();
+
+  }
+  clearClick() {
+    this.page = 1;
+    this.recipies = [];
+    this.selectedCategory = undefined;
+    this.selectedCountry = undefined;
+    this.selectedSort = this.sorting.Topic;
+    this.search = '';
+    this.fetchAllRecipies();
   }
   onScroll() {
     this.page += 1;
-
     this.fetchRecipiesWithOptions();
   }
 }

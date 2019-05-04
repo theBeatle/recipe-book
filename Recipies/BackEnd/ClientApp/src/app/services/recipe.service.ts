@@ -29,6 +29,7 @@ export class RecipeService {
   getAllRecipies(
     page: number,
     category?: number,
+    country?: number,
     search?: string,
     sortOrder?: number
   ): Observable<Recipe[]> {
@@ -38,6 +39,9 @@ export class RecipeService {
     }
     if (category != null) {
       optionalUrl += '&category=' + category;
+    }
+    if (sortOrder != null) {
+      optionalUrl += '&country=' + country;
     }
     if (sortOrder != null) {
       optionalUrl += '&sortOrder=' + sortOrder;

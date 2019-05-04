@@ -22,7 +22,7 @@ namespace BackEnd.Services
         }
 
       
-        public async Task<RecipeViewModel> GetRecipe(int? category, string name, int page = 1,
+        public async Task<RecipeViewModel> GetRecipe(int? category,int? country, string name, int page = 1,
             SortState sortOrder = SortState.TopicAsc)
         {
             int pageSize = 9;
@@ -33,6 +33,10 @@ namespace BackEnd.Services
             if (category != null && category != 0)
             {
                 RecipeList = RecipeList.Where(p => p.Category.Id == category);
+            }
+            if (country != null && country != 0)
+            {
+                RecipeList = RecipeList.Where(p => p.Country.Id == country);
             }
             if (!String.IsNullOrEmpty(name))
             {
@@ -86,7 +90,9 @@ namespace BackEnd.Services
             {
                 PageViewModel = new PageViewModel(count, page, pageSize),
                 SortViewModel = new SortViewModel(sortOrder),
-                FilterViewModel = new FilterViewModel(_appDbContext.Categories.ToList(), category, name),
+                FilterViewModel = new FilterViewModel(_appDbContext.Categories.ToList(), 
+                                                        category, _appDbContext.Countries.ToList(),
+                                                        country, name),
                 Recipes = mappedList
             };
 

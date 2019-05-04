@@ -42,10 +42,10 @@ namespace BackEnd.Controllers
 
         [HttpGet]
         [Route("all")]
-        public async Task<RecipeViewModel> Index(int? category, string name, int page = 1,
+        public async Task<RecipeViewModel> Index(int? category, int? country, string name, int page = 1,
             SortState sortOrder = SortState.TopicAsc)
         {
-            return await _recipeService.GetRecipe(category, name, page, sortOrder);
+            return await _recipeService.GetRecipe(category, country, name, page, sortOrder);
         }
 
         [HttpGet]

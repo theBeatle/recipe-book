@@ -19,8 +19,14 @@
         </div>
       </div>
       <div class="input-group ml-2">
-        <select class="custom-select cs">
-          <option class="color-gray" selected="selected">All</option>
+        <select
+          class="custom-select cs"
+          [(ngModel)]="selectedCountry"
+          (change)="onChange()"
+        >
+          <option class="color-gray" [ngValue]="All" selected="selected"
+            >All</option
+          >
           <option *ngFor="let c of countries" [ngValue]="c">{{
             c.name
           }}</option>
@@ -58,11 +64,11 @@
         </div>
       </div>
 
-      <button type="button" class="btn ml-2 btn-primary">Clear</button>
-      <button type="button" class="btn ml-2 btn-primary">Clear</button>
+      <button type="button" (click)="clearClick()" class="btn ml-2 btn-primary">Clear</button>
+      <button type="button" class="btn ml-2 btn-primary">Nothing</button>
     </div>
   </div>
-  <app-loader *ngIf="loading"></app-loader>
+
   <div
     infiniteScroll
     [infiniteScrollDistance]="1"
@@ -82,22 +88,24 @@
           alt="Card image cap"
         />
         <div class="card-img-overlay">
-          <h5 class="card-title">{{ recipe?.topic }}</h5>
-          <p class="card-text">Description: {{ recipe?.description }}</p>
+          <h3 class="card-title">{{ recipe?.topic }}</h3>
+          <p class="card-text description">Description: {{ recipe?.description }}</p>
 
           <div class="row">
             <div class="col-4">
               <p class="card-text">{{ recipe.countryName }}</p>
             </div>
             <div class="col-4">
-              <p class="card-text">{{ recipe.rating }}</p>
+              <p class="card-text">{{ recipe.categoryName }}</p>
             </div>
             <div class="col-4">
-              <p class="card-text">{{ recipe.viewsCounter }}</p>
+              <p class="card-text">Rate: {{ recipe.rating }}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <app-loader *ngIf="loading"></app-loader>
   </div>
 </div>
