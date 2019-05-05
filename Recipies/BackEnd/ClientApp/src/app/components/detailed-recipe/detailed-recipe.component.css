@@ -1,61 +1,3 @@
-
-
-/* ui-xl */
-@media screen and (min-width: 1441px ) {
-
-    .pt{
-    color: #A6ABB3;
-    font-size: 1.7rem;
-    }
-    .ct{
-        color: rgb(147, 154, 167);
-        font-size: 1.7rem;
-    }
-    .tt{
-        color:#323C41;
-        font-size: 1.7rem;
-    }
-    
-    .p-description{
-        color: #323C41;
-        font-size: 1.7rem;
-    }
-    
-    .dp{
-        font-size: 1.7rem; 
-        color:black
-    }
-    
-    .cv{
-        font-size: 1.7rem; 
-        color:black
-    }
-    
-    }
-
-
-
-/* ui-lg */
-@media screen and (min-width: 1025px ) and (max-width: 1441px) {
-
-.pt{
-color: #A6ABB3;
-font-size: 1.5rem;
-}
-.ct{
-    color: rgb(147, 154, 167);
-    font-size: 1.5rem;
-}
-.tt{
-    color:#323C41;
-    font-size: 1.5rem;
-}
-
-.p-description{
-    color: #323C41;
-    font-size: 1.5rem;
-}
-
 .dp{
     font-size: 1.5rem; 
     color:black
@@ -66,7 +8,7 @@ font-size: 1.5rem;
     color:black
 }
 
-}
+
 
 
 
@@ -147,4 +89,3 @@ font-size: 1.5rem;
         }
         
         }
-    

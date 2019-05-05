@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../recipe';
+import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-recipe-info',
-  templateUrl: './recipe-info.component.html',
-  styleUrls: ['./recipe-info.component.css']
+  selector: 'app-detailed-recipe',
+  templateUrl: './detailed-recipe.component.html',
+  styleUrls: ['./detailed-recipe.component.css']
 })
-export class RecipeInfoComponent implements OnInit {
-  
-  public recipestr:string="fsdafsdfdsfsdf";
+export class DetailedRecipeComponent implements OnInit {
+
+
   public recipe:Recipe;
   constructor(private rS:RecipeService) {  }
   
@@ -23,7 +23,6 @@ export class RecipeInfoComponent implements OnInit {
 
   GetRecipeById(recipeId:string){
     this.recipe=new Recipe;
-    this.recipestr='';
     this.rS.getRecipeById(recipeId).subscribe( w => {
      this.recipe.category=w.category;
      this.recipe.cookingProcess= w.cookingProcess;
@@ -37,13 +36,6 @@ export class RecipeInfoComponent implements OnInit {
      console.log(w.cookingProcess);
     
     });
-
   }
 
-
- 
 }
-
-
-
-

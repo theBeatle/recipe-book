@@ -20,14 +20,15 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
 
 
 //mycomponents
-import { RecipeInfoComponent } from './recipe-detailed-info/recipe-info/recipe-info.component';
-import { RecipeGalleriaComponent } from './recipe-detailed-info/recipe-galleria/recipe-galleria.component';
-import { RecipeIngradientsComponent } from './recipe-detailed-info/recipe-ingradients/recipe-ingradients.component';
-import { RecipeDirectionsComponent } from './recipe-detailed-info/recipe-directions/recipe-directions.component';
-import { RecipeRaitingComponent } from './recipe-detailed-info/recipe-raiting/recipe-raiting.component';
+
+import { RecipeGalleriaComponent } from './recipe-detailed-info-components/recipe-galleria/recipe-galleria.component';
+import { RecipeIngradientsComponent } from './recipe-detailed-info-components/recipe-ingradients/recipe-ingradients.component';
+import { RecipeDirectionsComponent } from './recipe-detailed-info-components/recipe-directions/recipe-directions.component';
+import { RecipeRaitingComponent } from './recipe-detailed-info-components/recipe-raiting/recipe-raiting.component';
 
 //myservices
 import { RecipeService } from './services/recipe.service';
+import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-recipe.component';
 
 
 @NgModule({
@@ -39,7 +40,6 @@ import { RecipeService } from './services/recipe.service';
     FetchDataComponent,
     CounterComponent,
     FetchDataComponent,
-    RecipeInfoComponent,
     RecipeGalleriaComponent,
     RecipeIngradientsComponent,
     RecipeDirectionsComponent,
@@ -47,7 +47,8 @@ import { RecipeService } from './services/recipe.service';
   
     
     HomeComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    DetailedRecipeComponent
   ],
 
 
@@ -69,7 +70,7 @@ import { RecipeService } from './services/recipe.service';
       { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationFormComponent },
-      { path:'recipecomp',component:RecipeInfoComponent},
+      { path:'recipecomp',component:DetailedRecipeComponent},
 
     ])
    

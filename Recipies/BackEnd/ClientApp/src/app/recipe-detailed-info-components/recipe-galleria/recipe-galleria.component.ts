@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-recipe-galleria',
@@ -7,13 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeGalleriaComponent implements OnInit {
   
-  public image:string;
+  @Input() Images:string[];
  
   
   constructor() { }
   
   ngOnInit() {
-    this.image="https://www.whiskaffair.com/wp-content/uploads/2015/06/Chettinad-pepper-Chicken-4.jpg";
+    
   }
 
 }
