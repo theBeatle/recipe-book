@@ -1,18 +1,18 @@
-.dp{
+
+
+h2{
     font-size: 1.5rem; 
     color:black
 }
 
-.cv{
-    font-size: 1.5rem; 
-    color:black
+
+.p-description{
+    color: #323C41;
+    font-size: 1.3rem;
 }
 
 
 
-
-
-/* ui-md */
 @media screen and (min-width: 641px) and (max-width: 1025px) {
 
     .pt{
@@ -33,15 +33,12 @@
         font-size: 1.3rem;
     }
 
-    .dp{
+    h2{
         font-size: 1.3rem; 
         color:black
     }
 
-    .cv{
-        font-size: 1.3rem; 
-        color:black
-    }
+   
      
     #htop{
         font-size: 1.6rem;
@@ -73,15 +70,12 @@
     
     
     
-        .dp{
+        h2{
             font-size: 1rem; 
             color:black
         }
     
-        .cv{
-            font-size: 1rem; 
-            color:black
-        }
+       
 
 
         #htop{

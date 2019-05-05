@@ -32,7 +32,7 @@ export class DetailedRecipeComponent implements OnInit {
         this.recipe = w;
         this.creationdate="";
         this.creationdate= w.creationDate.toString().substring(0,10);
-       
+        
     });
     
 

@@ -14,7 +14,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { LoginFormComponent } from './components/account/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/account/reg-form/reg-form.component';
-import { RecipeListComponent } from './components/recipe-list/recipe-list.component'
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
@@ -25,7 +25,6 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
 import { RecipeGalleriaComponent } from './recipe-detailed-info-components/recipe-galleria/recipe-galleria.component';
 import { RecipeIngradientsComponent } from './recipe-detailed-info-components/recipe-ingradients/recipe-ingradients.component';
 import { RecipeDirectionsComponent } from './recipe-detailed-info-components/recipe-directions/recipe-directions.component';
-import { RecipeRaitingComponent } from './recipe-detailed-info-components/recipe-raiting/recipe-raiting.component';
 
 //myservices
 import { RecipeService } from './services/recipe.service';
@@ -44,7 +43,7 @@ import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-r
     RecipeGalleriaComponent,
     RecipeIngradientsComponent,
     RecipeDirectionsComponent,
-    RecipeRaitingComponent,
+
   
     
     HomeComponent,
@@ -82,7 +81,7 @@ import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-r
     LoginFormComponent,
     RegistrationFormComponent,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
 
   ],
 

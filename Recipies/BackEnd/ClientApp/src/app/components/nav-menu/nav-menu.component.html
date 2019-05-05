@@ -1,4 +1,4 @@
-
+<header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse" aria-label="Toggle navigation"
     [attr.aria-expanded]="isExpanded" (click)="toggle()">
@@ -26,7 +26,7 @@
     </div>
     <div class="navbar-collapse collapse w-100 order-3 dual-collapse" [ngClass]='{"show": isExpanded}'>
         <ul class="navbar-nav ml-auto">
-      <div *ngIf="(isAuthorized ); then thenBlock else elseBlock"></div>
+      <div *ngIf="(isAuthorized ); then thenBlock else elseBlock"> </div>
         <ng-template #thenBlock>
             <li class="nav-item" >
               <a class="nav-link">{{fullName}}</a>
@@ -44,6 +44,7 @@
             <a class="nav-link text-dark" [routerLink]='["/registration"]'>Sign Up</a>
           </li>
         </ng-template>
+     
 
 
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
@@ -58,6 +59,6 @@
          
         </ul>
       </div>
-    </div>
+    
   </nav>
 </header>
