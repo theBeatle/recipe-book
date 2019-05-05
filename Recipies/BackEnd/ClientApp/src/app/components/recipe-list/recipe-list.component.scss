@@ -1,0 +1,19 @@
+.card-columns {
+  .card{
+
+    height: 300px;
+    .card-img-top{
+      object-fit: cover;
+      &:hover{
+        -webkit-box-shadow: inset 0px 0px 85px rgba(0,0,0,0.4);
+	-moz-box-shadow:    inset 0px 0px 85px rgba(0,0,0,0.4);
+	box-shadow:         inset 0px 0px 85px rgba(0,0,0,0.4);
+      }
+    }
+  }
+
+
+
+}
+
+

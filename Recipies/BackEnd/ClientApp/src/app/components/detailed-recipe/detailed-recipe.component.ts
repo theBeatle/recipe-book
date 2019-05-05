@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Input} from '@angular/core';
 import { Recipe } from '../../models/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { Observable } from 'rxjs';
@@ -13,29 +13,29 @@ export class DetailedRecipeComponent implements OnInit {
 
 
   public recipe:Recipe;
+  public creationdate:string;
+  
   constructor(private rS:RecipeService) {  }
   
   ngOnInit() {
     this.GetRecipeById('1');
+  
    
+    
   }
 
 
   GetRecipeById(recipeId:string){
-    this.recipe=new Recipe;
-    this.rS.getRecipeById(recipeId).subscribe( w => {
-     this.recipe.category=w.category;
-     this.recipe.cookingProcess= w.cookingProcess;
-     this.recipe.country=w.country;
-     this.recipe.creationDate=w.creationDate;
-     this.recipe.description=w.description;
-     this.recipe.raiting=w.raiting;
-     this.recipe.topic=w.topic;
-     this.recipe.viewsCounter=w.viewsCounter;
-     console.log(w.topic);
-     console.log(w.cookingProcess);
+   
     
+    this.rS.getRecipeById(recipeId).subscribe( w => {
+        this.recipe = w;
+        this.creationdate="";
+        this.creationdate= w.creationDate.toString().substring(0,10);
+       
     });
+    
+
   }
 
 }

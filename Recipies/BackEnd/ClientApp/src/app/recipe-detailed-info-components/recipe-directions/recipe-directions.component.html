@@ -1,6 +1,8 @@
 <h2 id="cp" style="margin-top:3rem;">Cooking process:</h2>
-<ol *ngFor="let item of cookingprocess">
- <li>{{item}}</li>
+<ol >
+ <li *ngFor="let item of cookingprocess; let i = index">
+      {{item}}
+</li>
 </ol>
 
 

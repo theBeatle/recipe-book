@@ -14,6 +14,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { LoginFormComponent } from './components/account/login-form/login-form.component';
 import { RegistrationFormComponent } from './components/account/reg-form/reg-form.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component'
 
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
@@ -64,16 +65,16 @@ import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-r
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
+      { path: '', component: HomeComponent , canActivate: [AuthGuard]},
       { path: 'counter', component: CounterComponent },
       { path: 'login', component: LoginFormComponent },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationFormComponent },
       { path:'recipecomp',component:DetailedRecipeComponent},
 
     ])
-   
+
   ],
   providers: [
     HttpClientModule,
@@ -82,10 +83,9 @@ import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-r
     RegistrationFormComponent,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    RecipeService,
 
   ],
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule {

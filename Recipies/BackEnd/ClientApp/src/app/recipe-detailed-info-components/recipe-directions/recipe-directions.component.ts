@@ -13,14 +13,15 @@ export class RecipeDirectionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-   console.log(this.Directions);
-    this.cookingprocess=this.ParsecookingProcess(this.Directions);
+   
+   this.cookingprocess=this.ParsecookingProcess(this.Directions);
   }
 
 
   ParsecookingProcess(CookingProcess:string):Array<string>{
-    let arr:Array<string>;
-     arr = this.Directions.split("|", 50);
+     
+     let arr:Array<string>;
+     arr = CookingProcess.split("|", 50);
      return arr;
 }
 
