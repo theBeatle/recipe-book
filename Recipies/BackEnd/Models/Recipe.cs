@@ -7,7 +7,14 @@ namespace BackEnd.Models
 {
     public class Recipe
     {
+        public Recipe()
+        {
+            Comments = new List<Comment>();
+        }
         public int Id { get; set; }
+        public ICollection<Comment> Comments { get; set; }
+        public string Topic { get; set; }
+
 
         public Country Country { get; set; }
 
@@ -15,7 +22,6 @@ namespace BackEnd.Models
 
         public Category Category { get; set; }
 
-        public string Topic { get; set; }
 
         public string Description { get; set; }
 
@@ -30,26 +36,6 @@ namespace BackEnd.Models
         public double Rating { get; set; }
 
         //public Ingredient[] Ingredients { get; set; }
-
-
-
     }
-}
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace BackEnd.Models
-{
-    public class Recipe
-    {
-        public int Id { get; set; }
-        public ICollection<Comment> Comments { get; set; }
-        public string Topic { get; set; }
-        public Recipe()
-        {
-            Comments = new List<Comment>();
-        }
+ 
     }
-}

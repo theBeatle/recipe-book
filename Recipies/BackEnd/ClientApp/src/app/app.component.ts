@@ -11,6 +11,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app';
 }
-export class RecipeInfoComponent{
+export class RecipeInfoComponent {
   title = 'RecipeInfoComponent';
 }

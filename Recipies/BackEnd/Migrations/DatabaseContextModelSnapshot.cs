@@ -32,6 +32,29 @@ namespace BackEnd.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("BackEnd.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Text");
+
+                    b.Property<DateTime>("Time");
+
+                    b.Property<int?>("recipeId");
+
+                    b.Property<string>("userId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("recipeId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("BackEnd.Models.Country", b =>
                 {
                     b.Property<int>("Id")
@@ -285,6 +308,17 @@ namespace BackEnd.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Comment", b =>
+                {
+                    b.HasOne("BackEnd.Models.Recipe", "recipe")
+                        .WithMany("Comments")
+                        .HasForeignKey("recipeId");
+
+                    b.HasOne("BackEnd.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId");
                 });
 
             modelBuilder.Entity("BackEnd.Models.Photo", b =>
