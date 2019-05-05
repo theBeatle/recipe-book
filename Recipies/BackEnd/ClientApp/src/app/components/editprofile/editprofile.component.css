@@ -1,4 +1,5 @@
-#backgroundUserfield {
+
+  #backgroundUserfield {
     border: 0;
     height: 100px;
     opacity: 0.9;
@@ -24,6 +25,14 @@
   left: 1.6rem;
   
 }
+.stLis2{
+  left: 5rem;
+  width: 120px;
+height: 10px;
+margin-top: 5px;
+margin-left: 15px;
+display: inline-block;
+}
 .StUls {
 width: 900px;
 }
@@ -43,9 +52,4 @@ display: inline-block;
 }
 .stCard{ 
   height: 250px;
-}
-.stBadge{
-  height: 30px;
-  text-align: center;
-  
 }
