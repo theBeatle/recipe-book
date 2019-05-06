@@ -23,10 +23,10 @@ namespace BackEnd.Controllers
                 db.Recipes.Add(new Recipe { Topic = "Pizza", Description = "with chiken", CookingProcess = "..." });
                 db.SaveChanges();
             }
-            db.Recipes.Add(new Recipe { Topic = "Cake", Description = "with fruits", CookingProcess = "..." });
-            db.Recipes.Add(new Recipe { Topic = "Sushi", Description = "with fish", CookingProcess = "..." });
-            db.Recipes.Add(new Recipe { Topic = "Pizza", Description = "with chiken", CookingProcess = "..." });
-          //  db.SaveChanges();
+           // db.Recipes.Add(new Recipe { Topic = "Cake", Description = "with fruits", CookingProcess = "..." });
+            //db.Recipes.Add(new Recipe { Topic = "Sushi", Description = "with fish", CookingProcess = "..." });
+            //db.Recipes.Add(new Recipe { Topic = "Pizza", Description = "with chiken", CookingProcess = "..." });
+            db.SaveChanges();
         }
         [HttpGet("getRecipes")]
         public IEnumerable<Recipe> getRecipes()
@@ -52,10 +52,11 @@ namespace BackEnd.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpDelete("{id},deleteRecipe")]
+        [HttpDelete(@"{id}")]
         public IActionResult deleteRecipe(int id)
         {
             Recipe recipe = db.Recipes.FirstOrDefault(x => x.Id == id);
+
             if (recipe != null)
             {
                 db.Recipes.Remove(recipe);

@@ -19,6 +19,6 @@ export class RecipeService {
   }
 
   deleteRecipe(id: number) {
-   return this.http.delete(this.url + '/api/Recipe/deleteRecipe' + id,this.httpOptions);
+   return this.http.delete(this.url + '/api/Recipe/{id}' + id);
   }
 }
