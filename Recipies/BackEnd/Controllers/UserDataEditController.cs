@@ -43,7 +43,7 @@ namespace BackEnd.Controllers
 
             //if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
 
-            _appDbContext.Users.Update(new User { IdentityId = userIdentity.Id });
+            await _userManager.UpdateAsync(new User { IdentityId = userIdentity.Id });
             await _appDbContext.SaveChangesAsync();
 
             return new OkObjectResult("Data Edited");

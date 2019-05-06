@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataEditService } from '../../services/data-edit.service'
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserEditData } from '../../models/user-data-edit'
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-data-edit',
@@ -12,10 +13,18 @@ export class DataEditComponent implements OnInit {
 
   UserEdit: FormGroup;
   submitted = false;
+  countries = new Array();
 
-  constructor(private DES: DataEditService, private fb: FormBuilder,) { }
+  constructor(private DES: DataEditService, private fb: FormBuilder, private httpService: HttpClient) { }
 
   ngOnInit() {
+    this.httpService.get('countries.json').subscribe(
+      data => {
+        this.countries = data as string [];
+         console.log(this.countries[1]);
+      }
+    );
+
     this.UserEdit = this.fb.group({
       FirstName: new FormControl(['', Validators.required]),
       LastName: new FormControl(['', Validators.required]),

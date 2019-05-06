@@ -8,14 +8,14 @@
 
       <input placeholder="Password" type="password" formGroupName="Password" class="form-control">
 
-      <input placeholder="Password Confirmation" type="password" formGroupName="PasswordConfirmation" class="form-control">
+      <input placeholder="Password Confirmation" type="password" id="PasswordConfirmation" class="form-control">
 
       <input placeholder="Eamil" type="email" formGroupName="Email" class="form-control info">
     
-    <form class="form-inline" formGroupName="DateTimePicker">
+    <form class="form-inline" id="DateTimePicker">
        <div class="form-group">
          <div class="input-group">
-           <input formGroupName="Age" class="form-control" placeholder="yyyy-mm-dd"
+           <input id="Age" class="form-control" placeholder="yyyy-mm-dd"
                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
            <div class="input-group-append">
              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
@@ -24,9 +24,9 @@
        </div>
      </form>
 
-     <input formGroupName="FileInput" id="file-input" type="file" class="btn btn-primary">
+     <input id="FileInput" type="file" class="btn btn-primary">
 
-     <input placeholder="Country" formGroupName="Typehead" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>
+     <input placeholder="Country" id="Typehead" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>
 
      <input id="SubmitButton" class="btn btn-primary" type="submit">
 
