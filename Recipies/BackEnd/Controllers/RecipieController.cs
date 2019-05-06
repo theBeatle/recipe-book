@@ -52,23 +52,11 @@ namespace BackEnd.Controllers
         [Route("ReadRecipeById")]
         public Recipe GetRecipeById(int RecipeId)
         {
-            Recipe recipe = new Recipe();
-            recipe.Topic = "Test Recipe";
-            recipe.Rating = 5;
-            recipe.ViewsCounter = 15;
+           
 
-            recipe.Description = "Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description";
-            recipe.CreationDate = DateTime.Now;
-            recipe.Country.Name = "Ukraine";
-            recipe.CookingProcess = "";
-            recipe.Category.Name = "TestCategory";
+            Recipe recipe = _appDbContext.Recipes.Single(r => r.Id == RecipeId);
+
             return recipe;
-
-            Recipe rec = _appDbContext.Recipes.Single(r => r.Id == id);
-            rec.Gallery = new Gallery {  Photos = new List<Photo> { new Photo { Path = "https://gastronomicallyyours.blog/wp-content/uploads/2019/01/Chettinad-Chicken-Masala.jpg" }, new Photo { Path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvW-Ugj6_2WJ8L49MVU5xIg9zIltCAc_FU9IgO9TqJd04d3ngD" }, new Photo { Path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHXgRyhGZ1yKUbxhIk_g-CxEDF_t2ayNvR7B0lcryBOYGyy5Z2aQ" } } };
-            _appDbContext.Recipes.Attach(rec);
-            _appDbContext.SaveChanges();
-            return new ObjectResult(rec);
 
         }
     }

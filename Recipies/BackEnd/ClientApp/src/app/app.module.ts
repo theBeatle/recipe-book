@@ -19,7 +19,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { RecipeService } from './services/recipe.service';
+
 
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
@@ -51,7 +51,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     
     HomeComponent,
     LoginFormComponent,
-    DetailedRecipeComponent
+    DetailedRecipeComponent,
     RecipeListComponent,
     LoaderComponent,
     ContactUsComponent,
@@ -80,7 +80,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'recipe-list', component: RecipeListComponent },
       { path: 'registration', component: RegistrationFormComponent },
-      { path: 'contact', component: ContactUsComponent}
+      { path: 'contact', component: ContactUsComponent},
       { path: 'registration', component: RegistrationFormComponent },
       { path:'recipecomp',component:DetailedRecipeComponent},
 

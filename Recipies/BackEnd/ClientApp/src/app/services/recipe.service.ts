@@ -18,15 +18,14 @@ export class RecipeService {
   url = HOST_URL;
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
   recipe:Recipe;
-  constructor( private http: HttpClient) { }
+
 
   getRecipeById(RecipeId:string): Observable<Recipe> {
     
-  
-    return this.http.get<Recipe>(this.url + '/api/Recipie/' + RecipeId);
+    return this.http.get<Recipe>(this.url + '/api/Recipie/ReadRecipeById' + RecipeId);
   
   }
-  url = HOST_URL;
+
   recipies: Observable<Recipe[]>;
 
   constructor(private http: HttpClient) {}
