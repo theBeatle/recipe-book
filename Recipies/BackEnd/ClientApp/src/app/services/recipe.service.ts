@@ -17,6 +17,7 @@ export class RecipeService {
 
   getRecipeById(RecipeId:string): Observable<Recipe> {
     
+  
     return this.http.get<Recipe>(this.url + '/api/Recipie/' + RecipeId);
   
   }

@@ -26,9 +26,9 @@ export class NavMenuComponent {
           }
         });
 
-  console.log(this.authenticationService.currentUserValue);
+  //console.log(this.authenticationService.currentUserValue);
   this.usersService.GetAuthUser().subscribe((x) => {
-    console.log(x);
+   //console.log(x);
     this.fullName = x.firstName + ' ' + x.lastName;
   });
   }
