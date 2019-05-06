@@ -7,14 +7,7 @@ namespace BackEnd.Models
 {
     public class Recipe
     {
-        public Recipe()
-        {
-            Comments = new List<Comment>();
-        }
         public int Id { get; set; }
-        public ICollection<Comment> Comments { get; set; }
-        public string Topic { get; set; }
-
 
         public Country Country { get; set; }
 
@@ -36,6 +29,14 @@ namespace BackEnd.Models
         public double Rating { get; set; }
 
         //public Ingredient[] Ingredients { get; set; }
+
+
+
+        public ICollection<Comment> Comments { get; set; }
+
+        public Recipe()
+        {
+            Comments = new List<Comment>();
+        }
     }
- 
-    }
+}

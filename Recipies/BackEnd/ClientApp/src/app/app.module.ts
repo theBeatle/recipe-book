@@ -20,8 +20,10 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RecipeService } from './services/recipe.service';
+
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
-import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,14 +36,12 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
     LoginFormComponent,
     RecipeListComponent,
     LoaderComponent,
-    LoginFormComponent,
+    ContactUsComponent,
     RecipeFeedbackComponent,
-    CreateRecipeComponent,
   ],
 
   imports: [
-
-  InfiniteScrollModule,
+    InfiniteScrollModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
@@ -62,12 +62,14 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
       { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'recipe-list', component: RecipeListComponent },
-      { path: 'registration', component: RegistrationFormComponent }
+      { path: 'registration', component: RegistrationFormComponent },
+      { path: 'contact', component: ContactUsComponent}
     ])
   ],
   providers: [
     HttpClientModule,
     FetchDataComponent,
+    ContactUsComponent,
     LoginFormComponent,
     RegistrationFormComponent,
     RecipeService,
