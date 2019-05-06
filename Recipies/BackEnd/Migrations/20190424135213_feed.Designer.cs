@@ -4,14 +4,16 @@ using BackEnd.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackEnd.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20190424135213_feed")]
+    partial class feed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,40 +34,6 @@ namespace BackEnd.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("FeedBackMessages");
-            modelBuilder.Entity("BackEnd.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Text");
-
-                    b.Property<DateTime>("Time");
-
-                    b.Property<int?>("recipeId");
-
-                    b.Property<string>("userId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("recipeId");
-
-                    b.HasIndex("userId");
-
-                    b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Recipe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Topic");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Recipes");
                 });
 
             modelBuilder.Entity("BackEnd.Models.User", b =>
@@ -241,17 +209,6 @@ namespace BackEnd.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Comment", b =>
-                {
-                    b.HasOne("BackEnd.Models.Recipe", "recipe")
-                        .WithMany("Comments")
-                        .HasForeignKey("recipeId");
-
-                    b.HasOne("BackEnd.Models.User", "user")
-                        .WithMany()
-                        .HasForeignKey("userId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
