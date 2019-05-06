@@ -34,7 +34,11 @@
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link" [routerLink]='["/login"]'>Log Out</a>
           </li>
-        </ng-template>
+          </ng-template>
+
+          <li class="nav-item" [routerLinkActive]='[link-active]' >
+            <a class="nav-link" [routerLink]='["/contact"]'>Contact us</a>
+          </li>
 
         <ng-template #elseBlock>
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
