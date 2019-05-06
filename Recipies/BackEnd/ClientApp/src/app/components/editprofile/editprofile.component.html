@@ -54,7 +54,7 @@
        </div>
     <div class="row" style="margin-top:5px;">
       <div class="col-sm-1"  >
-        Name:
+        <span class="text-primary">N</span>ame:
       </div>
       <div class="col-sm-9">
          
@@ -66,7 +66,7 @@
     </div>
     <div class="row" style="margin-top:5px;">
       <div class="col-sm-1" >
-       LastName:
+        <span class="text-primary">L</span>astName:
       </div>
       <div class="col-sm-9">
          
@@ -79,7 +79,7 @@
     </div>
     <div class="row" style="margin-top:5px;">
         <div class="col-sm-1" >
-        E-mail:
+          <span class="text-primary">E</span>-mail:
         </div>
         <div class="col-sm-9">
            
@@ -92,7 +92,7 @@
       </div>
       <div class="row" style="margin-top:5px;">
           <div class="col-sm-1" >
-          NickName:
+            <span class="text-primary">N</span>ickName:
           </div>
           <div class="col-sm-9">
              
@@ -105,15 +105,23 @@
         </div>
         <div class="row" style="margin-top:5px;">
             <div class="col-sm-1" >
-            Ava-path:
+              <span class="text-primary">A</span>va-path:
             </div>
             <div class="col-sm-9">
                
-                <div class="form-group">
+            
                   <div style="color:orangered; ">
-                      <input type="file">
+<!--                   
+                      <input class="stInputLoadFile"  type="file"> -->
+                      <form method="post" enctype="multipart/form-data">
+                        <div>
+                       
+                          <input class="inputfile" type="file" id="file" name="file" multiple>
+                        </div> 
+                      
+                       </form>
                   </div> 
-                  </div>
+                  
                   
             </div>
             <div class="col-sm-2">
@@ -122,7 +130,7 @@
           </div>
           <div class="row" style="margin-top:5px;">
               <div class="col-sm-1" >
-              Country:
+                <span class="text-primary">C</span>ountry:
               </div>
               <div class="col-sm-9">
                  
@@ -141,95 +149,7 @@
             </div>
   </div>
 
-<!-- <div class="row>
-  <div class="col-sm-1">
-   Name:
-  </div>
-  <div class="col-sm-9">
-      <span class="ui-float-label " >
-          <input class="stInput" id="float-input" type="text" size="30" pInputText> 
-          <label for="float-input">Username</label>
-          
-      </span>
-    </div>
- <div class="col-sm-2">
-    
-    </div>
- 
 
-
-</div>
-<div class="row">
-    <div class="col-sm-1">
-     LastName:
-    </div>
-    <div class="col-sm-9">
-        <span class="ui-float-label " >
-            <input class="stInput" id="float-input" type="text" size="30" pInputText> 
-            <label for="float-input">LastName</label>
-        </span>
-    </div>
-    <div class="col-sm-2">
-      
-      </div>  
-  </div>
-  <div class="row">
-      <div class="col-sm-1">
-      E-mail:
-      </div>
-      <div class="col-sm-9">
-          <span class="ui-float-label " >
-              <input class="stInput" id="float-input" type="email" size="30" pInputText> 
-              <label for="float-input">E-mail</label>
-          </span>
-      </div>
-      <div class="col-sm-2">
-          <span class="badge badge-danger">Field is required</span>
-        </div>  
-    </div>
-
-    <div class="row">
-        <div class="col-sm-1">
-        NickName:
-        </div>
-        <div class="col-sm-9">
-            <span class="ui-float-label " >
-                <input class="stInput" id="float-input" type="email" size="30" pInputText> 
-                <label for="float-input">NickName</label>
-            </span>
-        </div>
-        <div class="col-sm-2">
-         
-          </div>  
-      </div>
-      
-      <div class="row">
-          <div class="col-sm-1">
-         Ava-path:
-          </div>
-          <div class="col-sm-9">
-          <div>
-              
-
-      </div>
-          </div>
-          <div class="col-sm-2">
-             
-            </div>  
-        </div>
-
-        <div class="row">
-            <div class="col-sm-1">
-           Country:
-            </div>
-            <div class="col-sm-9">
-            
-              
-            </div>
-            <div class="col-sm-2">
-             
-              </div>  
-          </div> -->
   
 
  

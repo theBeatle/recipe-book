@@ -7,7 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { CommonModule } from '@angular/common';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { CounterComponent } from './components/counter/counter.component';
@@ -16,8 +16,7 @@ import { LoginFormComponent } from './components/account/login-form/login-form.c
 import { RegistrationFormComponent } from './components/account/reg-form/reg-form.component';
 
 
-import { ErrorInterceptor } from './helpers/error.interceptor';
-import { JwtInterceptor } from './helpers/JWT.interceptor';
+
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { EditprofileComponent } from './components/editprofile/editprofile.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -37,9 +36,18 @@ import { FavouriteRecipesComponent } from './favourite-recipes/favourite-recipes
 //   }
   
 // ];
+import { LoaderComponent } from './components/recipe-list/loader/loader.component';
+import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { JwtInterceptor } from './helpers/JWT.interceptor';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { RecipeService } from './services/recipe.service';
 
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+
+import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
 @NgModule({
-
   declarations: [
     AppComponent,
     RegistrationFormComponent,
@@ -47,51 +55,60 @@ import { FavouriteRecipesComponent } from './favourite-recipes/favourite-recipes
     FetchDataComponent,
     UserProfileComponent,
     CounterComponent,
+    FetchDataComponent,
     HomeComponent,
     LoginFormComponent,
     EditprofileComponent,
     MyrecipesComponent,
-    FavouriteRecipesComponent
+    FavouriteRecipesComponent,
+    RecipeListComponent,
+    LoaderComponent,
+    ContactUsComponent,
+    RecipeFeedbackComponent,
   ],
 
-
   imports: [
-
-  BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+    InfiniteScrollModule,
+    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+    CommonModule,
     FormsModule,
+    AngularFontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent},
+      { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'counter', component: CounterComponent },
+      { path: 'feedback', component: RecipeFeedbackComponent },
       { path: 'login', component: LoginFormComponent },
-      { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+      { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationFormComponent },
       { path: 'user-profile', component: UserProfileComponent },
       {path : 'editprofile', component: EditprofileComponent},
       {path : 'myrecipes', component: MyrecipesComponent},
       {path : 'favourite-recipes', component: FavouriteRecipesComponent},
+      {path : 'recipe-list', component: RecipeListComponent},
 
+      { path: 'contact', component: ContactUsComponent}
     ])
   ],  
   providers: [
     HttpClientModule,
     FetchDataComponent,
+    ContactUsComponent,
     LoginFormComponent,
     UserProfileComponent,
     RegistrationFormComponent,
+    RecipeService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
+
   bootstrap: [AppComponent]
 })
-export class AppModule {
-
-}
+export class AppModule {}

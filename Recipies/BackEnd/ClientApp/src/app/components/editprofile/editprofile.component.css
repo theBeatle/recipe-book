@@ -53,3 +53,15 @@ display: inline-block;
 .stCard{ 
   height: 250px;
 }
+.stInputLoadFile{
+ width: 50%;
+ border: 5px;
+color: orangered;
+
+}
+.inputfile {
+  font-size: 1.25em;
+  margin-top: 5px;
+  color: orangered;
+  display: inline-block;
+}

@@ -1,0 +1,44 @@
+blockquote {
+    margin: 10px;
+    background:	#F5DEB3;
+    color: #131314;
+    padding: 30px 30px 30px 90px;
+    position: relative;
+    font-family: 'Lato', sans-serif;
+    }
+    blockquote:before {
+    content: "\201C";
+    font-family: serif;
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 50px;
+    }
+    blockquote:after {
+    content: "";
+    width: 4px;
+    background: white;
+    position:absolute;
+    left: 70px;
+    top: 20px;
+    bottom: 20px;
+    }
+    blockquote p {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 300;
+    word-wrap: normal;
+    width: 100%;
+    }
+    blockquote cite {
+    font-style: normal;
+    text-transform: uppercase;
+    }
