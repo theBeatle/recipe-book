@@ -33,5 +33,11 @@ namespace BackEnd.Models
 
 
 
+        public ICollection<Comment> Comments { get; set; }
+
+        public Recipe()
+        {
+            Comments = new List<Comment>();
+        }
     }
 }

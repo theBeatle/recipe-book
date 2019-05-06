@@ -1,15 +1,111 @@
-
 <div>
-  <div class="card-columns">
-    <div class="card text-white">
-      <img class="card-img-top" src="https://www.rd.com/wp-content/uploads/2018/04/9-Foods-You-Should-Never-Eat-Before-Bed-760x506.jpg" alt="Card image cap">
-      <div class="card-img-overlay">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text">Last updated 3 mins ago</p>
+  <div class="row p-2 mr-0 tools-panel">
+    <div class="col-lg-4 col-12 d-flex justify-content-center">
+      <div class="input-group">
+        <select
+          class="custom-select cs"
+          [(ngModel)]="selectedCategory"
+          (change)="onChange()"
+        >
+          <option class="color-gray" [ngValue]="All" selected="selected"
+            >All</option
+          >
+          <option *ngFor="let c of categories" [ngValue]="c">{{
+            c.name
+          }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Category</span>
+        </div>
+      </div>
+      <div class="input-group ml-2">
+        <select
+          class="custom-select cs"
+          [(ngModel)]="selectedCountry"
+          (change)="onChange()"
+        >
+          <option class="color-gray" [ngValue]="All" selected="selected"
+            >All</option
+          >
+          <option *ngFor="let c of countries" [ngValue]="c">{{
+            c.name
+          }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Country</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-12 md-2 md-lg-0 d-flex justify-content-center">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Example: Napaleon cake"
+          (change)="onChange()"
+          [(ngModel)]="search"
+          class="form-control cs"
+        />
+        <div class="input-group-append">
+          <span class="input-group-text">Search</span>
+        </div>
+      </div>
+    </div>
+    <div class="offset-lg-1 col-lg-3  col-12 d-flex justify-content-center">
+      <div class="input-group">
+        <select
+          class="custom-select cs"
+          [(ngModel)]="selectedSort"
+          (change)="onChange()"
+        >
+          <option *ngFor="let c of keys" [value]="c">{{ sorting[c] }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Sort</span>
+        </div>
       </div>
 
+      <button type="button" (click)="clearClick()" class="btn ml-2 btn-primary">Clear</button>
+      <button type="button" class="btn ml-2 btn-primary">Nothing</button>
+    </div>
+  </div>
+
+  <div
+    infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="300"
+    (scrolled)="onScroll()"
+    [scrollWindow]="true"
+    style="height:100%;"
+  >
+    <div class="row columns">
+      <div
+        *ngFor="let recipe of recipies"
+        class="col-sm-4 d-flex card text-white"
+      >
+        <img
+          class="card-img-top "
+          src="https://cdn.jamieoliver.com/home/wp-content/uploads/2016/06/2.jpg"
+          alt="Card image cap"
+        />
+        <div class="card-img-overlay">
+          <h3 class="card-title">{{ recipe?.topic }}</h3>
+          <p class="card-text description">Description: {{ recipe?.description }}</p>
+
+          <div class="row">
+            <div class="col-4">
+              <p class="card-text">{{ recipe.countryName }}</p>
+            </div>
+            <div class="col-4">
+              <p class="card-text">{{ recipe.categoryName }}</p>
+            </div>
+            <div class="col-4">
+              <p class="card-text">Rate: {{ recipe.rating }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-loader *ngIf="loading"></app-loader>
   </div>
 </div>
-</div>
-
