@@ -17,6 +17,8 @@ namespace BackEnd.Models
 
         public new DbSet<User> Users { get; set; }
         public  DbSet<FeedBackMessage> FeedBackMessages { get; set; }
+        public new DbSet<Recipe> Recipes { get; set; }
+        public new DbSet<Comment> Comments { get; set; }
     }
 }
 
