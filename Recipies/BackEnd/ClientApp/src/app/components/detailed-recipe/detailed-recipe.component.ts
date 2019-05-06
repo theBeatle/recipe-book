@@ -29,9 +29,11 @@ export class DetailedRecipeComponent implements OnInit {
    
     
     this.rS.getRecipeById(recipeId).subscribe( w => {
+     
         this.recipe = w;
         this.creationdate="";
         this.creationdate= w.creationDate.toString().substring(0,10);
+       
         
     });
     
