@@ -5,6 +5,7 @@ namespace BackEnd.ViewModels.RecipeViewModels
 {
     public class RecipeListViewModel
     {
+        public int Id { get; set; }
         public string CountryName { get; set; }
 
         public string CategoryName { get; set; }

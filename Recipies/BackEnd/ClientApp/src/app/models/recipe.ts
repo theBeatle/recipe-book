@@ -1,4 +1,6 @@
 export class Recipe {
+  id: number;
+
   countryName: string;
 
   categoryName: string;

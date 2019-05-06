@@ -48,6 +48,22 @@ namespace BackEnd.Controllers
             return await _recipeService.GetRecipe(category, country, name, page, sortOrder);
         }
 
+
+        [HttpPost]
+        [Route("EditRecipe")]
+        public IActionResult EditRecipe([FromBody] EditRecipeViewModel model)
+        {
+            if (this._recipeService.EditRecipe(model))
+            { 
+                return Ok("Created!");
+            }
+            else
+            {
+                return BadRequest("INVALID!");
+            }
+        }
+       
+
         [HttpGet]
         [Route("ReadRecipeById")]
         public Recipe GetRecipeById(int RecipeId)

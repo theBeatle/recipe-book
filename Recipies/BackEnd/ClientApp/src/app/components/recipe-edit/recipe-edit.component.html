@@ -1,0 +1,33 @@
+<div class="container">
+  <h1 class="header">Editing recipe</h1>
+  <div class="row">
+    <div class="col-8">
+      <div class="input-group">
+        <input
+          type="text"
+          placeholder="Example: Napaleon cake"
+          class="form-control cs"
+        />
+        <div class="input-group-append">
+          <span class="input-group-text">Topic</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="input-group">
+        <select
+          class="custom-select cs"
+          [(ngModel)]="selectedCategory"
+          (change)="onChange()"
+        >
+          <option *ngFor="let c of categories" [ngValue]="c">{{
+            c.name
+          }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Category</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

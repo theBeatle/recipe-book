@@ -98,5 +98,43 @@ namespace BackEnd.Services
 
             return viewModel;
 
-        }}
+        }
+
+        public bool EditRecipe(EditRecipeViewModel model)
+        {
+            if (IsModelValid(model))
+            {
+                this._appDbContext.Recipes.Remove(this._appDbContext.Recipes.FirstOrDefault(x => x.Id == model.Id));
+
+                this._appDbContext.Recipes.Add(new Recipe()
+                {
+                    Category = this._appDbContext.Categories.FirstOrDefault(x => x.Id.ToString() == model.category),
+                    Country = this._appDbContext.Countries.FirstOrDefault(x => x.Id.ToString() == model.country),
+                    Description = model.Description,
+                    Topic = model.Topic,
+                    CreationDate = DateTime.Now,
+                    CookingProcess = model.CookingProcess,
+                });
+                this._appDbContext.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool IsModelValid(EditRecipeViewModel model)
+        {
+            var category = this._appDbContext.Categories.FirstOrDefault(x => x.Id.ToString() == model.category);
+            var country = this._appDbContext.Countries.FirstOrDefault(x => x.Id.ToString() == model.country);
+            if (category != null && country != null && !string.IsNullOrEmpty(model.Description) && !string.IsNullOrEmpty(model.Topic) && !string.IsNullOrEmpty(model.CookingProcess))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }
