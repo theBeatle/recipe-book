@@ -11,6 +11,7 @@ export class RecipeIngradientsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }
