@@ -1,2 +1,56 @@
 
-               
+    <div id="element"class="toast" role="alert" aria-live="polite" aria-atomic="true" data-delay="1000">
+            <div class="toast-header">
+                <strong class="mr-auto">Alert</strong>
+                <small>Just now</small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+              {{messege}}
+            </div>
+    </div>
+
+<div class="container">
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+        <div>
+            <label class="form-control-label" for="topic">Topic</label>
+            <input type="text" formControlName="topic" class="form-control" id="topic">
+            <div *ngIf="f.topic.touched && f.topic.errors" class="invalid-feedback">
+                <div *ngIf="f.topic.errors.required">Topic is required</div>
+            </div>
+        </div>
+        <div>
+            <label class="form-control-label" for="Desc">Description</label>
+            <textarea type="text" style="resize: none" formControlName="description" class="form-control"
+                id="Desc"></textarea>
+            <div *ngIf="f.description.touched && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">Description is required</div>
+            </div>
+        </div>
+        <div>
+            <label class="form-control-label" for="cookingProcess">cookingProcess</label>
+            <textarea type="text" style="resize: none" formControlName="cookingProcess" class="form-control"
+                id="cookingProcess"></textarea>
+            <div *ngIf="f.cookingProcess.touched && f.cookingProcess.errors" class="invalid-feedback">
+                <div *ngIf="f.cookingProcess.errors.required">cookingProcess is required</div>
+            </div>
+        </div>
+        <div>
+            <label for="country">Country</label>
+            <select  formControlName="country" class="form-control" id="country">
+                <option *ngFor="let item of CountryList" value="{{item.id}}">{{item.name}}</option>
+            </select>
+        </div>
+        <div>
+            <label for="category">Category</label>
+            <select  formControlName="category" class="form-control" id="category">
+                <option *ngFor="let item of CategoryList" value="{{item.id}}">{{item.name}}</option>
+            </select>
+        </div>
+        <br>
+        <button [disabled]="!recipeForm.valid" class="btn btn-primary col-12">ADD</button>
+    </form>
+</div>
+
