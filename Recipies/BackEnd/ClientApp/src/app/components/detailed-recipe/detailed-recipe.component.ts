@@ -33,7 +33,8 @@ export class DetailedRecipeComponent implements OnInit {
       
       
         this.recipe = w;
-        console.log(this.recipe.gallery);
+        console.log("topic: "+w.topic);
+        console.log(this.recipe.rating);
       
         this.creationdate="";
         this.creationdate= w.creationDate.toString().substring(0,10);

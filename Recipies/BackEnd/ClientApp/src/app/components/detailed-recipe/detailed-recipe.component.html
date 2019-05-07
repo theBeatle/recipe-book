@@ -16,12 +16,6 @@
         </div>
      
      
-     
-
-    
-     
-      
-
 
    
         <!-- <app-recipe-ingradients  [Ingradients]="recipe.ingradients"></app-recipe-ingradients>  -->
@@ -37,14 +31,22 @@
        </h2>
       
 
-     
-
+      
 
        <h2 >Count views:
               {{recipe.viewsCounter}}
        </h2>
       
-     
+    
+      <div>
+          <h2>Rating:</h2>
+          <app-rating [rating]="recipe.rating"  (ratingClick)='ratingComponentClick($event)'></app-rating>
+      </div>
+      
+      
+    
+
+      
       
    </div>
 
