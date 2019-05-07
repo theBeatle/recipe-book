@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataEditService } from '../../services/data-edit.service'
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserEditData } from '../../models/user-data-edit'
-import { HttpClient } from '@angular/common/http';
+import { ElementRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-data-edit',
@@ -11,43 +12,47 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataEditComponent implements OnInit {
 
+  // @ViewChild('PasswordConfirmation') PasswordConfirmation:ElementRef;
+
+  // @ViewChild('Age') Age:ElementRef;
+
+  // @ViewChild('FileInput') FileInput:ElementRef;
+
+
   UserEdit: FormGroup;
   submitted = false;
   countries = new Array();
 
-  constructor(private DES: DataEditService, private fb: FormBuilder, private httpService: HttpClient) { }
+  constructor(private DES: DataEditService, private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.httpService.get('countries.json').subscribe(
-      data => {
-        this.countries = data as string [];
-         console.log(this.countries[1]);
-      }
-    );
-
     this.UserEdit = this.fb.group({
-      FirstName: new FormControl(['', Validators.required]),
-      LastName: new FormControl(['', Validators.required]),
-      NickName: new FormControl(['', Validators.required]),
-      Password: new FormControl(['', Validators.required]),
-      PasswordConfiramtion: new FormControl(['', Validators.required]),
-      Email: new FormControl(['', Validators.required]),
-      Age: new FormControl(['', Validators.required]),
-      Image: new FormControl(['', Validators.required]),
-      Country: new FormControl(['', Validators.required])
+      FirstName: ['', Validators.required],
+      LastName: ['', Validators.required],
+      NickName: ['', Validators.required],
+      Password: ['', Validators.required],
+      Email: ['', Validators.required],
+      // Age: new FormControl(['', Validators.required]),
+      // Image: new FormControl(['', Validators.required]),
+      Country: ['', Validators.required]
     });
   }
 
-  UpdateUserData(){
+  updateUserData(){
+    // console.log(this.UserEdit.value); //.nativeElement.textContent);
+    // console.log(this.PasswordConfirmation.nativeElement.textContent);
+    console.log(this.UserEdit);
     this.submitted = true;
     if(this.UserEdit.invalid){
-      return;
+      return console.log('error');
     }
+    // this.UserEdit.setValue({Age: this.Age.nativeElement.textContent});
+    // this.UserEdit.setValue({Image: this.FileInput.nativeElement.files[0]});
     const contact = this.UserEdit.value;
-    this.UpdateUser(contact as UserEditData);
+    this.updateUser(contact as UserEditData);
   }
 
-  UpdateUser(user: UserEditData){
+  updateUser(user: UserEditData){
     this.DES.update(user).subscribe(
       () => { console.log('OK'); }
     );

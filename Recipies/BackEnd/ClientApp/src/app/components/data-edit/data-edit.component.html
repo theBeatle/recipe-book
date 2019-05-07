@@ -1,34 +1,36 @@
-<form [formGroup]="UserEdit" onsubmit="UpdateUserData()">
+<form [formGroup]="UserEdit" (ngSubmit)="updateUserData(UserEdit.value)">
   <div class="container">
-      <input placeholder="First Name" formGroupName="FirstName" class="form-control" />
+      <input placeholder="First Name" formControlName="FirstName" class="form-control" />
   
-      <input placeholder="Last Name" formGroupName="LastName" class="form-control" />
+      <input placeholder="Last Name" formControlName="LastName" class="form-control" />
     
-      <input placeholder="Nickname" formGroupName="NickName" class="form-control" />
+      <input placeholder="Nickname" formControlName="NickName" class="form-control" />
 
-      <input placeholder="Password" type="password" formGroupName="Password" class="form-control">
+      <input placeholder="Password" type="password" formControlName="Password" class="form-control">
 
-      <input placeholder="Password Confirmation" type="password" id="PasswordConfirmation" class="form-control">
+      <!-- <input placeholder="Password Confirmation" type="password" id="PasswordConfirmation" #PasswordConfirmation class="form-control"> -->
 
-      <input placeholder="Eamil" type="email" formGroupName="Email" class="form-control info">
+      <input placeholder="Email" type="email" formControlName="Email" class="form-control info">
     
-    <form class="form-inline" id="DateTimePicker">
+    <!-- <form class="form-inline" id="DateTimePicker"></form>
        <div class="form-group">
          <div class="input-group">
-           <input id="Age" class="form-control" placeholder="yyyy-mm-dd"
+           <input #Age id="Age" class="form-control" placeholder="yyyy-mm-dd"
                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
            <div class="input-group-append">
              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
            </div>
          </div>
        </div>
-     </form>
+     </form> -->
 
-     <input id="FileInput" type="file" class="btn btn-primary">
+     <!-- <input #FileInput id="FileInput" type="file" class="btn btn-primary"> -->
 
-     <input placeholder="Country" id="Typehead" id="typeahead-basic" type="text" class="form-control" [(ngModel)]="model" [ngbTypeahead]="search"/>
+     <input placeholder="Country" formControlName="Country" id="Typehead" type="text" class="form-control"/>
 
-     <input id="SubmitButton" class="btn btn-primary" type="submit">
+     <button id="SubmitButton" class="btn btn-primary" type="submit" >Send</button>
 
    </div>
 </form>
+
+<!-- [(ngModel)]="model" [ngbTypeahead]="search" -->

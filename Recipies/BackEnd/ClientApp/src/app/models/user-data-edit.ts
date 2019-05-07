@@ -3,9 +3,9 @@ export class UserEditData {
     LastName: string;
     NickName: string;
     Password: string;
-    PasswordConfiramtion: string;
     Email: string;
-    Age: Date;
-    Image: Array<string>
+    // Age: Date;
+    // Image: ImageBitmap;
+    Country: string;
   }
   

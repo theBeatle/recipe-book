@@ -16,7 +16,9 @@ export class DataEditService {
   constructor(private http: HttpClient){ }
 
   update(user: UserEditData): Observable<UserEditData>{
-    return this.http.post<UserEditData>(this.url + '/api/UserDataEdit/update/', user, this.httpOptions);
+    console.log(user);
+
+    return this.http.put<UserEditData>(this.url + '/api/UserDataEdit/update/', user, this.httpOptions);
   }
 
 }
