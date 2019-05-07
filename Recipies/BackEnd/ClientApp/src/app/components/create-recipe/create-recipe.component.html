@@ -16,14 +16,14 @@
     <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
         <div>
             <label class="form-control-label" for="topic">Topic</label>
-            <input type="text" formControlName="topic" class="form-control" id="topic">
+            <input type="text" formControlName="topic" [className]="f.topic.errors ? 'form-control is-invalid' : 'form-control is-valid'" id="topic">
             <div *ngIf="f.topic.touched && f.topic.errors" class="invalid-feedback">
                 <div *ngIf="f.topic.errors.required">Topic is required</div>
             </div>
         </div>
         <div>
             <label class="form-control-label" for="Desc">Description</label>
-            <textarea type="text" style="resize: none" formControlName="description" class="form-control"
+            <textarea type="text" style="resize: none" formControlName="description" [className]="f.description.errors ? 'form-control is-invalid' : 'form-control is-valid'"
                 id="Desc"></textarea>
             <div *ngIf="f.description.touched && f.description.errors" class="invalid-feedback">
                 <div *ngIf="f.description.errors.required">Description is required</div>
@@ -31,7 +31,7 @@
         </div>
         <div>
             <label class="form-control-label" for="cookingProcess">cookingProcess</label>
-            <textarea type="text" style="resize: none" formControlName="cookingProcess" class="form-control"
+            <textarea type="text" style="resize: none" formControlName="cookingProcess" [className]="f.cookingProcess.errors ? 'form-control is-invalid' : 'form-control is-valid'"
                 id="cookingProcess"></textarea>
             <div *ngIf="f.cookingProcess.touched && f.cookingProcess.errors" class="invalid-feedback">
                 <div *ngIf="f.cookingProcess.errors.required">cookingProcess is required</div>
