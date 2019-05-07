@@ -9,7 +9,7 @@ import { Recipe } from './models/recipe';
 })
 export class AppComponent {
   title = 'app';
- // recipes: Array<Recipe>;
+
 
   
 }

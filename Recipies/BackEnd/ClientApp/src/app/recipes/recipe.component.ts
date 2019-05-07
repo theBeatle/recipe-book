@@ -26,12 +26,15 @@ export class RecipeComponent implements OnInit {
     
   loadRecipes() {
     this.recipeService.getRecipes()
-    .subscribe((data: Recipe[]) => this.recipes = data);
+    .subscribe((data: Recipe[]) => {this.recipes = data; console.log(data)});
     }
   
-  deleteRecipe(p: Recipe) {
-    this.recipeService.deleteRecipe(p.Id)
-        .subscribe(data => this.loadRecipes());
+    deleteRecipe (event) {
+    let id = event.target.getAttribute('id');
+    console.log("Checking passed item: ",event.target.getAttribute('id'));
+    console.log("Checking passed item: ",event.target);
+    this.recipeService.deleteRecipe(id)
+         .subscribe(data => this.loadRecipes());
 
  }
   
