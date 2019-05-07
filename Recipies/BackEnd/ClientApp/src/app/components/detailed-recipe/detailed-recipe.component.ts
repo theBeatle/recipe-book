@@ -18,7 +18,7 @@ export class DetailedRecipeComponent implements OnInit {
   constructor(private rS:RecipeService) {  }
   
   ngOnInit() {
-    this.GetRecipeById('1');
+    this.GetRecipeById('43');
   
    
     
@@ -29,9 +29,12 @@ export class DetailedRecipeComponent implements OnInit {
    
     
     this.rS.getRecipeById(recipeId).subscribe( w => {
+      
+        console.log("topic:"+w.topic);
         this.recipe = w;
         this.creationdate="";
         this.creationdate= w.creationDate.toString().substring(0,10);
+       
         
     });
     
