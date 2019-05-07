@@ -104,7 +104,8 @@ namespace BackEnd.Services
         {
             if (IsModelValid(model))
             {
-                this._appDbContext.Recipes.Remove(this._appDbContext.Recipes.FirstOrDefault(x => x.Id == model.Id));
+
+
 
                 this._appDbContext.Recipes.Add(new Recipe()
                 {
@@ -114,7 +115,9 @@ namespace BackEnd.Services
                     Topic = model.Topic,
                     CreationDate = DateTime.Now,
                     CookingProcess = model.CookingProcess,
+                    User = this._appDbContext.Recipes.FirstOrDefault(x => x.Id == model.Id).User,
                 });
+                this._appDbContext.Recipes.Remove(this._appDbContext.Recipes.FirstOrDefault(x => x.Id == model.Id));
                 this._appDbContext.SaveChanges();
                 return true;
             }

@@ -1,6 +1,6 @@
 import { Category } from './../models/category';
 import { Country } from './../models/country';
-
+import { EditRecipe } from './../models/edit-recipe.viewmodel';
 import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
@@ -25,6 +25,14 @@ export class RecipeService {
   getCountries(): Observable<Category[]> {
     return this.http.get<Country[]>(HOST_URL + '/api/Recipe/getCountries');
   }
+  getRecipeById(id: number) {
+    return this.http.get<Recipe>(HOST_URL + '/api/Recipe/getRecipeById?RecipeId=' + id);
+  }
+
+  editRecipe(model: EditRecipe) {
+    return this.http.post(HOST_URL + '/api/Recipe/EditRecipe' , model);
+  }
+
   // all?category=1&name=shit&page=1&sortOrder=1
   getAllRecipies(
     page: number,
