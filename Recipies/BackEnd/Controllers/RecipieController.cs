@@ -53,16 +53,14 @@ namespace BackEnd.Controllers
         public IActionResult GetRecipeById(int RecipeId)
         {
 
-            
 
-           
+
+
 
             Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
-            recipe.Gallery= new Gallery {  Photos = new List<Photo> { new Photo { Path = "https://gastronomicallyyours.blog/wp-content/uploads/2019/01/Chettinad-Chicken-Masala.jpg" }, new Photo { Path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvW-Ugj6_2WJ8L49MVU5xIg9zIltCAc_FU9IgO9TqJd04d3ngD" }, new Photo { Path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHXgRyhGZ1yKUbxhIk_g-CxEDF_t2ayNvR7B0lcryBOYGyy5Z2aQ"} } };
-            recipe.Country = new Country { Name = "Ukraine" };
-            recipe.Category = new Category { Name = "FLAVOURS OF CHETTINAD" };
-          
-           
+            recipe.Gallery = new Gallery {  Photos = new List<Photo> { new Photo { Path = "https://gastronomicallyyours.blog/wp-content/uploads/2019/01/Chettinad-Chicken-Masala.jpg" }, new Photo { Path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvW-Ugj6_2WJ8L49MVU5xIg9zIltCAc_FU9IgO9TqJd04d3ngD" }, new Photo { Path = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHXgRyhGZ1yKUbxhIk_g-CxEDF_t2ayNvR7B0lcryBOYGyy5Z2aQ" } } };
+            recipe.Category = new Category {  Name = "FLAVOURS OF CHETTINAD" };
+            recipe.Country = new Country {  Name = "Ukraine" };
             if (recipe == null)
                 return NotFound();
             return new ObjectResult(recipe);
