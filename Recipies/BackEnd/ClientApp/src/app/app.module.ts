@@ -35,6 +35,7 @@ import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-r
 
 
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
+import { RatingComponent } from './recipe-detailed-info-components/rating/rating.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +57,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     LoaderComponent,
     ContactUsComponent,
     RecipeFeedbackComponent,
+    RatingComponent,
   ],
 
   imports: [
@@ -71,6 +73,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+   
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'counter', component: CounterComponent },
