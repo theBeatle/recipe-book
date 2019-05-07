@@ -43,7 +43,7 @@ export class CreateRecipeComponent implements OnInit {
     );
     this.recipeForm.reset();
     if (this.messege != null) {
-        $('#element').toast('show');
+    //    $('#element').toast('show');
     }
   }
 

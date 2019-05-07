@@ -21,6 +21,7 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RecipeService } from './services/recipe.service';
 
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
@@ -38,6 +39,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     LoaderComponent,
     ContactUsComponent,
     RecipeFeedbackComponent,
+    CreateRecipeComponent,
   ],
 
   imports: [
