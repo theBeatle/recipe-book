@@ -68,6 +68,21 @@ namespace BackEnd.Migrations
                     b.ToTable("Countries");
                 });
 
+            modelBuilder.Entity("BackEnd.Models.FeedBackMessage", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FeedBackMessages");
+                });
+
             modelBuilder.Entity("BackEnd.Models.Gallery", b =>
                 {
                     b.Property<int>("Id")

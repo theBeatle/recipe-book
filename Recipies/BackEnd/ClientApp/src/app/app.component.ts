@@ -7,9 +7,15 @@ import { Recipe } from './models/recipe';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
+
+
+
 export class AppComponent {
   title = 'app';
 
 
   
+}
+export class RecipeInfoComponent {
+  title = 'RecipeInfoComponent';
 }

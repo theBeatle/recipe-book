@@ -17,6 +17,7 @@ using System.Net;
 using BackEnd.Services.JWT.Auth;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using BackEnd.Services;
 
 namespace BackEnd
 {
@@ -46,6 +47,7 @@ namespace BackEnd
             services.AddAutoMapper();
 
             var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+
 
             services.AddCors(options =>
             {
@@ -106,6 +108,10 @@ namespace BackEnd
             });
 
             services.AddMvc();
+            //Adding project services
+            services.AddScoped<RecipeService>();
+
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
