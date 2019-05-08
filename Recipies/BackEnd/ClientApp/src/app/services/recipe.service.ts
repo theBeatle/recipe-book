@@ -2,12 +2,7 @@ import { Category } from './../models/category';
 import { Country } from './../models/country';
 
 import { map } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Recipe } from '../models/recipe';
-import { Observable } from 'rxjs';
-import { HOST_URL } from '../../app/config';
 import { RecipeModel } from '../models/recipe-model';
 import { AuthenticationService } from './authentication.service';
 
@@ -27,6 +22,9 @@ export class RecipeService {
     return this.http.get<Country[]>(HOST_URL + '/api/Recipe/getCountries');
   }
   // all?category=1&name=shit&page=1&sortOrder=1
+    getRecipes():Observable<Recipe[]> {
+      return this.http.get<Recipe[]>(this.url+'/api/Recipe/getRecipes')
+   }
   getAllRecipies(
     page: number,
     category?: number,
@@ -60,6 +58,11 @@ export class RecipeService {
     model.uid = this.aS.currentUserValue.id;
     return this.http.post(HOST_URL + '/api/Recipe/CreateRecipe', model);
   }
+
+
+  deleteRecipe(id: number) {
+   return this.http.delete(this.url + '/api/Recipe/' + id);
+  }
 }
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -68,20 +71,4 @@ import { Observable } from 'rxjs';
 import { Recipe} from '../models/recipe';
 import { HOST_URL } from '../../app/config';
 
-@Injectable()
-export class RecipeService {
 
-  url = HOST_URL;
-  
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
-  
-  constructor(private http: HttpClient) { }
-
-  getRecipes():Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.url+'/api/Recipe/getRecipes')
-  }
-
-  deleteRecipe(id: number) {
-   return this.http.delete(this.url + '/api/Recipe/' + id);
-  }
-}

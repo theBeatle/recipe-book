@@ -25,7 +25,7 @@ export class RecipeComponent implements OnInit {
   }
     
   loadRecipes() {
-    this.recipeService.getRecipes()
+     this.recipeService.getRecipes()
     .subscribe((data: Recipe[]) => {this.recipes = data; console.log(data)});
     }
   
@@ -39,5 +39,3 @@ export class RecipeComponent implements OnInit {
  }
   
 }                                   
-
-// /api/Recipe/GetRecipes
