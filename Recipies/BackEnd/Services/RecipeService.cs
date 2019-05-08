@@ -107,17 +107,18 @@ namespace BackEnd.Services
 
 
 
-                this._appDbContext.Recipes.Add(new Recipe()
-                {
-                    Category = this._appDbContext.Categories.FirstOrDefault(x => x.Id.ToString() == model.category),
-                    Country = this._appDbContext.Countries.FirstOrDefault(x => x.Id.ToString() == model.country),
-                    Description = model.Description,
-                    Topic = model.Topic,
-                    CreationDate = DateTime.Now,
-                    CookingProcess = model.CookingProcess,
-                    User = this._appDbContext.Recipes.FirstOrDefault(x => x.Id == model.Id).User,
-                });
-                this._appDbContext.Recipes.Remove(this._appDbContext.Recipes.FirstOrDefault(x => x.Id == model.Id));
+                var edited = this._appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a => a.User).FirstOrDefault(res => res.Id == model.Id);
+
+                edited.Category = this._appDbContext.Categories.FirstOrDefault(x => x.Name == model.Category);
+                edited.Country = this._appDbContext.Countries.FirstOrDefault(x => x.Name == model.Country);
+                edited.Description = model.Description;
+                edited.Topic = model.Topic;
+                edited.CreationDate = DateTime.Now;
+                edited.CookingProcess = model.CookingProcess;
+                edited.User = this._appDbContext.Recipes.FirstOrDefault(x => x.Id == model.Id).User;
+
+                this._appDbContext.Recipes.Attach(edited);
+                this._appDbContext.Entry(edited).State = EntityState.Modified;
                 this._appDbContext.SaveChanges();
                 return true;
             }
@@ -128,8 +129,8 @@ namespace BackEnd.Services
         }
         private bool IsModelValid(EditRecipeViewModel model)
         {
-            var category = this._appDbContext.Categories.FirstOrDefault(x => x.Id.ToString() == model.category);
-            var country = this._appDbContext.Countries.FirstOrDefault(x => x.Id.ToString() == model.country);
+            var category = this._appDbContext.Categories.FirstOrDefault(x => x.Name == model.Category);
+            var country = this._appDbContext.Countries.FirstOrDefault(x => x.Name == model.Country);
             if (category != null && country != null && !string.IsNullOrEmpty(model.Description) && !string.IsNullOrEmpty(model.Topic) && !string.IsNullOrEmpty(model.CookingProcess))
             {
                 return true;
