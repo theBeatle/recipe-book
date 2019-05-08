@@ -1,4 +1,6 @@
-import {Component} from '@angular/core/'
+import { User } from './../../models/user';
+import { ProfileService } from './../../services/profile.service';
+import {Component, OnInit} from '@angular/core/';
 
 
 
@@ -9,15 +11,14 @@ import {Component} from '@angular/core/'
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
 })
-export class UserProfileComponent  {
-  title="app";
-  val: number=3;
- 
-    
-      gOnInit() {
-  }
- 
- 
+export class UserProfileComponent implements OnInit {
+ user: User;
+ constructor(private pS: ProfileService) {}
+ ngOnInit() {
+  this.pS.getUserInfo().subscribe((x) => {
+    this.user = x as User;
+  });
+}
 }
 
 

@@ -6,7 +6,7 @@
     background-repeat: no-repeat;
     width: 100%;
     padding: 0;
-  
+
     }
   .stPhotoUser{
     opacity: 0.9;
@@ -22,7 +22,7 @@
 .stLi{
   position: relative;
   left: 1.6rem;
-  
+
 }
 .StUls {
 width: 900px;
@@ -41,6 +41,16 @@ display: inline-block;
 .storange{
  color:rgb(180, 82, 2);
 }
-.stCard{ 
+.stCard{
   height: 250px;
 }
+.divv{
+  /* https://i.pinimg.com/originals/33/d4/b5/33d4b5305f347050697fec9388a2e7ea.jpg */
+  background-image: url("https://7770003.ru/netcat_files/957_90905.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  /* color: white; */
+  height: 75rem;
+  }

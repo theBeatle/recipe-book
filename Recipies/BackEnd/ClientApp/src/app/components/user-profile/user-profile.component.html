@@ -1,6 +1,5 @@
- 
-<div class="container">
- 
+
+<div class="container divv">
   <div >
     <div class="row">
       <div class="col-sm-12">
@@ -9,22 +8,22 @@
             <div class="row">
                 <div class="col-sm-4">
        <ul class="StUls" style="list-style-type: none;" >
-       
+
          <li class=" StLis">
            <img  class="stPhotoUser" src="https://upload.wikimedia.org/wikipedia/commons/1/1a/V_logo.png">
          </li>
-        <li class=" StLis"><h4 class="stLi">UserName:</h4></li>
-        <li class=" StLis"><h4 class="stLi" >LastName:</h4></li>
+        <li class=" StLis"><h4 class="stLi">UserName: {{user.firstName}}</h4></li>
+        <li class=" StLis"><h4 class="stLi" >LastName: {{user.lastName}}</h4></li>
         <li style="color:white;">
-          
+
          </li>
-      
+
        </ul>
       </div>
             </div>
           </div>
         </section>
-    
+
     </div>
 <div class="container">
     <ul class="nav nav-tabs" routerLinkActive="active">
@@ -41,7 +40,7 @@
         <a class="nav-link" routerLink="/favourite-recipes">Favourite recipes</a>
       </li>
     </ul>
-  </div>  
+  </div>
   <div class="container ">
     <div class="text-primary" style="text-align:center;">
         <h3>It's your profile</h3>
@@ -51,35 +50,30 @@
         </div>
       <div class="row">
 
-          <div class="col-sm-4">
-          <p><span class="text-primary">N</span>ickName<span class="text-primary">:</span></p>
+          <div class="col-sm-3">
+          <p><span class="text-primary">N</span>ickName<span class="text-primary">:{{user.NickName}}</span></p>
           </div>
-          <div class="col-sm-4">
-          <p><span class="text-primary">U</span>serName<span class="text-primary">:</span></p>
+          <div class="col-sm-3">
+          <p><span class="text-primary">U</span>serName<span class="text-primary">:{{user.firstName}}</span></p>
           </div>
-          <div class="col-sm-4">
-          <p><span class="text-primary">L</span>astName<span class="text-primary">:</span></p>
+          <div class="col-sm-3">
+          <p><span class="text-primary">L</span>astName<span class="text-primary">:{{user.lastName}}</span></p>
           </div>
       </div>
       <div class="row">
-          <div class="col-sm-4">
-          <p><span class="text-primary">E</span>-mail<span class="text-primary">:</span></p>
-          </div>
-          <div class="col-sm-4">
-          <p><span class="text-primary">C</span>ountry<span class="text-primary">:</span></p>
-          </div>
-          <div class="col-sm-4">
-          <p><span class="text-primary">R</span>aiting<span class="text-primary">:</span></p>
+
+          <div class="col-sm-3">
+          <p><span class="text-primary">R</span>aiting<span class="text-primary">:{{user.Raiting}}</span></p>
           </div>
       </div>
     </div>
-    
-  </div>
- 
-    
 
   </div>
-  
+
+
+
+  </div>
+
 <div>
     <div class="text-primary" style="text-align:center;">
         <h3>Your posibility</h3>
@@ -100,9 +94,9 @@
           <p class="card-text">-You can write a review</p>
         </div>
       </div>
-     
+
       </div>
-   
+
       <div class="col-sm-4">
         <div class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem;">
           <div class="card-header">Rules</div>
@@ -111,7 +105,7 @@
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
         </div>
-        
+
       </div>
       <div class="col-sm-4">
           <div class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem;">
@@ -121,7 +115,7 @@
               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
           </div>
-          
+
         </div>
 
     </div>
@@ -130,6 +124,6 @@
       </div>
 </div>
 
-   
+
 
 

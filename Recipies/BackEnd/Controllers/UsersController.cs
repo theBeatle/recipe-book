@@ -6,7 +6,7 @@ using BackEnd.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 
 namespace BackEnd.Controllers
@@ -42,6 +42,14 @@ namespace BackEnd.Controllers
             {
                 return BadRequest("User not found");
             }
+        }
+        [HttpGet("{id}", Name = "GetRecipeByUserID")]
+        [Authorize]
+        public IEnumerable<Recipe> GetRecipeByUserID(string id)
+        {
+            var list = new List<Recipe>();
+            list = this._appDbContext.Recipes.Include("User").Where(x => x.User.Id == id).ToList();
+            return list;
         }
     }
 }
