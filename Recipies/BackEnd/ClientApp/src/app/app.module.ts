@@ -90,7 +90,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
       { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationFormComponent },
-      { path: 'user-profile', component: UserProfileComponent },
+      { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
       {path : 'editprofile', component: EditprofileComponent},
       {path : 'myrecipes', component: MyrecipesComponent},
       {path : 'favourite-recipes', component: FavouriteRecipesComponent},

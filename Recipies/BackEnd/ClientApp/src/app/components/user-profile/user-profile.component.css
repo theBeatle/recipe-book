@@ -54,3 +54,9 @@ display: inline-block;
   /* color: white; */
   height: 100%;
   }
+  .descr{
+    width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }

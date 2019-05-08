@@ -131,16 +131,17 @@
       <div class="container">
           <div style="margin-top: 10px;">
       <div class="row" >
-          <div class="col-sm-4">
-      <div *ngFor="let item of myRecipes" class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem;">
-          <div class="card-header">Test</div>
-          <div class="card-body">
+
+      <div *ngFor="let item of myRecipes" class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem; margin: 5px; margin-left: 4%;">
+
+        <div class="card-header" style="width: 300px; height: 300px; ">Recipe</div>
+          <div class="card-body " style="width: 300px; height: 300px; ">
             <h4 class="card-title">Topic: {{item.topic}}</h4>
-            <p class="card-text">Description: {{item.description}}</p>
+            <p class="card-text descr" >Description: {{item.description}}</p>
             <p class="card-text">Country: {{item.countryName}}</p>
             <p class="card-text">Category: {{item.categoryName}}</p>
           </div>
-        </div>
+
 
         </div>
 
