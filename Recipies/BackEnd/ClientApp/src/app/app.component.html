@@ -5,50 +5,12 @@
     }
   </style>
   <app-nav-menu></app-nav-menu>
-  <div class="form-gap"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="text-center">
-              <h2 class="text-center">Forgot Password?</h2>
-              <p>You can reset your password here.</p>
-              <div class="panel-body">
+  <div>
 
-                <form id="register-form" role="form" autocomplete="off" class="form" method="post">
+    <router-outlet></router-outlet>
 
-                  <div class="form-group">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                      <input id="email" name="email" placeholder="email address" class="form-control" type="email">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="submit">
-                  </div>
-
-                </form>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
-  <script>
-    function send() {
-      $.ajax({
-        type: 'POST',
-        url: '/',
-        data: {
-          'email': 'bar',
-        },
-        success: function (msg) {
-          alert('wow' + msg);
-        }
-      });
-    }
-  </script>
+
+
+
 </body>
