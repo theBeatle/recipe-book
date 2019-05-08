@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using BackEnd.ViewModels.RecipeViewModels;
 
 namespace BackEnd.Controllers
 {
@@ -44,11 +45,22 @@ namespace BackEnd.Controllers
             }
         }
         [HttpGet("{id}", Name = "GetRecipeByUserID")]
-        [Authorize]
-        public IEnumerable<Recipe> GetRecipeByUserID(string id)
+   
+        public IEnumerable<RecipeListViewModel> GetRecipeByUserID(string id)
         {
-            var list = new List<Recipe>();
-            list = this._appDbContext.Recipes.Include("User").Where(x => x.User.Id == id).ToList();
+            var list = new List<RecipeListViewModel>();
+            foreach(var el in this._appDbContext.Recipes.Include(x=>x.Category).Include(x=>x.Country).Include(x=>x.User).Where(x=>x.User.Id == id).ToList())
+            {
+                list.Add(new RecipeListViewModel
+                {
+                    CategoryName = el.Category.Name,
+                    CountryName = el.Country.Name,
+                    Topic = el.Topic,
+                    Description = el.Description,
+                    CookingProcess = el.CookingProcess,
+                    CreationDate = el.CreationDate,
+                });
+            }
             return list;
         }
     }

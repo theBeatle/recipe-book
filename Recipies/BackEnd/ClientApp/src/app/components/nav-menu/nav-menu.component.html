@@ -15,6 +15,9 @@
                 <a class="nav-link " [routerLink]='["/fetch-data"]'>Fetch data</a>
               </li>
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
+                  <a class="nav-link " [routerLink]='["/user-profile"]'> User profile</a>
+                </li>
+              <li class="nav-item" [routerLinkActive]='["link-active"]'>
                 <a class="nav-link " [routerLink]='["/recipe-list"]'>All Recipies</a>
               </li>
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
@@ -38,7 +41,7 @@
         </li>
       </ng-template>
 
-      <li class="nav-item" [routerLinkActive]='[link-active]'>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
         <a class="nav-link" [routerLink]='["/contact"]'>Contact us</a>
       </li>
 

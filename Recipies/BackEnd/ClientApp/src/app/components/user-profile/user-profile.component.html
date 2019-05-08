@@ -122,7 +122,30 @@
 
   </div>
       </div>
+      <div class="text-primary" style="text-align:center;">
+          <h3>Your Recipes</h3>
+        </div>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+      <div class="container">
+          <div style="margin-top: 10px;">
+      <div class="row" >
+          <div class="col-sm-4">
+      <div *ngFor="let item of myRecipes" class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem;">
+          <div class="card-header">Test</div>
+          <div class="card-body">
+            <h4 class="card-title">Topic: {{item.topic}}</h4>
+            <p class="card-text">Description: {{item.description}}</p>
+            <p class="card-text">Country: {{item.countryName}}</p>
+            <p class="card-text">Category: {{item.categoryName}}</p>
+          </div>
+        </div>
+
+        </div>
+
 </div>
+
 
 
 

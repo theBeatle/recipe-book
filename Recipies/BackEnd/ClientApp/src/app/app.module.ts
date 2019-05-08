@@ -34,7 +34,6 @@ import { FavouriteRecipesComponent } from './favourite-recipes/favourite-recipes
 //       path: 'editprofile',
 //       component: EditprofileComponent
 //   }
-  
 // ];
 import { LoaderComponent } from './components/recipe-list/loader/loader.component';
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
@@ -99,7 +98,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
 
       { path: 'contact', component: ContactUsComponent}
     ])
-  ],  
+  ],
   providers: [
     HttpClientModule,
     FetchDataComponent,
