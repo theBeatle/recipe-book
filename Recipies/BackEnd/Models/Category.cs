@@ -11,4 +11,3 @@ namespace BackEnd.Models
         public string Name { get; set; }
     }
 }
-s
