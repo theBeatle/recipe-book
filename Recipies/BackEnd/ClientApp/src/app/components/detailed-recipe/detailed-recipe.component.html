@@ -1,3 +1,5 @@
+
+
 <div class="container-fluid" style="margin-top:2rem;">
 
   <div class="row">
@@ -14,15 +16,6 @@
         </div>
      
      
-     
-
-    
-      <!-- <div style="margin-top:3rem">
-          <h2>Description:</h2>
-          <p class="p-description">{{recipe.description}}</p>
-      </div> -->
-      
-
 
    
         <!-- <app-recipe-ingradients  [Ingradients]="recipe.ingradients"></app-recipe-ingradients>  -->
@@ -38,14 +31,22 @@
        </h2>
       
 
-       <input id="input-1" name="input-1" class="rating rating-loading" data-min="0" data-max="5" data-step="1" value="1" data-size="xs">
-
+      
 
        <h2 >Count views:
               {{recipe.viewsCounter}}
        </h2>
       
-     
+    
+      <div>
+          <h2>Rating:</h2>
+          <app-rating [rating]="recipe.rating"  (ratingClick)='ratingComponentClick($event)'></app-rating>
+      </div>
+      
+      
+    
+
+      
       
    </div>
 

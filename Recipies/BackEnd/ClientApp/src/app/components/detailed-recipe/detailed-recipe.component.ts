@@ -4,6 +4,7 @@ import { RecipeService } from '../../services/recipe.service';
 import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-detailed-recipe',
   templateUrl: './detailed-recipe.component.html',
@@ -18,7 +19,7 @@ export class DetailedRecipeComponent implements OnInit {
   constructor(private rS:RecipeService) {  }
   
   ngOnInit() {
-    this.GetRecipeById('43');
+    this.GetRecipeById('49');
   
    
     
@@ -30,8 +31,11 @@ export class DetailedRecipeComponent implements OnInit {
     
     this.rS.getRecipeById(recipeId).subscribe( w => {
       
-        console.log("topic:"+w.topic);
+      
         this.recipe = w;
+        console.log("topic: "+w.topic);
+        console.log(this.recipe.rating);
+      
         this.creationdate="";
         this.creationdate= w.creationDate.toString().substring(0,10);
        
