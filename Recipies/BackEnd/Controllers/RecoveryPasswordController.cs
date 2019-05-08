@@ -10,6 +10,7 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -54,11 +55,35 @@ namespace BackEnd.Controllers
                 //Generate reset link
                 var resetLink = "https://localhost:44385/api/ConfirmRecovery/confirm-recovery?userId=" + user.Id + "&code=" + HttpUtility.UrlEncode(code);
 
-                return Content(resetLink);
+                //Send recovery email
+                sendEmail(user.Email, resetLink);
+
+                return Content("Reset link was sent!");
             }
 
             return Content("Error! Check your Email.");
         }
 
+        //Send recovery email
+        public void sendEmail(String to, String resetLink)
+        {
+            MailMessage mm = new MailMessage();
+            SmtpClient smtp = new SmtpClient();
+
+            mm.From = new MailAddress("From", "recipiesmail2@gmail.com", System.Text.Encoding.UTF8);
+            mm.To.Add(new MailAddress(to));
+            mm.Subject = "New Password";
+            mm.Body = "Your reset link: " + resetLink;
+            mm.IsBodyHtml = true;
+            smtp.Host = "smtp.gmail.com";
+            smtp.EnableSsl = true;
+            System.Net.NetworkCredential NetworkCred = new System.Net.NetworkCredential();
+            NetworkCred.UserName = "recipiesmail2@gmail.com";
+            NetworkCred.Password = "P@4kf33re";
+            smtp.UseDefaultCredentials = true;
+            smtp.Credentials = NetworkCred;
+            smtp.Port = 587;
+            smtp.Send(mm);
+        }
     }
 }
