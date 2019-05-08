@@ -41,8 +41,8 @@ namespace BackEnd.Controllers
 
             if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
 
-            await _appDbContext.Users.AddAsync(new User { IdentityId = userIdentity.Id });
-            await _appDbContext.SaveChangesAsync();
+           // await _appDbContext.Users.AddAsync(new User { IdentityId = userIdentity.Id });
+           // await _appDbContext.SaveChangesAsync();
 
             return new OkObjectResult("Account created");
         }
