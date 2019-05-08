@@ -23,13 +23,13 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
-//mycomponents
+
 
 import { RecipeGalleriaComponent } from './recipe-detailed-info-components/recipe-galleria/recipe-galleria.component';
 import { RecipeIngradientsComponent } from './recipe-detailed-info-components/recipe-ingradients/recipe-ingradients.component';
 import { RecipeDirectionsComponent } from './recipe-detailed-info-components/recipe-directions/recipe-directions.component';
 
-//myservices
+
 import { RecipeService } from './services/recipe.service';
 import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-recipe.component';
 

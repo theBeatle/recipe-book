@@ -26,6 +26,14 @@ export class RecipeService {
   
   }
 
+
+
+  updateRecipeViewsCounter(RecipeId:string,ViewsCounter:number): void {
+    
+  this.http.post(this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+ RecipeId,ViewsCounter); 
+  
+  }
+
   recipies: Observable<Recipe[]>;
 
   constructor(private http: HttpClient) {}
