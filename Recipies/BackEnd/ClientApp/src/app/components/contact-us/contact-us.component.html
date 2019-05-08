@@ -1,9 +1,10 @@
 <div class="card">
-  <div class="card-header text-center">
-      <h5>
+    <div class="alert alert-secondary text-center" role="alert">
+        <h5>
           You can send feedback about our app!
-      </h5>
-  </div>
+        </h5>
+      </div>
+      
   <div class="card-body">
       <form [formGroup]="messageForm" (ngSubmit)="onFormSubmit(messageForm.value)">
           <div class="form-group">
@@ -16,9 +17,16 @@
           </div>
       </form>
   </div>
-
-  <h1>TEST</h1>
     
+</div>
+<div>
+  <div class="alert alert-secondary text-center" role="alert">
+    <h5>
+      Contact us!
+    </h5>
+  </div>
+  
+  flex
 </div>
 
 
