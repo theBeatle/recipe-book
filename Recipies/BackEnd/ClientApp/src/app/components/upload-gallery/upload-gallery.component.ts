@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HttpEventType, HttpClient } from '@angular/common/http';
+import { GalleryService } from './../../services/gallery.service';
 
 @Component({
   selector: 'app-upload-gallery',
@@ -11,23 +12,26 @@ export class UploadGalleryComponent implements OnInit {
   public progress: number;
   public message: string;
 
+  @Input('recipeId') recipeId: number;
+
+
   @Output() public OnUploadFinished = new EventEmitter();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private gS: GalleryService) { }
 
   ngOnInit() {
+
   }
 
   public uploadFile = (files) => {
     if (files.length === 0) {
       return;
     }
-
-    let fileToUpload = <File>files[0];
+    const fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
 
-    this.http.post('https://localhost:44385/api/Gallery/UploadGallery?RecipeId='+ 60, formData, { reportProgress: true, observe: 'events' })
+    this.gS.uploadPhoto(this.recipeId, formData)
       .subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           this.progress = Math.round(100 * event.loaded / event.total);

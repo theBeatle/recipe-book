@@ -21,7 +21,7 @@ export class RecipeEditComponent implements OnInit {
   oldRecipe: Recipe;
   newRecipe: EditRecipe;
 
-  oldId: number;
+  id: number;
   topic: string;
   category: Category;
   country: Country;
@@ -38,7 +38,7 @@ export class RecipeEditComponent implements OnInit {
       this.rS.getRecipeById(48).subscribe(res => {
       this.oldRecipe = res;
       this.topic = res.topic;
-      this.oldId = res.id;
+      this.id = res.id;
       this.category = this.categories.find(s => s.name === res.categoryName);
       this.country = this.countries.find(s => s.name === res.countryName);
       this.cookProc = res.cookingProcess;
@@ -56,7 +56,7 @@ export class RecipeEditComponent implements OnInit {
 
   defaultClick() {
     this.topic = this.oldRecipe.topic;
-      this.oldId = this.oldRecipe.id;
+      this.id = this.oldRecipe.id;
       this.category = this.categories.find(s => s.name === this.oldRecipe.categoryName);
       this.country = this.countries.find(s => s.name === this.oldRecipe.countryName);
       this.cookProc = this.oldRecipe.cookingProcess;
@@ -64,7 +64,7 @@ export class RecipeEditComponent implements OnInit {
   }
   modifyClick() {
     this.newRecipe = new EditRecipe();
-    this.newRecipe.id = this.oldId;
+    this.newRecipe.id = this.id;
     this.newRecipe.topic = this.topic;
     this.newRecipe.category = this.category.name;
     this.newRecipe.country = this.country.name;
