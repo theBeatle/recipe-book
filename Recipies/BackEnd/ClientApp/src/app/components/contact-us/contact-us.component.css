@@ -29,4 +29,9 @@
 
 a[href]{
     margin-left: 0.5rem;
+    color:darkslategray;
+}
+a[href]:hover{
+    margin-left: 0.5rem;
+    color:#5a5753;
 }
