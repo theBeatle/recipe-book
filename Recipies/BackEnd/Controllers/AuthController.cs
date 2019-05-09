@@ -11,6 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using System.Linq;
+
+
 
 namespace BackEnd.Controllers
 {
@@ -18,8 +21,8 @@ namespace BackEnd.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-       
-      
+
+        //private readonly DatabaseContext _appDbContext;
         private readonly UserManager<User> _userManager;
         private readonly IJwtFactory _jwtFactory;
         private readonly JwtIssuerOptions _jwtOptions;
@@ -47,7 +50,12 @@ namespace BackEnd.Controllers
                 return BadRequest(Errors.AddErrorToModelState("login_failure", "Invalid username or password.", ModelState));
             }
 
+            //var User = _appDbContext.Users.First(u => u.Email == credentials.Email);
+            //User.LastVisit = DateTime.Today;
             var jwt = await Tokens.GenerateJwt(identity, _jwtFactory, credentials.Email, _jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
+
+            
+                    
             return new OkObjectResult(jwt);
         }
 

@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
+using System;
 
 namespace BackEnd.Models
 {
@@ -10,5 +11,6 @@ namespace BackEnd.Models
         public string LastName { get; set; }
         public string NickName { get; set; }
         public double Raiting { get; set; }
+        public DateTime LastVisit { get; set; }
     }
 }

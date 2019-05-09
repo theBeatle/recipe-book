@@ -51,18 +51,25 @@ namespace BackEnd.Controllers
 
 
         [HttpPost("UpdateRecipeViewsCounter")]
-        public void Post(int id, [FromBody]int ViewsCount)
+        public void Post(int id, [FromBody]User user)
         {
-            Recipe recipe = _appDbContext.Recipes.First(r => r.Id == id);
-            if(recipe!=null)
-            {
-                recipe.ViewsCounter = ViewsCount;
-                _appDbContext.Entry(recipe).State = EntityState.Modified;
-                _appDbContext.SaveChanges();
 
+           
+            if (user.LastVisit != DateTime.Today)
+            {
+                Recipe recipe = _appDbContext.Recipes.First(r => r.Id == id);
+                if (recipe != null)
+                {
+                    
+                    recipe.ViewsCounter +=1;
+                    _appDbContext.Entry(recipe).State = EntityState.Modified;
+                    _appDbContext.SaveChanges();
+
+                }
             }
+           
         }
-        
+
         [HttpGet]
         [Route("ReadRecipeById")]
         public IActionResult GetRecipeById(int RecipeId)

@@ -8,6 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
 import { HOST_URL } from '../../app/config';
+import { User } from '../models/user';
+import { UsersService } from './users.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +20,7 @@ export class RecipeService {
   url = HOST_URL;
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
   recipe:Recipe;
+  uS:UsersService;
 
 
   getRecipeById(RecipeId:string): Observable<Recipe> {
@@ -28,9 +31,9 @@ export class RecipeService {
 
 
 
-  updateRecipeViewsCounter(RecipeId:string,ViewsCounter:number): void {
+  updateRecipeViewsCounter(RecipeId:string): void {
     
-  this.http.post(this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+ RecipeId,ViewsCounter); 
+  this.http.post(this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+ RecipeId,this.uS.GetAuthUser()); 
   
   }
 
