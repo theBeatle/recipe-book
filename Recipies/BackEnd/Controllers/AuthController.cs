@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using BackEnd.Helpers;
 using BackEnd.Models;
@@ -48,6 +49,7 @@ namespace BackEnd.Controllers
             }
 
             var jwt = await Tokens.GenerateJwt(identity, _jwtFactory, credentials.Email, _jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
+            new Claim(JwtRegisteredClaimNames.UniqueName, identity.Name);
             return new OkObjectResult(jwt);
         }
 
@@ -66,7 +68,7 @@ namespace BackEnd.Controllers
             {
                 return await Task.FromResult(_jwtFactory.GenerateClaimsIdentity(userName, userToVerify.Id));
             }
-
+            
             // Credentials are invalid, or account doesn't exist
             return await Task.FromResult<ClaimsIdentity>(null);
         }
