@@ -20,7 +20,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 
@@ -57,6 +57,7 @@ import { RatingComponent } from './recipe-detailed-info-components/rating/rating
     LoaderComponent,
     ContactUsComponent,
     RecipeFeedbackComponent,
+    CreateRecipeComponent,
     RatingComponent,
   ],
 
@@ -77,6 +78,7 @@ import { RatingComponent } from './recipe-detailed-info-components/rating/rating
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'counter', component: CounterComponent },
+      { path: 'create', component: CreateRecipeComponent, canActivate: [AuthGuard] },
       { path: 'feedback', component: RecipeFeedbackComponent },
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent },

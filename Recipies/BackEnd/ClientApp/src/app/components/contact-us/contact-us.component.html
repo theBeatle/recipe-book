@@ -1,9 +1,10 @@
 <div class="card">
-  <div class="card-header text-center">
-      <h5>
+    <div class="alert alert-secondary text-center" id="feedback-header" role="alert">
+        <h5>
           You can send feedback about our app!
-      </h5>
-  </div>
+        </h5>
+      </div>
+      
   <div class="card-body">
       <form [formGroup]="messageForm" (ngSubmit)="onFormSubmit(messageForm.value)">
           <div class="form-group">
@@ -19,6 +20,53 @@
     
 </div>
 
+
+<div class="card">
+    <div class="alert alert-secondary text-center" role="alert">
+      <h5>
+        Stack of used technologies!
+      </h5>
+    </div>
+    <div class="card-body technologies-card">
+      <ul class="technologies">
+          <li>
+            <img style="width: 45px" src="https://angular.io/assets/images/logos/angular/angular.png"> <a href="https://angular.io/">Angular</a>
+           </li>
+          <li>
+            <img style="width: 45px" src="https://cdn.iconscout.com/icon/free/png-256/bootstrap-226077.png"> <a href="https://getbootstrap.com">Bootstrap</a>
+          </li>
+          <li>
+            <img style="width: 45px" src="https://cdn.auth0.com/blog/asp-net-core-tutorial/logo.png"> <a href="https://dotnet.microsoft.com/apps/aspnet">ASP.Net Core</a>
+          </li>
+          <li>
+            <img style="width: 45px" src="https://s3.amazonaws.com/kinlane-productions/api-evangelist/swagger/swaggerLogo360.png"> <a href="https://swagger.io/">Swagger</a>
+          <li>
+            <img style="width: 45px" src="https://cdn1.iconfinder.com/data/icons/logotypes/32/github-512.png"> <a href="https://Github.com">GitHub</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+      <div class="alert alert-secondary text-center" role="alert">
+        <h5>
+          Our contacts!
+        </h5>
+      </div>
+      <div class="card-body contacts-card">
+        <ul>
+            <li>
+                <img style="width: 45px" src="https://image.flaticon.com/icons/svg/181/181508.svg"> <a> Some Avenue, 35, Country, City, 33000</a>
+            </li>
+            <li>
+                <img style="width: 45px" src="https://image.flaticon.com/icons/svg/34/34067.svg"><a>8-800-555-35-35</a>
+            </li>
+            <li>
+                <img style="width: 45px" src="https://image.flaticon.com/icons/svg/181/181535.svg"><a>RecipeEmailTest@gmail.com</a>
+            </li>
+        </ul>
+      </div>
+      </div>
 
 
 

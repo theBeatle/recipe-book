@@ -7,6 +7,7 @@ using BackEnd.Services;
 using System.Collections.Generic;
 using AutoMapper;
 using System.Linq;
+using BackEnd.ViewModels.RecipeViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd.Controllers
@@ -26,7 +27,32 @@ namespace BackEnd.Controllers
             this._mapper = mapper;
             _recipeService = recipeService;
         }
-       
+
+        [HttpPost]
+        [Route("CreateRecipe")]
+        public IActionResult CreateRecipe([FromBody] CreateRecipeViewModel model )
+        {
+            if (IsModelValid(model))
+            {
+                this._appDbContext.Recipes.Add(new Recipe()
+                {
+                    Category = this._appDbContext.Categories.FirstOrDefault(x => x.Id.ToString() == model.category),
+                    Country = this._appDbContext.Countries.FirstOrDefault(x => x.Id.ToString() == model.country),
+                    User = this._appDbContext.Users.FirstOrDefault(x => x.Id == model.uid),
+                    Description = model.Description,
+                    Topic = model.Topic,
+                    CreationDate = DateTime.Now,
+                    CookingProcess = model.CookingProcess,
+                });
+                this._appDbContext.SaveChanges();
+                return Ok("Created!");
+            }
+            else
+            {
+                return BadRequest("INVALID!");
+            }
+        }
+
         [HttpGet]
         [Route("getCategories")]
         public ICollection<Category> getCategories()
@@ -111,6 +137,20 @@ namespace BackEnd.Controllers
                 return NotFound();
             return new ObjectResult(recipe);
 
+        }
+
+
+        private bool IsModelValid(CreateRecipeViewModel model)
+        {
+            var category = this._appDbContext.Categories.FirstOrDefault(x => x.Id.ToString() == model.category);
+            var country = this._appDbContext.Countries.FirstOrDefault(x => x.Id.ToString() == model.country);
+            if (category != null && country != null && !string.IsNullOrEmpty(model.Description) && !string.IsNullOrEmpty(model.Topic) && !string.IsNullOrEmpty(model.CookingProcess))
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
         }
     }
    
