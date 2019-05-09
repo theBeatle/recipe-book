@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System.Linq;
+using System;
 
 
 
@@ -22,17 +23,19 @@ namespace BackEnd.Controllers
     public class AuthController : ControllerBase
     {
 
-        //private readonly DatabaseContext _appDbContext;
+      
         private readonly UserManager<User> _userManager;
+        private readonly DatabaseContext _appDbContext;
         private readonly IJwtFactory _jwtFactory;
         private readonly JwtIssuerOptions _jwtOptions;
         private readonly ILogger _logger;
-        public AuthController(UserManager<User> userManager, ILogger<AuthController> logger, IJwtFactory jwtFactory, IOptions<JwtIssuerOptions> jwtOptions)
+        public AuthController(UserManager<User> userManager, ILogger<AuthController> logger, IJwtFactory jwtFactory, IOptions<JwtIssuerOptions> jwtOptions, DatabaseContext appDbContext)
         {
             _userManager = userManager;
             _jwtFactory = jwtFactory;
             _jwtOptions = jwtOptions.Value;
             _logger = logger;
+            _appDbContext = appDbContext;
         }
 
         // POST api/auth/login
@@ -43,15 +46,19 @@ namespace BackEnd.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+           
             var identity = await GetClaimsIdentity(credentials.Email, credentials.Password);
             if (identity == null)
             {
                 return BadRequest(Errors.AddErrorToModelState("login_failure", "Invalid username or password.", ModelState));
             }
 
-            //var User = _appDbContext.Users.First(u => u.Email == credentials.Email);
-            //User.LastVisit = DateTime.Today;
+            var User = _userManager.Users.First(u => u.Email == credentials.Email);
+            User.LastVisit = DateTime.Today;
+            _appDbContext.Attach(User);
+            _appDbContext.SaveChanges();
+            
+            
             var jwt = await Tokens.GenerateJwt(identity, _jwtFactory, credentials.Email, _jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
 
             

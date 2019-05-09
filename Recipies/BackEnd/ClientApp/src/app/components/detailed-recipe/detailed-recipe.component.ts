@@ -20,9 +20,9 @@ export class DetailedRecipeComponent implements OnInit {
   constructor(private rS:RecipeService) {  }
   
   ngOnInit() {
-    this.GetRecipeById('52');
+    this.GetRecipeById('56');
     
-    //this.rS.updateRecipeViewsCounter(this.recipe.id.toString());
+   
     
   }
 
@@ -38,10 +38,11 @@ export class DetailedRecipeComponent implements OnInit {
         this.recipe = w;
        
        
-      console.log("Id: "+w.id);
+     
         this.creationdate="";
         this.creationdate= w.creationDate.toString().substring(0,10);
        
+        this.rS.updateRecipeViewsCounter(this.recipe.id.toString());
         
     });
     

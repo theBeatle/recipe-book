@@ -80,8 +80,11 @@ namespace BackEnd.Controllers
         public void Post(int id, [FromBody]User user)
         {
 
-           
-            if (user.LastVisit != DateTime.Today)
+            User _user = _appDbContext.Users.First(u => u.Id == user.Id);
+            _user.LastVisit = new DateTime();
+            _appDbContext.Attach(_user);
+            _appDbContext.SaveChanges();
+            if (_user.LastVisit != DateTime.Today)
             {
                 Recipe recipe = _appDbContext.Recipes.First(r => r.Id == id);
                 if (recipe != null)

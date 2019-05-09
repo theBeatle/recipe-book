@@ -11,7 +11,7 @@ import { HOST_URL } from '../../app/config';
 import { RecipeModel } from '../models/recipe-model';
 import { AuthenticationService } from './authentication.service';
 import { User } from '../models/user';
-import { UsersService } from './users.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,9 @@ export class RecipeService {
   url = HOST_URL;
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
   recipe:Recipe;
-  uS:UsersService;
+  
 
+  constructor(private http: HttpClient, private aS: AuthenticationService) {}
 
   getRecipeById(RecipeId:string): Observable<Recipe> {
     
@@ -31,16 +32,20 @@ export class RecipeService {
   
   }
 
+  
 
 
   updateRecipeViewsCounter(RecipeId:string): void {
     
-  this.http.post(this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+ RecipeId,this.uS.GetAuthUser()); 
+  
+    console.log("curent value id"+this.aS.currentUserValue.id);
+    
+    this.http.post(this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+ RecipeId,this.aS.currentUser); 
   
   }
 
   recipies: Observable<Recipe[]>;
-  constructor(private http: HttpClient, private aS: AuthenticationService) {}
+  
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(HOST_URL + '/api/Recipe/getCategories');
