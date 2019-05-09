@@ -18,6 +18,8 @@ using BackEnd.Services.JWT.Auth;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using BackEnd.Services;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace BackEnd
 {
@@ -111,12 +113,20 @@ namespace BackEnd
             services.AddMvc();
             //Adding project services
             services.AddScoped<RecipeService>();
+            services.AddScoped<GalleryService>();
 
 
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
+                RequestPath = new PathString("/wwwroot")
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

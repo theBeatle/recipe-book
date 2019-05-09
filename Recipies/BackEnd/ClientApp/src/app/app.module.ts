@@ -19,6 +19,8 @@ import { RecipeListComponent } from './components/recipe-list/recipe-list.compon
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
 import { RecipeEditComponent } from './components/recipe-edit/recipe-edit.component';
+import { UploadGalleryComponent } from './components/upload-gallery/upload-gallery.component';
+
 
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ErrorInterceptor } from './helpers/error.interceptor';
@@ -40,7 +42,8 @@ import { RecipeService } from './services/recipe.service';
     LoaderComponent,
     ContactUsComponent,
     RecipeFeedbackComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
+    UploadGalleryComponent
   ],
 
   imports: [

@@ -21,6 +21,10 @@ namespace BackEnd.Services
             this._mapper = mapper;
         }
 
+        public string getUserIdByRecipeId(int RecipeId)
+        {
+            return _appDbContext.Recipes.Include(x=>x.User).FirstOrDefault(x => x.Id == RecipeId).User.Id;
+        }
       
         public async Task<RecipeViewModel> GetRecipe(int? category,int? country, string name, int page = 1,
             SortState sortOrder = SortState.TopicAsc)
@@ -99,6 +103,9 @@ namespace BackEnd.Services
             return viewModel;
 
         }
+
+       
+
 
         public bool EditRecipe(EditRecipeViewModel model)
         {

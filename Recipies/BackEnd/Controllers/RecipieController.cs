@@ -9,6 +9,8 @@ using AutoMapper;
 using System.Linq;
 using BackEnd.ViewModels.RecipeViewModels;
 using Microsoft.EntityFrameworkCore;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace BackEnd.Controllers
 {
@@ -79,6 +81,8 @@ namespace BackEnd.Controllers
             var mapped_el = _mapper.Map<RecipeListViewModel>(el);
             return mapped_el;
         }
+
+       
     }
    
 }
