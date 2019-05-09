@@ -33,6 +33,8 @@ namespace BackEnd.Controllers
             _logger = logger;
         }
 
+        //private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync();
+
         [HttpPut("update")]
         public async Task<IActionResult> EditData([FromBody]UserDataEditViewModel model)
         {
@@ -41,14 +43,21 @@ namespace BackEnd.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user =await _userManager.FindByNameAsync(User.Identity.Name);
+            //await _appDbContext.Users.FindAsync(HttpContext.User.Identity.Name);
+
+            //var user =await _userManager.FindByNameAsync(User.Identity.Name);
+
+
+            var user = new User();
 
             string HashedPassword = _userManager.PasswordHasher.HashPassword(user, model.Password);
 
             user.PasswordHash = HashedPassword;
 
             user.Email = model.Email;
+
             user.NormalizedEmail = model.Email;
+
             user.UserName = model.Email;
 
             user.FirstName = model.FirstName;

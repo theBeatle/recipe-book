@@ -1,4 +1,5 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BackEnd.Helpers;
@@ -21,7 +22,7 @@ namespace BackEnd.Controllers
     {
        
       
-        private readonly UserManager<User> _userManager;
+        private UserManager<User> _userManager;
         private readonly IJwtFactory _jwtFactory;
         private readonly JwtIssuerOptions _jwtOptions;
         private readonly ILogger _logger;
@@ -49,7 +50,22 @@ namespace BackEnd.Controllers
             }
 
             var jwt = await Tokens.GenerateJwt(identity, _jwtFactory, credentials.Email, _jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
-            new Claim(JwtRegisteredClaimNames.UniqueName, identity.Name);
+            //new Claim(ClaimTypes.Name, credentials.Email);
+            //User.Identity.Name = credentials.Email;
+            //await _userManager.SetEmailAsync(HttpContext.User.Claims, credentials);
+            //var claims = new List<Claim>
+            //{
+            //    
+            //};
+            //identity.. = claims;
+            //await HttpContext.Authentication.SignInAsync(credentials.Email, this.User);
+            //System.Security.Claims.ClaimsPrincipal currentUser = this.User;
+            //currentUser.AddIdentity(new ClaimsIdentity(ClaimTypes.));
+            //List<User> us = await _userManager.GetUsersForClaimAsync();
+            //await _userManager.us(new Claim(ClaimTypes.Name, credentials.Email));
+            //ClaimsIdentity.DefaultNameClaimType.
+            //identity.AddClaim(new Claim(ClaimTypes.Name, credentials.Email));
+            
             return new OkObjectResult(jwt);
         }
 
