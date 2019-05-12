@@ -111,6 +111,7 @@ namespace BackEnd.Controllers
         {
             return _appDbContext.Recipes.ToList();
         }
+
         [HttpGet("{id}")]
         public Recipe Get(int id)
         {
@@ -128,6 +129,11 @@ namespace BackEnd.Controllers
                 return Ok(recipe);
             }
             return BadRequest(ModelState);
+        }
+        [HttpGet("getMyRecipes")]
+        public IEnumerable<Recipe> getMyRecipes()
+        {
+            return _appDbContext.Recipes.ToList();
         }
         [HttpDelete(@"{id}")]
         public IActionResult deleteRecipe(int id)

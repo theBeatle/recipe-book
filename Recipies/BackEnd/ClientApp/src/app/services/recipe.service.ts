@@ -22,8 +22,8 @@ export class RecipeService {
     return this.http.get<Country[]>(HOST_URL + '/api/Recipe/getCountries');
   }
   // all?category=1&name=shit&page=1&sortOrder=1
-    getRecipes():Observable<Recipe[]> {
-      return this.http.get<Recipe[]>(this.url+'/api/Recipe/getRecipes')
+    getMyRecipes():Observable<Recipe[]> {
+      return this.http.get<Recipe[]>(this.url+'/api/Recipe/getMyRecipes')
    }
   getAllRecipies(
     page: number,
