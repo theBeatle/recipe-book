@@ -8,6 +8,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
 import { HOST_URL } from '../../app/config';
+import { RecipeModel } from '../models/recipe-model';
+import { AuthenticationService } from './authentication.service';
+import { User } from '../models/user';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +22,9 @@ export class RecipeService {
   url = HOST_URL;
   httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
   recipe:Recipe;
+  
 
+  constructor(private http: HttpClient, private aS: AuthenticationService) {}
 
   getRecipeById(RecipeId:string): Observable<Recipe> {
     
@@ -26,17 +32,20 @@ export class RecipeService {
   
   }
 
+  
 
 
-  updateRecipeViewsCounter(RecipeId:string,ViewsCounter:number): void {
+  updateRecipeViewsCounter(RecipeId:string): void {
     
-  this.http.post(this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+ RecipeId,ViewsCounter); 
+  
+    console.log("curent value id"+this.aS.currentUserValue.id);
+    
+    this.http.post(this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+ RecipeId,this.aS.currentUser); 
   
   }
 
   recipies: Observable<Recipe[]>;
-
-  constructor(private http: HttpClient) {}
+  
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(HOST_URL + '/api/Recipe/getCategories');
@@ -74,5 +83,9 @@ export class RecipeService {
         return data;
       })
     );
+  }
+  CreateRecipe(model: RecipeModel): Observable<any> {
+    model.uid = this.aS.currentUserValue.id;
+    return this.http.post(HOST_URL + '/api/Recipe/CreateRecipe', model);
   }
 }
