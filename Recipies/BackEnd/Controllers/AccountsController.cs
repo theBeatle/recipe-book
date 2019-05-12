@@ -42,9 +42,9 @@ namespace BackEnd.Controllers
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
 
             if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
-
-            await _appDbContext.Users.AddAsync(new User { IdentityId = userIdentity.Id });
-            await _appDbContext.SaveChangesAsync();
+            //FIX DUBLICATE
+           // await _appDbContext.Users.AddAsync(new User { IdentityId = userIdentity.Id });
+           // await _appDbContext.SaveChangesAsync();
 
             return new OkObjectResult("Account created");
         }
