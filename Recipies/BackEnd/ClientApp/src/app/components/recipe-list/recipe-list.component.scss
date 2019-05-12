@@ -1,0 +1,95 @@
+@keyframes slide-bottom {
+  0% {
+    background-color: transparent;
+    -webkit-transform: translateY(-50px);
+    transform: translateY(-50px);
+  }
+  100% {
+    background-color: #37435b;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+//page loaded for cards
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes text-hover-transparent {
+  0% {
+    color: transparent;
+  }
+  100% {
+    color: white;
+  }
+}
+@keyframes shadow-background {
+  0% {
+    filter: brightness(100%);
+  }
+  100% {
+    filter: brightness(50%);
+  }
+}
+
+.tools-panel {
+  animation: slide-bottom 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  background-color: #37435b;
+  .cs {
+    color: white;
+    background-color: #37435b;
+  }
+}
+.color-gray {
+  color: gray;
+}
+.columns {
+  column-gap: 0;
+  margin: 0 !important;
+}
+
+.card-img-top {
+  margin: 0 !important;
+
+  border-radius: 0px !important;
+  height: 400px;
+  object-fit: cover;
+}
+
+.card {
+  animation: slide-top 0.4s cubic-bezier(0.39, 0.605, 0.565, 1) both;
+  border: 0px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 400px;
+  .card-img-overlay {
+    color: transparent;
+    .description {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+.card:hover {
+  .card-img-overlay:hover {
+    animation: text-hover-transparent 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+      both;
+  }
+  .card-img-top {
+    animation: shadow-background 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+      alternate forwards;
+  }
+
+  cursor: pointer;
+}
