@@ -22,7 +22,7 @@ export class DetailedRecipeComponent implements OnInit {
   ngOnInit() {
     this.GetRecipeById('52');
     
-    this.rS.updateRecipeViewsCounter(this.recipe.id.toString(),this.recipe.viewsCounter+1);
+    // this.rS.updateRecipeViewsCounter(this.recipe.id.toString(),this.recipe.viewsCounter+1);
     
   }
 
