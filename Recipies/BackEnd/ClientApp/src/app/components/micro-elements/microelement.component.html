@@ -1,23 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-<div class="container"  *ngFor="let element of allMicroElements | async">
-    <!-- <p-card  subheader="Subheader" [style]="{width: '360px'}" styleClass="ui-card-shadow">
-        <p-header>
-        <h3 >{{element.Name}}</h3>
-        </p-header>
-        <div>
-        <p>Value: {{element.Value}}</p>
-        </div>
-        <p-footer>
-        </p-footer>
-      </p-card> -->
 
+<div class="container"  >
+  
+      <div class="card-body"  *ngFor="let element of allMicroElements ">
+        <h2 class="card-title" style="text-align: center">Name: {{element.Name}}</h2> 
+
+    <p class="card-text"> Value: {{element.Value}}</p> 
+  </div>
     
 </div>
 </body>
-</html>
+

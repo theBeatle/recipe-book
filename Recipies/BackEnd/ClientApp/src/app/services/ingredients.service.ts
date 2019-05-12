@@ -10,11 +10,10 @@ import { Ingredient} from '../models/ingredient';
   })
   export class IngredientsService {
     url = HOST_URL;
-    httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
     constructor(private http: HttpClient) { }
 
   getAllIngredients(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(this.url + '/api/Ingredient/getAllIngredients', this.httpOptions);
+    return this.http.get<Ingredient[]>(this.url + '/api/Ingredient/getAllIngredients');
   }
   
 

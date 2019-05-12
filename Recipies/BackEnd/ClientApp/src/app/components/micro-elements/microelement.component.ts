@@ -10,12 +10,13 @@ import {MicroElementsService} from '../../services/micro.elements.service';
   styleUrls: ['./microelement.component.css']
 })
 export class MicroElementComponent implements OnInit {
-    allMicroElements: Observable<MicroElement[]>;
+    allMicroElements: MicroElement[]=[];
     constructor( private meS: MicroElementsService) { }
     ngOnInit() {
-
+      this.loadAllMicroElements();
     }
-    loadAllIngredients() {
-        this.allMicroElements = this.meS.getAllMicroElements();
+    loadAllMicroElements() {
+      this.meS.getAllMicroElements()
+      .subscribe((data: MicroElement[]) => {this.allMicroElements = data; console.log(data)});
       }
 }

@@ -8,11 +8,13 @@ import { Ingredient } from '../../models/ingredient';
 @Component({
   selector: 'app-ingredient',
   templateUrl: './ingredient.component.html',
-  styleUrls: ['./ingredient.component.css']
+  styleUrls: ['./ingredient.component.css'],
+  providers:[IngredientsService]
+  
 })
 export class IngredientComponent implements OnInit {
   
-  allIngredients: Observable<Ingredient[]>;
+  allIngredients: Ingredient[]=[];
   
   
 
@@ -24,7 +26,12 @@ export class IngredientComponent implements OnInit {
   }
 
   loadAllIngredients() {
-    this.allIngredients = this.iS.getAllIngredients();
+ 
+     this.iS.getAllIngredients()
+     .subscribe((data: Ingredient[]) => {this.allIngredients = data; console.log(data)});
+    }
+  
+    
   }
 
-}
+

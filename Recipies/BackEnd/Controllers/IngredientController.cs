@@ -12,35 +12,31 @@ namespace BackEnd.Controllers
     [ApiController]
     public class IngredientController : ControllerBase
     {
-        DatabaseContext db;
+        private readonly DatabaseContext _appDbContext;
 
         public IngredientController(DatabaseContext context)
         {
-            db = context;
-            if (!db.Ingredients.Any())
-            {
-                db.Ingredients.Add(new Ingredient { Name = "Tomato", Fats_100g = 0.2, Proteins_100g = 0.9,
-                    Carbohydrates_100g = 2.6, Description = "The tomato is the edible, often red, berry of the plant Solanum lycopersicum", Kkal_100g = 18}) ;
-                db.Ingredients.Add(new Ingredient { Name = "Cabbage", Description="" , Kkal_100g=25, Carbohydrates_100g=3.3, Fats_100g=0.1, Proteins_100g=1.28});
+            this._appDbContext = context;
+           
 
-                db.SaveChanges();
-            }
+           
+            
         }
 
         [HttpGet("getAllMicroElements")]
-        public IEnumerable<MicroElement> getAllMicroElements()
+        public ICollection<MicroElement> getAllMicroElements()
         {
-            return db.MicroElements.ToList();
+            return _appDbContext.MicroElements.ToList();
         }
         [HttpGet("getAllIngredients")]
-        public IEnumerable<Ingredient> getAllIngredients()
+        public ICollection<Ingredient> getAllIngredients()
         {
-            return db.Ingredients.ToList();
+            return _appDbContext.Ingredients.ToList();
         }
         [HttpGet("getAllVitamins")]
-        public IEnumerable<Vitamin> getAllVitamins()
+        public ICollection<Vitamin> getAllVitamins()
         {
-            return db.Vitamins.ToList();
+            return _appDbContext.Vitamins.ToList();
         }
     }
 }

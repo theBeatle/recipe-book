@@ -1,7 +1,7 @@
 body {
     background-color: #FFFFFF; 
     }
-    .p-card{
+    .card{
         background-color: #EEE1B3;
         border-color: #37435B;
     }
@@ -9,4 +9,7 @@ body {
         color: #37435B;
          font-family: Geneva, Arial, Helvetica, sans-serif;
     }
-    
+    .h2{
+        color: #37435B;
+         font-family: Verdana, Geneva, Tahoma, cursive;
+    }
