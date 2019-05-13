@@ -11,27 +11,31 @@ import { Gallery } from '../../models/gallery';
   styleUrls: ['./upload-gallery.component.scss']
 })
 export class UploadGalleryComponent implements OnInit {
-
   public progress: number;
   public message: string;
   public photos: Gallery[];
 
   @Input('recipeId') recipeId: number;
 
-
   @Output() public OnUploadFinished = new EventEmitter();
 
-  constructor(private http: HttpClient, private gS: GalleryService) { }
+  constructor(private http: HttpClient, private gS: GalleryService) {}
 
-  ngOnInit() {
-    console.log(this.recipeId);
-    this.photos = new Array();   //ne  [];
-    this.gS.getImages(this.recipeId).subscribe(res=> this.photos=res );
-      console.log(this.photos[0].path);
-
+  getAllImages() {
+    this.photos = new Array();
+    this.gS.getImages(this.recipeId).subscribe(res => (this.photos = res));
   }
 
-  public uploadFile = (files) => {
+  clickDeleteImage(id: number) {
+    this.gS.deletePhoto(this.recipeId, id).subscribe();
+    this.getAllImages();
+  }
+
+  ngOnInit() {
+    this.getAllImages();
+  }
+
+  public uploadFile = files => {
     if (files.length === 0) {
       return;
     }
@@ -39,14 +43,14 @@ export class UploadGalleryComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
 
-    this.gS.uploadPhoto(this.recipeId, formData)
-      .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.progress = Math.round(100 * event.loaded / event.total);
-        } else if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
-          this.OnUploadFinished.emit(event.body);
-        }
-      });
-  }
+    this.gS.uploadPhoto(this.recipeId, formData).subscribe(event => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.progress = Math.round((100 * event.loaded) / event.total);
+      } else if (event.type === HttpEventType.Response) {
+        this.getAllImages();
+        this.message = 'Upload success.';
+        this.OnUploadFinished.emit(event.body);
+      }
+    });
+  };
 }

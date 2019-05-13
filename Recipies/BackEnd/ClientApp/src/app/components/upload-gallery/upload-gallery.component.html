@@ -1,14 +1,23 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-<div class="row">
-<div class="container">
-  <div class="card">
-    <img />
+<div class="row columns">
+
+  <div class=" col-sm-4 d-flex card" *ngFor="let photo of photos" >
+      <button class="btn btcl" (click)="clickDeleteImage(photo.id)"><i class="fas fa-times"></i></button>
+    <img
+    class="card-img"
+        src="https://localhost:44385/Galleries/{{photo.path}}"
+        alt="Card image cap"
+      />
+
   </div>
+<button (click)="file.click()" class="bt" >
+    <i class="far fa-plus-square fa-10x"></i>
+</button>
+
 </div>
-  <div class="col-md-3">
     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
-    <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
-  </div>
+
   <div class="col-md-4">
     <span class="upload" *ngIf="progress > 0">
       {{progress}}%
@@ -17,4 +26,4 @@
       {{message}}
     </span>
   </div>
-</div>
+

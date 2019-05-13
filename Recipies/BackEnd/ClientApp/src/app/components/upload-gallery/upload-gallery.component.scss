@@ -4,3 +4,36 @@
   margin-left: 15px;
   line-height: 36px;
 }
+.card-columns {
+  padding: 10px;
+  margin:10px;
+    column-count: 3;
+
+}
+.bt{
+  border:1px solid gray;
+  width: 250px;
+  height: 250px;
+
+
+}
+.card{
+padding: 5px;
+  width: 350px;
+  height: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  .btcl{
+color:white;
+    background-color: gray;
+    border-radius: 50%;
+    float: right;
+       position: absolute;
+       left: 93%;
+       top: -5%;
+       z-index: 1000;
+  }
+  .card-img{
+height:100%;
+  object-fit: cover;
+}
+}

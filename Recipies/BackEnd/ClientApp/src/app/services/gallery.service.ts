@@ -18,7 +18,19 @@ export class GalleryService {
   constructor(private http: HttpClient) {}
 
   getImages(recipeId: number): Observable<Gallery[]> {
-    return this.http.get<Gallery[]>('https://localhost:44385/api/Gallery/GetImagesById?RecipeId=' + recipeId);
+    return this.http.get<Gallery[]>(
+      'https://localhost:44385/api/Gallery/GetImagesById?RecipeId=' + recipeId
+    );
+  }
+  deletePhoto(recipeid: number, photoid: number) {
+
+    return this.http.delete(
+      'https://localhost:44385/api/Gallery/RemoveImageById?RecipeId=' +
+        recipeid +
+        '&PhotoId=' +
+        photoid
+    );
+
   }
 
   uploadPhoto(recipeId: number, formData: FormData) {
