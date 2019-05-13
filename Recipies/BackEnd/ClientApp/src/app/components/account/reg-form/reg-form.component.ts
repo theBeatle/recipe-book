@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistrationService } from '../../../services/registration.service';
 import { UserRegistration } from '../../../models/user.registration';
+import {AbstractControl} from '@angular/forms';
 
 @Component({
   selector: 'app-reg-form',
@@ -24,10 +25,11 @@ export class RegistrationFormComponent implements OnInit {
     this.userForm = this.fb.group({
       Email: ['', Validators.required],
       Password: ['', Validators.required],
+      ConfirmPassword: ['', Validators.required],
       FirstName: ['', Validators.required],
       LastName: ['', Validators.required],
-
-    });
+    }
+    );
   }
   onFormSubmit() {
     this.submitted = true;
@@ -40,13 +42,13 @@ export class RegistrationFormComponent implements OnInit {
     this.CreateUser(contact as UserRegistration);
 
   }
+  get f() { return this.userForm.controls; }
   CreateUser(user: UserRegistration) {
 
       this.cS.register(user).subscribe(
         () => {
 
-          console.log("OK");
-
+          this.loading = false;
           this.router.navigate(['/login']);
         }
       );
