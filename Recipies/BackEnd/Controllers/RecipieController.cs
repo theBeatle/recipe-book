@@ -104,16 +104,19 @@ namespace BackEnd.Controllers
         }
 
 
+
+   
+
         [HttpPost("UpdateRecipeRating")]
-        public IActionResult UpdateRecipeRating([FromBody] int countstars, int RecipeId)
+        public IActionResult UpdateRecipeRating(int RecipeId, int countstars)
         {
+
             Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
             if (recipe != null)
             {
-                if (recipe.Rating == 0)
-                    recipe.Rating = RecipeId;
-                else
-                recipe.Rating = Math.Round( (recipe.Rating + countstars) / 2);
+                _appDbContext.RecipeRatings.Add(new RecipeRating { Recipe = recipe, Star = countstars });
+                _appDbContext.SaveChanges();
+                recipe.Rating = Math.Round( (double) (_appDbContext.RecipeRatings.Count(r => r.Star == 5 && r.Recipe.Id == RecipeId)*5 + _appDbContext.RecipeRatings.Count(r => r.Star == 4 && r.Recipe.Id == RecipeId)*4 + _appDbContext.RecipeRatings.Count(r => r.Star == 3 && r.Recipe.Id == RecipeId)*3 + _appDbContext.RecipeRatings.Count(r => r.Star == 2 && r.Recipe.Id == RecipeId)*2 + _appDbContext.RecipeRatings.Count(r => r.Star == 1 && r.Recipe.Id == RecipeId)*1) / _appDbContext.RecipeRatings.Count(r=>r.Recipe.Id==RecipeId));
                 _appDbContext.Entry(recipe).State = EntityState.Modified;
                 _appDbContext.SaveChanges();
                 return Ok("Raiting updated");

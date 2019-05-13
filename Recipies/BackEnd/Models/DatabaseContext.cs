@@ -21,11 +21,11 @@ namespace BackEnd.Models
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
-
+        public  DbSet<RecipeRating> RecipeRatings { get; set; }
 
         public  DbSet<FeedBackMessage> FeedBackMessages { get; set; }
   
-        public new DbSet<Comment> Comments { get; set; }
+        public  DbSet<Comment> Comments { get; set; }
     }
 }
 
