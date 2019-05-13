@@ -5,6 +5,7 @@
             <input type="text" formControlName="Email" [className]="f.Email.errors ? 'form-control is-invalid' : 'form-control is-valid'" >
             <div *ngIf="f.Email.touched && f.Email.errors" class="invalid-feedback">
                 <div *ngIf="f.Email.errors.required">Email is required</div>
+                <div *ngIf="f.Email.errors.email">Email is invalid</div>
             </div>
         </div>
 

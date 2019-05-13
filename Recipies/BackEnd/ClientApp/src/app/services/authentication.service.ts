@@ -9,7 +9,7 @@ import { HOST_URL, ADMIN_ROLE } from './../config';
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<AuthUser>;
-    public currentUser: Observable<AuthUser>;
+    public currentUser: Observable<AuthUser> = new Observable<AuthUser>();
     private APIUrl = HOST_URL;
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<AuthUser>(JSON.parse(localStorage.getItem('currentUser')));

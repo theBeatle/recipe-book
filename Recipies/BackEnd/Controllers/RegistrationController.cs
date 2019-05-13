@@ -39,12 +39,20 @@ namespace BackEnd.Controllers
             var result = await _userManager.CreateAsync(userIdentity, model.Password);
             _logger.LogInformation("[SIGN-UP] Created new account");
 
-            if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
+            if (!result.Succeeded)
+            {
+                foreach(var el in result.Errors)
+                {
+                    return new BadRequestObjectResult(Errors.AddErrorToModelState("Error",el.Description,ModelState));
+                }
+            
+                // return new BadRequestObjectResult(Errors.AddErrorToModelState("error", , ModelState)); 
+            }
             //  Fixed user repetition!!!
             // await _appDbContext.Users.AddAsync(new User { IdentityId = userIdentity.Id });
             // await _appDbContext.SaveChangesAsync();
 
-            return new OkObjectResult("Account created");
+            return Ok("Account created");
         }
     }
 }
