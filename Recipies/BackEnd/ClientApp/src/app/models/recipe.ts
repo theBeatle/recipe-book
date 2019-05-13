@@ -15,7 +15,9 @@ export class Recipe {
 
   cookingProcess: string;
 
-  gallery: any;
+  gallery: string[];
 
   rating: number;
+
+  id:number;
 }

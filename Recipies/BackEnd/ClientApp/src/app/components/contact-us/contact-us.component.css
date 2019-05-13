@@ -3,3 +3,40 @@
     resize: none;
     outline: none;
 }
+#feedback-header{
+    margin-top: 1px;
+}
+.contacts-card{
+    display: flex;
+    margin-right: 1.5rem;
+
+ }
+.technologies-card{
+    display: flex;
+}
+ul {
+    display: table;   /* Allow the centering to work */
+	margin: 0 auto;
+        display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+ul li{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    padding: 12px;
+    display: inline;
+
+}
+a{
+    margin-left: 1rem;
+}
+
+a[href]{
+    margin-left: 0.5rem;
+    color:#5a5753;
+}
+a[href]:hover{
+    margin-left: 0.5rem;
+    color:darkslategray;
+}

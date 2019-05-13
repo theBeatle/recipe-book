@@ -1,4 +1,5 @@
-.carousel-item img{
+.img{
     
-    overflow:hidden;
+    object-fit: cover;
+    overflow: hidden;
 }

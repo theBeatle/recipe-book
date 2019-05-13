@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Message } from './Message';
+import {HOST_URL} from 'src/app/config'
 
 @Injectable({
     providedIn:'root'
@@ -10,12 +11,12 @@ import { Message } from './Message';
 )
 
 export class MessageService{
-    url = "https://localhost:44385/api/FeedBackMessages";
+    url = HOST_URL;
     httpoptions = {headers: new HttpHeaders({'Content-type':'application/json'})};
 
     constructor(private http:HttpClient) { }
 
     createMessage(message:Message): Observable<Message> {
-        return this.http.post<Message>(this.url,message,this.httpoptions);
+        return this.http.post<Message>(this.url+"/api/FeedBackMessages",message,this.httpoptions);
     }
 }

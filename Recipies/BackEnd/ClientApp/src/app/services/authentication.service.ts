@@ -14,10 +14,11 @@ export class AuthenticationService {
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<AuthUser>(JSON.parse(localStorage.getItem('currentUser')));
         this.currentUser = this.currentUserSubject.asObservable();
-        console.log(this.currentUserValue);
+       
     }
 
     public get currentUserValue(): AuthUser {
+       
         return this.currentUserSubject.value;
     }
 

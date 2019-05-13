@@ -1,4 +1,6 @@
 import { Component, Input,  OnInit ,EventEmitter,Output} from '@angular/core';
+import { RecipeService } from 'src/app/services/recipe.service';
+import { rS } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-rating',
@@ -12,11 +14,12 @@ export class RatingComponent implements OnInit {
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
   inputName: string;
 
-
+  recipeService:RecipeService;
   ngOnInit() {
     this.inputName = this.itemId + '_rating';
   }
-
+ 
+  constructor(recipeService:RecipeService) {}
 
   onClick(rating: number): void {
     this.rating = rating;
@@ -24,8 +27,12 @@ export class RatingComponent implements OnInit {
       itemId: this.itemId,
       rating: rating
     });
+    this.recipeService.UpdateRecipeRating(this.itemId,rating);
 
 
+    
+
+     
 
 }
 
