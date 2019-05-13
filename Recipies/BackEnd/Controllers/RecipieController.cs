@@ -76,14 +76,11 @@ namespace BackEnd.Controllers
         }
 
 
-        [HttpPost("UpdateRecipeViewsCounter")]
-        public void Post(int id, [FromBody]User user)
+        [HttpGet("UpdateRecipeViewsCounter")]
+        public IActionResult UpdateRecipeViewsCounter(int id, string userId)
         {
 
-            User _user = _appDbContext.Users.First(u => u.Id == user.Id);
-            _user.LastVisit = new DateTime();
-            _appDbContext.Attach(_user);
-            _appDbContext.SaveChanges();
+            User _user = _appDbContext.Users.First(u => u.Id == userId);
             if (_user.LastVisit != DateTime.Today)
             {
                 Recipe recipe = _appDbContext.Recipes.First(r => r.Id == id);
@@ -91,12 +88,32 @@ namespace BackEnd.Controllers
                 {
                     
                     recipe.ViewsCounter +=1;
+                    _user.LastVisit = DateTime.Today;
+                    _appDbContext.Entry(_user).State = EntityState.Modified;
                     _appDbContext.Entry(recipe).State = EntityState.Modified;
                     _appDbContext.SaveChanges();
+                    
 
                 }
             }
+
+            return Ok("updated");
+
+            
            
+        }
+
+
+        [HttpPost("UpdateRecipeRating")]
+        public IActionResult UpdateRecipeRating(int RecipeId,[FromBody] double countstars)
+        {
+            Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
+            if (recipe != null)
+            {
+                recipe.Rating = (recipe.Rating + countstars) / 2;
+                return Ok("Raiting updated");
+            }
+            return BadRequest("not updated");
         }
 
         [HttpGet]

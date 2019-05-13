@@ -1,10 +1,10 @@
 import { Category } from './../models/category';
 import { Country } from './../models/country';
 
-import { map } from 'rxjs/operators';
+import { map, count } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
 import { HOST_URL } from '../../app/config';
@@ -35,14 +35,23 @@ export class RecipeService {
   
 
 
-  updateRecipeViewsCounter(RecipeId:string): void {
+  updateRecipeViewsCounter(RecipeId:number): Observable<any> {
     
   
-    console.log("curent value id"+this.aS.currentUserValue.id);
-    
-    this.http.post(this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+ RecipeId,this.aS.currentUser); 
+   
+  return this.http.get( this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+RecipeId.toString()+'&userId='+this.aS.currentUserValue.id);
+  
+   
   
   }
+
+
+
+  UpdateRecipeRating(RecipeId:number,countstars:number):Observable<any>{
+    return this.http.post(this.url+'/api/Recipie/UpdateRecipeRating?id='+RecipeId,countstars);
+  }
+
+
 
   recipies: Observable<Recipe[]>;
   
