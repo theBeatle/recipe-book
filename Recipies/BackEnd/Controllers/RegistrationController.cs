@@ -40,9 +40,9 @@ namespace BackEnd.Controllers
             _logger.LogInformation("[SIGN-UP] Created new account");
 
             if (!result.Succeeded) return new BadRequestObjectResult(Errors.AddErrorsToModelState(result, ModelState));
-
-            await _appDbContext.Users.AddAsync(new User { IdentityId = userIdentity.Id });
-            await _appDbContext.SaveChangesAsync();
+            //  Fixed user repetition!!!
+            // await _appDbContext.Users.AddAsync(new User { IdentityId = userIdentity.Id });
+            // await _appDbContext.SaveChangesAsync();
 
             return new OkObjectResult("Account created");
         }
