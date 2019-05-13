@@ -48,7 +48,8 @@ export class RecipeService {
 
 
   UpdateRecipeRating(RecipeId:number,countstars:number):Observable<any>{
-    return this.http.post(this.url+'/api/Recipie/UpdateRecipeRating?id='+RecipeId,countstars);
+    console.log("recipeid: "+RecipeId);
+    return this.http.post(this.url+'/api/Recipie/UpdateRecipeRating?id='+RecipeId.toString(),countstars as Object);
   }
 
 

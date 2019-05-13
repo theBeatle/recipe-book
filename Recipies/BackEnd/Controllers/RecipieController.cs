@@ -105,15 +105,20 @@ namespace BackEnd.Controllers
 
 
         [HttpPost("UpdateRecipeRating")]
-        public IActionResult UpdateRecipeRating(int RecipeId,[FromBody] double countstars)
+        public IActionResult UpdateRecipeRating([FromBody] int countstars, int RecipeId)
         {
             Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
             if (recipe != null)
             {
-                recipe.Rating = (recipe.Rating + countstars) / 2;
+                if (recipe.Rating == 0)
+                    recipe.Rating = RecipeId;
+                else
+                recipe.Rating = Math.Round( (recipe.Rating + countstars) / 2);
+                _appDbContext.Entry(recipe).State = EntityState.Modified;
+                _appDbContext.SaveChanges();
                 return Ok("Raiting updated");
             }
-            return BadRequest("not updated");
+            return BadRequest("Not updated");
         }
 
         [HttpGet]
@@ -149,9 +154,9 @@ namespace BackEnd.Controllers
 
             recipe = _appDbContext.Recipes
                 .Include(r => r.Gallery.Photos)
-                .Include(r=>r.Country)
-                .Include(r=>r.Category)
-                .Include(r=>r.User)
+                .Include(r => r.Country)
+                .Include(r => r.Category)
+                .Include(r => r.User)
                 .First(r => r.Id == RecipeId);
             if (recipe == null)
                 return NotFound();

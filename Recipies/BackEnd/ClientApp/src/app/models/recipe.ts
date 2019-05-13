@@ -1,19 +1,24 @@
-export class Recipe {
-  countryName: string;
+import { User } from 'src/app/models/user';
+import { Category } from 'src/app/models/category';
+import { Country } from 'src/app/models/country';
 
-  categoryName: string;
+
+export class Recipe {
+  country: any;
+
+  category: Category;
 
   topic: string;
 
   description: string;
 
-  userId: string;
+  user: User;
 
-  viewsCounter: number;
+  viewscounter: number;
 
-  creationDate: Date;
+  creationdate: Date;
 
-  cookingProcess: string;
+  creationDate: string;
 
   gallery: string[];
 

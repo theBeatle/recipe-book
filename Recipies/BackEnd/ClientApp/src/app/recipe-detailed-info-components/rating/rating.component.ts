@@ -9,17 +9,18 @@ import { rS } from '@angular/core/src/render3';
 })
 export class RatingComponent implements OnInit {
 
+  message:string;
   @Input() rating: number;
   @Input() itemId: number;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
   inputName: string;
 
-  recipeService:RecipeService;
+ 
   ngOnInit() {
     this.inputName = this.itemId + '_rating';
   }
  
-  constructor(recipeService:RecipeService) {}
+  constructor(private recipeService:RecipeService) {}
 
   onClick(rating: number): void {
     this.rating = rating;
@@ -27,10 +28,13 @@ export class RatingComponent implements OnInit {
       itemId: this.itemId,
       rating: rating
     });
-    this.recipeService.UpdateRecipeRating(this.itemId,rating);
 
 
     
+   this.recipeService.UpdateRecipeRating(this.itemId,this.rating).subscribe(
+    () => {this.message = 'Recipe updated!'; },
+    () => {this.message = '400 - BAD REQUEST!'; }
+    );
 
      
 
