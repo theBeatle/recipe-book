@@ -1,11 +1,11 @@
 
-<body>
-<div class="container" >
+    <div class="card-body"  *ngFor="let vitamin of allVitamins  ">
+  <div class="card" style="width: 20rem;"  >
   
-      <div class="card-body"  *ngFor="let vitamin of allVitamins  ">
-        <h2 class="card-title" style="text-align: center">Name: {{vitamin.Name}}</h2> 
+     
+        <h2 class="card-title" style="text-align: center"> {{vitamin.name}}</h2> 
 
-    <p class="card-text"> Decription: {{vitamin.Decription}}</p> 
+    <p class="card-text">  {{vitamin.description}}</p> 
   </div>
 </div>
-</body>
+

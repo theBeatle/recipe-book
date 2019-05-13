@@ -1,12 +1,14 @@
 
-<div class="container"  >
+    <div class="card-body"  *ngFor="let element of allMicroElements ">
+  <div class="card" style="width: 20rem;"  >
   
-      <div class="card-body"  *ngFor="let element of allMicroElements ">
-        <h2 class="card-title" style="text-align: center">Name: {{element.Name}}</h2> 
+    
+        <h2 class="card-title" style="text-align: center">{{element.name}}</h2> 
 
-    <p class="card-text"> Value: {{element.Value}}</p> 
+    <p class="card-text"> Value: {{element.value}}</p> 
   </div>
     
 </div>
-</body>
+
+
 

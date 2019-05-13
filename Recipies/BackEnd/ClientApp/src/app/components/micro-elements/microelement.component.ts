@@ -17,6 +17,6 @@ export class MicroElementComponent implements OnInit {
     }
     loadAllMicroElements() {
       this.meS.getAllMicroElements()
-      .subscribe((data: MicroElement[]) => {this.allMicroElements = data; console.log(data)});
+      .subscribe((data: MicroElement[]=[]) => {this.allMicroElements = data; console.log(data)});
       }
 }

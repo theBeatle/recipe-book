@@ -14,7 +14,7 @@ export class VitaminsService {
     constructor(private http: HttpClient) { }
 
   getAllVitamins(): Observable<Vitamin[]> {
-    return this.http.get<Vitamin[]>(this.url + '/api/Ingredient/getAllVitamins', this.httpOptions);
+    return this.http.get<Vitamin[]>(this.url + '/api/Ingredient/getAllVitamins');
 
   
   }

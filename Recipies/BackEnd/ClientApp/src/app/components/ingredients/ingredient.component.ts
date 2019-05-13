@@ -28,7 +28,7 @@ export class IngredientComponent implements OnInit {
   loadAllIngredients() {
  
      this.iS.getAllIngredients()
-     .subscribe((data: Ingredient[]) => {this.allIngredients = data; console.log(data)});
+     .subscribe((data: Ingredient[]=[]) => {this.allIngredients = data; console.log(data)});
     }
   
     

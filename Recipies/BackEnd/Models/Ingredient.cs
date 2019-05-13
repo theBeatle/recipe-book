@@ -14,8 +14,8 @@ namespace BackEnd.Models
         public double Fats_100g { get; set; }
         public double Proteins_100g { get; set; }
         public double Carbohydrates_100g { get; set; }
-        public IEnumerable<Vitamin> Vitamins { get; set; }
-        public IEnumerable<MicroElement> MicroElements { get; set; }
+        public ICollection<Vitamin> Vitamins { get; set; }
+        public ICollection<MicroElement> MicroElements { get; set; }
 
 
 

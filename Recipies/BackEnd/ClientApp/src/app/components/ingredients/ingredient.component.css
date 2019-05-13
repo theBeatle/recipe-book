@@ -4,6 +4,7 @@ body {
     .card{
         background-color: #EEE1B3;
         border-color: #37435B;
+        height: 600px;
     }
     .p{
         color: #37435B;

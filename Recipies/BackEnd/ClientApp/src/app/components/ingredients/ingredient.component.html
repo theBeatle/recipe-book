@@ -1,22 +1,26 @@
  <div class="container">
-        
-  <div class="card" style="width: 18rem;"  >
+    <div class="row">
+  <div class="card-body"  *ngFor="let ingredient of allIngredients ">
+  <div class="card" style="width: 25rem; "  >
                
-      <div class="card-body"  *ngFor="let ingredient of allIngredients ">
-               <h2 class="card-title" style="text-align: center">Name: {{ingredient.Name}}</h2> 
+      
+               <h2 class="card-title" style="text-align: center"> {{ingredient.name}}</h2> 
        
-           <p class="card-text"> Decription: {{ingredient.Decription}}</p> 
-           <p class="card-text"> Kkal_100g: {{ingredient.Kkal_100g}}</p>
-          <p class="card-text"> Fats_100g: {{ingredient.Fats_100g}}</p>
-          <p class="card-text"> Proteins_100g: {{ingredient.Proteins_100g}}</p>
-          <p class="card-text"> Carbohydrates_100g: {{ingredient.Carbohydrates_100g}}</p>
-          <div >
+           <p class="card-text"  style="text-align: center"> {{ingredient.description}}</p> 
+           <p class="card-text"  style="text-align: center"> Kkal_100g: {{ingredient.kkal_100g}}</p>
+          <p class="card-text" style="text-align: center"> Fats_100g: {{ingredient.fats_100g}}</p>
+          <p class="card-text" style="text-align: center"> Proteins_100g: {{ingredient.proteins_100g}}</p>
+          <p class="card-text" style="text-align: center"> Carbohydrates_100g: {{ingredient.carbohydrates_100g}}</p>
+
+          <div class="container">
             <app-vitamin></app-vitamin>
           </div>
-          <div>
+          <div class="container">
             <app-microelement></app-microelement>
           </div>
-    
+        </div>
+          </div>
       </div>  
- </div>
-</div>
+      </div>
+
+

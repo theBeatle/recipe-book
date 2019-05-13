@@ -15,7 +15,7 @@ export class MicroElementsService {
     constructor(private http: HttpClient) { }
 
   getAllMicroElements(): Observable<MicroElement[]> {
-    return this.http.get<MicroElement[]>(this.url + '/api/Ingredient/getAllMicroElements', this.httpOptions);
+    return this.http.get<MicroElement[]>(this.url + '/api/Ingredient/getAllMicroElements');
 
   }
   

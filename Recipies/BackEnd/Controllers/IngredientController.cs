@@ -17,24 +17,36 @@ namespace BackEnd.Controllers
         public IngredientController(DatabaseContext context)
         {
             this._appDbContext = context;
-           
 
-           
-            
-        }
+
+            _appDbContext.MicroElements.Add(new MicroElement
+            {
+                Name = "Zinc",
+                Value = 11
+
+
+            });
+
+
+            _appDbContext.SaveChanges();
+
+
+
+
+         }
 
         [HttpGet("getAllMicroElements")]
-        public ICollection<MicroElement> getAllMicroElements()
+        public IEnumerable<MicroElement> getAllMicroElements()
         {
             return _appDbContext.MicroElements.ToList();
         }
         [HttpGet("getAllIngredients")]
-        public ICollection<Ingredient> getAllIngredients()
+        public IEnumerable<Ingredient> getAllIngredients()
         {
             return _appDbContext.Ingredients.ToList();
         }
         [HttpGet("getAllVitamins")]
-        public ICollection<Vitamin> getAllVitamins()
+        public IEnumerable<Vitamin> getAllVitamins()
         {
             return _appDbContext.Vitamins.ToList();
         }
