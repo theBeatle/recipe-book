@@ -8,6 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
 import { HOST_URL } from '../../app/config';
+import { Gallery } from '../models/gallery';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ import { HOST_URL } from '../../app/config';
 export class GalleryService {
   url = HOST_URL;
   constructor(private http: HttpClient) {}
+
+  getImages(recipeId: number): Observable<Gallery[]> {
+    return this.http.get<Gallery[]>('https://localhost:44385/api/Gallery/GetImagesById?RecipeId=' + recipeId);
+  }
 
   uploadPhoto(recipeId: number, formData: FormData) {
     return this.http.post(

@@ -2,6 +2,9 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HttpEventType, HttpClient } from '@angular/common/http';
 import { GalleryService } from './../../services/gallery.service';
 
+import { s } from '@angular/core/src/render3';
+import { Gallery } from '../../models/gallery';
+
 @Component({
   selector: 'app-upload-gallery',
   templateUrl: './upload-gallery.component.html',
@@ -11,6 +14,7 @@ export class UploadGalleryComponent implements OnInit {
 
   public progress: number;
   public message: string;
+  public photos: Gallery[];
 
   @Input('recipeId') recipeId: number;
 
@@ -20,6 +24,10 @@ export class UploadGalleryComponent implements OnInit {
   constructor(private http: HttpClient, private gS: GalleryService) { }
 
   ngOnInit() {
+    console.log(this.recipeId);
+    this.photos = new Array();   //ne  [];
+    this.gS.getImages(this.recipeId).subscribe(res=> this.photos=res );
+      console.log(this.photos[0].path);
 
   }
 

@@ -74,5 +74,5 @@
       <button type="button" (click)="defaultClick()" class="btn btn-primary">Default</button>
       <button type="button" (click)="modifyClick()" class="btn btn-primary">Modify</button>
   </div>
-  <app-upload-gallery [recipeId] = "id"></app-upload-gallery>
+  <app-upload-gallery *ngIf="id"  [recipeId] = "id"></app-upload-gallery>
 </div>

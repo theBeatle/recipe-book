@@ -1,3 +1,5 @@
+import { Gallery } from "./gallery";
+
 export class Recipe {
   id: number;
 
@@ -17,7 +19,7 @@ export class Recipe {
 
   cookingProcess: string;
 
-  gallery: string[];
+  gallery: Gallery[];
 
   rating: number;
 }

@@ -15,12 +15,23 @@ namespace BackEnd.Services
             this._appDbContext = appDbContext;
             
         }
+        public ICollection<Photo> GetPhotosByRecipeId(int RecipeId)
+        {
+            var edited = this._appDbContext.Recipes.Include(a => a.Gallery).Include(a => a.Gallery.Photos)
+                   .FirstOrDefault(res => res.Id == RecipeId);
+            return edited.Gallery.Photos;
+        }
+        public void RemovePhotoFromDb(int PhotoId)
+        {
+            _appDbContext.Photos.Remove(_appDbContext.Photos.FirstOrDefault(x => x.Id == PhotoId));
+            this._appDbContext.SaveChanges();
+        }
         public void UploadPhotoToDb(int RecipeId, string fullPath)
         {
             
             var photo = new Photo() { Path = fullPath };
 
-            var edited = this._appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a => a.User)
+            var edited = this._appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a => a.User).Include(a => a.Gallery.Photos)
                     .FirstOrDefault(res => res.Id == RecipeId);
 
             if (this._appDbContext.Recipes.Include(a => a.Gallery)

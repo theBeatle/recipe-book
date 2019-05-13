@@ -31,7 +31,7 @@ namespace BackEnd.Services
         {
             int pageSize = 9;
 
-            IQueryable<Recipe> RecipeList = _appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a => a.User);
+            IQueryable<Recipe> RecipeList = _appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a=>a.Gallery.Photos).Include(a => a.User);
 
             //Filtring
             if (category != null && category != 0)

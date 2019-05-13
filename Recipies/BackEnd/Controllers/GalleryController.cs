@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using BackEnd.Models;
 using BackEnd.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,31 @@ namespace BackEnd.Controllers
             _recipeService = recipeService;
         }
 
+        [HttpGet, DisableRequestSizeLimit]
+        [Route("GetImagesById")]
+        public ICollection<Photo> GetPhotos(int RecipeId)
+        {
+            return _galleryService.GetPhotosByRecipeId(RecipeId);
+            
+        }
+
+        [HttpDelete]
+        [Route("RemoveImageById")]
+        public IActionResult RemovePhoto(int RecipeId,int PhotoId)
+        {
+            try
+            {
+
+                _galleryService.RemovePhotoFromDb(PhotoId);
+                return Ok("Removed");
+             
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
         [HttpPost, DisableRequestSizeLimit]
         [Route("UploadGallery")]
         public IActionResult UploadPhoto(int RecipeId)
@@ -39,15 +65,18 @@ namespace BackEnd.Controllers
                 if (file.Length > 0)
                 {
                     var time = DateTime.Now.ToFileTime();
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+
+
+                    var fileName = Path.Combine(ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"'));
+
                     var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine(pathToSave, fileName);
+                    var dbPath = Path.Combine(Path.Combine(_recipeService.getUserIdByRecipeId(RecipeId), fileName));
 
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
-                    _galleryService.UploadPhotoToDb(RecipeId, fullPath);
+                    _galleryService.UploadPhotoToDb(RecipeId, dbPath);
 
                     return Ok(new { dbPath });
                 }

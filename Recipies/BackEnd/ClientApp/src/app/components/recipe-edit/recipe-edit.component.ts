@@ -35,7 +35,7 @@ export class RecipeEditComponent implements OnInit {
     this.oldRecipe = new Recipe();
     this.rS.getCategories().subscribe(res => (this.categories = res));
     this.rS.getCountries().subscribe(res => (this.countries = res));
-      this.rS.getRecipeById(48).subscribe(res => {
+      this.rS.getRecipeById(56).subscribe(res => {
       this.oldRecipe = res;
       this.topic = res.topic;
       this.id = res.id;
