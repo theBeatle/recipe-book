@@ -16,8 +16,8 @@
        <h2 >Description</h2>
        <p class="p-description">{{recipe?.description}}</p>
      </div>
-
-     <app-recipe-direction [Directions]='recipe?.cookingProcess'></app-recipe-direction>
+<!-- 
+     <app-recipe-direction [Directions]='recipe?.cookingProcess'></app-recipe-direction> -->
      
 
         <h2>
@@ -29,7 +29,7 @@
        </h2>
 
        <h2 >Date of publication:
-              {{creationdate}}
+              {{recipe.creationDate | date}}
        </h2>
       
 
@@ -39,7 +39,7 @@
               {{recipe?.viewsCounter}}
        </h2>
       
-        recipe.rating 
+       
       
       <div>
           <h2>Rating:</h2>

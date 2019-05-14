@@ -17,15 +17,16 @@ export class DetailedRecipeComponent implements OnInit {
 
 
   public creationdate:string;
-  
+  public userid:number;
   public recipe:Recipe=new Recipe();
   public message="";
   constructor(private rS:RecipeService ) { }
   
   ngOnInit() {
     
-     this.GetRecipeById('67');
-    
+     this.GetRecipeById('69');
+     console.log("this.recipeid: "+this.userid);
+     
      
     
   }
@@ -40,16 +41,13 @@ export class DetailedRecipeComponent implements OnInit {
       
         this.recipe=new Recipe;
         this.recipe = w;
-        console.log(this.recipe.user); // = new User();
-        console.log(this.recipe.rating); // = new User();
-        this.creationdate="";
-        this.creationdate= w.creationdate.toString().substring(0,10);
-       
-
-        this.rS.updateRecipeViewsCounter(this.recipe.id).subscribe(
+        this.rS.updateRecipeViewsCounter(w.id).subscribe(
           () => {this.message = 'Recipe updated!'; },
           () => {this.message = '400 - BAD REQUEST!'; }
           );
+       
+
+        
 
 
       

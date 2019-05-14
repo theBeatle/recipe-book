@@ -82,6 +82,7 @@ namespace BackEnd.Controllers
         {
 
             User _user = _appDbContext.Users.First(u => u.Id == userId);
+            
             if (_user.LastVisit != DateTime.Today)
             {
                 Recipe recipe = _appDbContext.Recipes.First(r => r.Id == id);
@@ -117,8 +118,7 @@ namespace BackEnd.Controllers
             int countstars = int.Parse(RatingData[1]);
             string userid = RatingData[2];
 
-            if(_appDbContext.RecipeRatings.First(r => r.Recipe.Id == RecipeId && r.User.Id == userid)!=null)
-            {
+           
                 Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
                 if (recipe != null)
                 {
@@ -130,7 +130,7 @@ namespace BackEnd.Controllers
                     return Ok("Raiting updated");
                 }
                 
-            }
+            
             return BadRequest("Not updated");
         }
 
