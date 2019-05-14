@@ -6,7 +6,7 @@ import { Recipe } from '../../models/recipe';
 import { EditRecipe } from '../../models/edit-recipe.viewmodel';
 
 import { SortTypes } from '../../enums/sortTypes';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -27,15 +27,16 @@ export class RecipeEditComponent implements OnInit {
   country: Country;
   description: string;
   cookProc: string;
-
-  constructor(private rS: RecipeService,private router: Router) {}
+  openId: string;
+  constructor(private rS: RecipeService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     // Init selects
+    this.openId = this.route.snapshot.paramMap.get('id');
     this.oldRecipe = new Recipe();
     this.rS.getCategories().subscribe(res => (this.categories = res));
     this.rS.getCountries().subscribe(res => (this.countries = res));
-      this.rS.getRecipeById(59).subscribe(res => {
+      this.rS.getRecipeById(this.openId).subscribe(res => {
       this.oldRecipe = res;
       this.topic = res.topic;
       this.id = res.id;

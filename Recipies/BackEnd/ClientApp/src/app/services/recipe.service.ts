@@ -26,7 +26,7 @@ export class RecipeService {
   getCountries(): Observable<Category[]> {
     return this.http.get<Country[]>(HOST_URL + '/api/Recipe/getCountries');
   }
-  getRecipeById(id: number) {
+  getRecipeById(id) {
     return this.http.get<Recipe>(HOST_URL + '/api/Recipe/getRecipeById?RecipeId=' + id);
   }
 
