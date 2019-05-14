@@ -30,7 +30,7 @@ export class DetailedRecipeComponent implements OnInit {
     
      this.GetRecipeById('69');
      
-     
+    
      
     
   }
@@ -43,6 +43,7 @@ export class DetailedRecipeComponent implements OnInit {
       
         this.recipe=new Recipe;
         this.recipe = w;
+        
         this.model=new ViewsCounterModel();
         this.model.RecipeId=w.id;
         this.rS.updateRecipeViewsCounter(this.model).subscribe(

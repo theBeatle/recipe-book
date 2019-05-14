@@ -45,20 +45,15 @@ import { RecipeIngradientsComponent } from './recipe-detailed-info-components/re
 import { RecipeDirectionsComponent } from './recipe-detailed-info-components/recipe-directions/recipe-directions.component';
 
 
-import { RecipeService } from './services/recipe.service';
 import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-recipe.component';
 
 
-import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-feedback.component';
 import { RatingComponent } from './recipe-detailed-info-components/rating/rating.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationFormComponent,
     NavMenuComponent,
-    FetchDataComponent,
-    CounterComponent,
-    FetchDataComponent,
     RecipeGalleriaComponent,
     RecipeIngradientsComponent,
     RecipeDirectionsComponent,
@@ -82,7 +77,6 @@ import { RatingComponent } from './recipe-detailed-info-components/rating/rating
     RecipeFeedbackComponent,
     RecipeEditComponent,
     UploadGalleryComponent,
-    CreateRecipeComponent
     CreateRecipeComponent,
     RatingComponent,
    

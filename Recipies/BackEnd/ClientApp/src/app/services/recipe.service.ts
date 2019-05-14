@@ -22,11 +22,7 @@ export class RecipeService {
 
   constructor(private http: HttpClient, private aS: AuthenticationService) {}
 
-  getRecipeById(RecipeId:string): Observable<Recipe> {
-    
-    return this.http.get<Recipe>(this.url + '/api/Recipie/ReadRecipeById?RecipeId=' + RecipeId);
-  
-  }
+ 
 
   
 
@@ -61,7 +57,7 @@ export class RecipeService {
     return this.http.get<Country[]>(HOST_URL + '/api/Recipe/getCountries');
   }
   getRecipeById(id) {
-    return this.http.get<Recipe>(HOST_URL + '/api/Recipe/getRecipeById?RecipeId=' + id);
+    return this.http.get<Recipe>(HOST_URL + '/api/Recipie/getRecipeById?RecipeId=' + id);
   }
 
   editRecipe(model: EditRecipe) {

@@ -5,17 +5,17 @@ export class Recipe {
 
   countryName: string;
 
-  category: Category;
+  categoryName: string;
 
   topic: string;
 
   description: string;
 
-  user: User;
+  userId: string;
 
   viewscounter: number;
 
-  creationdate: Date;
+  creationDate: Date;
 
   cookingProcess:string;
 
@@ -23,5 +23,5 @@ export class Recipe {
 
   rating: number;
 
-  id:number;
+  
 }
