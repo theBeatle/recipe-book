@@ -21,13 +21,17 @@ namespace BackEnd.Services
             this._mapper = mapper;
         }
 
+        public string getUserIdByRecipeId(int RecipeId)
+        {
+            return _appDbContext.Recipes.Include(x=>x.User).FirstOrDefault(x => x.Id == RecipeId).User.Id;
+        }
       
         public async Task<RecipeViewModel> GetRecipe(int? category,int? country, string name, int page = 1,
             SortState sortOrder = SortState.TopicAsc)
         {
             int pageSize = 9;
 
-            IQueryable<Recipe> RecipeList = _appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a => a.User);
+            IQueryable<Recipe> RecipeList = _appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a=>a.Gallery.Photos).Include(a => a.User);
 
             //Filtring
             if (category != null && category != 0)
@@ -98,5 +102,50 @@ namespace BackEnd.Services
 
             return viewModel;
 
-        }}
+        }
+
+       
+
+
+        public bool EditRecipe(EditRecipeViewModel model)
+        {
+            if (IsModelValid(model))
+            {
+
+
+
+                var edited = this._appDbContext.Recipes.Include(a => a.Country).Include(a => a.Category).Include(a => a.Gallery).Include(a => a.User).FirstOrDefault(res => res.Id == model.Id);
+
+                edited.Category = this._appDbContext.Categories.FirstOrDefault(x => x.Name == model.Category);
+                edited.Country = this._appDbContext.Countries.FirstOrDefault(x => x.Name == model.Country);
+                edited.Description = model.Description;
+                edited.Topic = model.Topic;
+                edited.CreationDate = DateTime.Now;
+                edited.CookingProcess = model.CookingProcess;
+                edited.User = this._appDbContext.Recipes.FirstOrDefault(x => x.Id == model.Id).User;
+
+                this._appDbContext.Recipes.Attach(edited);
+                this._appDbContext.Entry(edited).State = EntityState.Modified;
+                this._appDbContext.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private bool IsModelValid(EditRecipeViewModel model)
+        {
+            var category = this._appDbContext.Categories.FirstOrDefault(x => x.Name == model.Category);
+            var country = this._appDbContext.Countries.FirstOrDefault(x => x.Name == model.Country);
+            if (category != null && country != null && !string.IsNullOrEmpty(model.Description) && !string.IsNullOrEmpty(model.Topic) && !string.IsNullOrEmpty(model.CookingProcess))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }

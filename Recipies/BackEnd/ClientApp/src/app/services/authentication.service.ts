@@ -4,12 +4,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { HOST_URL } from './../config';
+import { HOST_URL, ADMIN_ROLE } from './../config';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
     private currentUserSubject: BehaviorSubject<AuthUser>;
-    public currentUser: Observable<AuthUser>;
+    public currentUser: Observable<AuthUser> = new Observable<AuthUser>();
     private APIUrl = HOST_URL;
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<AuthUser>(JSON.parse(localStorage.getItem('currentUser')));
@@ -38,8 +38,12 @@ export class AuthenticationService {
                 return user;
             }));
     }
-
-
+    isAdmin() {
+        this.http.get<Boolean>(`${this.APIUrl}/api/Roles/IsUserInRole?uid=${this.currentUserValue.id}&RoleName=${ADMIN_ROLE}`)
+        .pipe(map(role => {
+             console.log(role);
+        }));
+    }
 
     logout() {
         // remove user from local storage to log user out

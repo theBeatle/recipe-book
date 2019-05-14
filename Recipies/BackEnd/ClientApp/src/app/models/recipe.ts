@@ -1,10 +1,9 @@
-import { User } from 'src/app/models/user';
-import { Category } from 'src/app/models/category';
-import { Country } from 'src/app/models/country';
-
+import { Gallery } from "./gallery";
 
 export class Recipe {
-  country: Country;
+  id: number;
+
+  countryName: string;
 
   category: Category;
 
@@ -20,7 +19,7 @@ export class Recipe {
 
   cookingProcess:string;
 
-  gallery: string[];
+  gallery: Gallery[];
 
   rating: number;
 

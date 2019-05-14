@@ -18,6 +18,8 @@ using BackEnd.Services.JWT.Auth;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using BackEnd.Services;
+using System.IO;
+using Microsoft.Extensions.FileProviders;
 
 namespace BackEnd
 {
@@ -37,7 +39,9 @@ namespace BackEnd
             services.AddDbContext<DatabaseContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
               b => b.MigrationsAssembly("BackEnd")));
-            services.AddDefaultIdentity<User>().AddEntityFrameworkStores<DatabaseContext>();
+            services.AddDefaultIdentity<User>()
+                   .AddRoles<IdentityRole>()
+                   .AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddSingleton<IJwtFactory, JwtFactory>();
             
@@ -105,18 +109,27 @@ namespace BackEnd
             // api user claim policy
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                options.AddPolicy("User", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
             });
 
             services.AddMvc();
             //Adding project services
             services.AddScoped<RecipeService>();
+            services.AddScoped<GalleryService>();
 
 
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot")),
+                RequestPath = new PathString("/wwwroot")
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

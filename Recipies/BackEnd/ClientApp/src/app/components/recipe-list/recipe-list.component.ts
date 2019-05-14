@@ -13,7 +13,7 @@ import { SortTypes } from '../../enums/sortTypes';
 })
 export class RecipeListComponent implements OnInit {
   loading = true;
-
+  test = null;
   page = 1;
   recipies: Recipe[] = [];
   categories: Category[];
@@ -21,18 +21,30 @@ export class RecipeListComponent implements OnInit {
   sorting = SortTypes;
   keys = Object.keys(this.sorting).filter(f => !isNaN(Number(f)));
 
+
   selectedCategory: Category | string;
   selectedCountry: Country | string;
   selectedSort = SortTypes.Topic;
   search: string;
+  imageToShow: any;
 
+createImageFromBlob(image: Blob) {
+   let reader = new FileReader();
+   reader.addEventListener("load", () => {
+      this.imageToShow = reader.result;
+   }, false);
 
+   if (image) {
+      reader.readAsDataURL(image);
+   }
+}
   constructor(private rS: RecipeService) {}
 
   fetchAllRecipies() {
     this.rS.getAllRecipies(this.page).subscribe(
       res => {
         this.recipies = this.recipies.concat(res);
+
         this.loading = false;
       },
       error => {

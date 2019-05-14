@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
  /* width */
+body {
+  /* background-image: url("https://7770003.ru/netcat_files/957_90905.jpg"); */
+}
+
  ::-webkit-scrollbar {
   width: 10px;
 }
@@ -18,4 +22,7 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(211, 119, 85);
+}
+.form-gap {
+  padding-top: 140px;
 }

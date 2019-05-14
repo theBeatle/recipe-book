@@ -6,7 +6,9 @@ using BackEnd.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using BackEnd.ViewModels.RecipeViewModels;
 
 namespace BackEnd.Controllers
 {
@@ -29,10 +31,10 @@ namespace BackEnd.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}", Name = "GetUserById")]
-        [Authorize]
-        public IActionResult GetUserById(string id)
+       // [Authorize]
+        public async Task<IActionResult> GetUserById(string id)
         {
-            var user = _appDbContext.Users.FirstOrDefault(x => x.Id == id);
+            var user = await this._userManager.FindByIdAsync(id);
             if (user != null)
             {
                 return new OkObjectResult(user);
@@ -41,6 +43,26 @@ namespace BackEnd.Controllers
             {
                 return BadRequest("User not found");
             }
+        }
+        [HttpGet("{id}", Name = "GetRecipeByUserID")]
+   
+        public IEnumerable<RecipeListViewModel> GetRecipeByUserID(string id)
+        {
+            var list = new List<RecipeListViewModel>();
+            foreach(var el in this._appDbContext.Recipes.Include(x=>x.Category).Include(x=>x.Country).Include(x=>x.User).Where(x=>x.User.Id == id).ToList())
+            {
+                list.Add(new RecipeListViewModel
+                {
+                    Id = el.Id,
+                    CategoryName = el.Category.Name,
+                    CountryName = el.Country.Name,
+                    Topic = el.Topic,
+                    Description = el.Description,
+                    CookingProcess = el.CookingProcess,
+                    CreationDate = el.CreationDate,
+                });
+            }
+            return list;
         }
     }
 }
