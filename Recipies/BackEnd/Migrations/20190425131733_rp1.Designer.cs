@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BackEnd.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20190505112820_Init")]
-    partial class Init
+    [Migration("20190425131733_rp1")]
+    partial class rp1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,122 +20,6 @@ namespace BackEnd.Migrations
                 .HasAnnotation("ProductVersion", "2.2.4-servicing-10062")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("BackEnd.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Comment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Text");
-
-                    b.Property<DateTime>("Time");
-
-                    b.Property<int?>("recipeId");
-
-                    b.Property<string>("userId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("recipeId");
-
-                    b.HasIndex("userId");
-
-                    b.ToTable("Comments");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Countries");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Gallery", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Galleries");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Photo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("GalleryId");
-
-                    b.Property<string>("Path");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("GalleryId");
-
-                    b.ToTable("Photos");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Recipe", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CategoryId");
-
-                    b.Property<string>("CookingProcess");
-
-                    b.Property<int?>("CountryId");
-
-                    b.Property<DateTime>("CreationDate");
-
-                    b.Property<string>("Description");
-
-                    b.Property<int?>("GalleryId");
-
-                    b.Property<double>("Rating");
-
-                    b.Property<string>("Topic");
-
-                    b.Property<string>("UserId");
-
-                    b.Property<int>("ViewsCounter");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("GalleryId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Recipes");
-                });
 
             modelBuilder.Entity("BackEnd.Models.User", b =>
                 {
@@ -310,43 +194,6 @@ namespace BackEnd.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Comment", b =>
-                {
-                    b.HasOne("BackEnd.Models.Recipe", "recipe")
-                        .WithMany("Comments")
-                        .HasForeignKey("recipeId");
-
-                    b.HasOne("BackEnd.Models.User", "user")
-                        .WithMany()
-                        .HasForeignKey("userId");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Photo", b =>
-                {
-                    b.HasOne("BackEnd.Models.Gallery")
-                        .WithMany("Photos")
-                        .HasForeignKey("GalleryId");
-                });
-
-            modelBuilder.Entity("BackEnd.Models.Recipe", b =>
-                {
-                    b.HasOne("BackEnd.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("BackEnd.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId");
-
-                    b.HasOne("BackEnd.Models.Gallery", "Gallery")
-                        .WithMany()
-                        .HasForeignKey("GalleryId");
-
-                    b.HasOne("BackEnd.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

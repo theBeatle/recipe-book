@@ -12,8 +12,6 @@ import { Recipe } from './models/recipe';
 
 export class AppComponent {
   title = 'app';
-
-
   
 }
 export class RecipeInfoComponent {

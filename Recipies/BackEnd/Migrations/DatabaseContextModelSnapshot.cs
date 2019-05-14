@@ -94,6 +94,48 @@ namespace BackEnd.Migrations
                     b.ToTable("Galleries");
                 });
 
+            modelBuilder.Entity("BackEnd.Models.Ingredient", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Carbohydrates_100g");
+
+                    b.Property<string>("Description");
+
+                    b.Property<double>("Fats_100g");
+
+                    b.Property<double>("Kkal_100g");
+
+                    b.Property<string>("Name");
+
+                    b.Property<double>("Proteins_100g");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ingredients");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.MicroElement", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("IngredientId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<double>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IngredientId");
+
+                    b.ToTable("MicroElements");
+                });
+
             modelBuilder.Entity("BackEnd.Models.Photo", b =>
                 {
                     b.Property<int>("Id")
@@ -209,6 +251,25 @@ namespace BackEnd.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Vitamin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Description");
+
+                    b.Property<int?>("IngredientId");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IngredientId");
+
+                    b.ToTable("Vitamins");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -336,6 +397,13 @@ namespace BackEnd.Migrations
                         .HasForeignKey("userId");
                 });
 
+            modelBuilder.Entity("BackEnd.Models.MicroElement", b =>
+                {
+                    b.HasOne("BackEnd.Models.Ingredient")
+                        .WithMany("MicroElements")
+                        .HasForeignKey("IngredientId");
+                });
+
             modelBuilder.Entity("BackEnd.Models.Photo", b =>
                 {
                     b.HasOne("BackEnd.Models.Gallery")
@@ -360,6 +428,13 @@ namespace BackEnd.Migrations
                     b.HasOne("BackEnd.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Vitamin", b =>
+                {
+                    b.HasOne("BackEnd.Models.Ingredient")
+                        .WithMany("Vitamins")
+                        .HasForeignKey("IngredientId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

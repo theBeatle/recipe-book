@@ -16,6 +16,9 @@
                 <a class="nav-link " [routerLink]='["/fetch-data"]'>Fetch data</a>
               </li>
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
+                  <a class="nav-link " [routerLink]='["/user-profile"]'> User profile</a>
+                </li>
+              <li class="nav-item" [routerLinkActive]='["link-active"]'>
                 <a class="nav-link " [routerLink]='["/recipe-list"]'>All Recipies</a>
               </li>
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
@@ -26,25 +29,25 @@
     <div class="mx-auto order-0">
         <a class="navbar-brand mx-auto" [routerLink]='["/"]'>Recipies</a>
 
-    </div>
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse" [ngClass]='{"show": isExpanded}'>
-        <ul class="navbar-nav ml-auto">
+  </div>
+  <div class="navbar-collapse collapse w-100 order-3 dual-collapse" [ngClass]='{"show": isExpanded}'>
+    <ul class="navbar-nav ml-auto">
       <div *ngIf="(isAuthorized ); then thenBlock else elseBlock"></div>
-        <ng-template #thenBlock>
-            <li class="nav-item" >
-              <a class="nav-link">{{fullName}}</a>
-            </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-            <a class="nav-link" [routerLink]='["/login"]'>Log Out</a>
-          </li>
-          </ng-template>
+      <ng-template #thenBlock>
+        <li class="nav-item">
+          <a class="nav-link">{{fullName}}</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+          <a class="nav-link" [routerLink]='["/login"]'>Log Out</a>
+        </li>
+      </ng-template>
 
-          <li class="nav-item" [routerLinkActive]='[link-active]' >
-            <a class="nav-link" [routerLink]='["/contact"]'>Contact us</a>
-          </li>
+      <li class="nav-item" [routerLinkActive]='["link-active"]'>
+        <a class="nav-link" [routerLink]='["/contact"]'>Contact us</a>
+      </li>
 
-        <ng-template #elseBlock>
-          <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+      <ng-template #elseBlock>
+        <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
           <a class="nav-link" [routerLink]='["/login"]'>Sign In</a>
         </li>
         <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
@@ -52,11 +55,9 @@
         </li>
       </ng-template>
     </ul>
-    </div>
+  </div>
 
 </nav>
-   
-
           <ng-template #elseBlock>
             <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/login"]'>Sign In</a>
@@ -74,7 +75,10 @@
             <a class="nav-link text-dark" [routerLink]='["/fetch-data"]'>Fetch data</a>
           </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]'>
-            <a class="nav-link text-dark" [routerLink]='["/recipes"]'>My Recipes</a>
-          </li>
- 
+              <a class="nav-link text-dark" [routerLink]='["/recovery-password"]'>Recovery Password</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </header>
