@@ -17,6 +17,7 @@ using System.Net;
 using BackEnd.Services.JWT.Auth;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
+using BackEnd.Services;
 
 namespace BackEnd
 {
@@ -36,7 +37,9 @@ namespace BackEnd
             services.AddDbContext<DatabaseContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
               b => b.MigrationsAssembly("BackEnd")));
-            services.AddDefaultIdentity<User>().AddEntityFrameworkStores<DatabaseContext>();
+            services.AddDefaultIdentity<User>()
+                   .AddRoles<IdentityRole>()
+                   .AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddSingleton<IJwtFactory, JwtFactory>();
             
@@ -47,6 +50,7 @@ namespace BackEnd
             services.AddAutoMapper();
 
             var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+
 
             services.AddCors(options =>
             {
@@ -103,10 +107,15 @@ namespace BackEnd
             // api user claim policy
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                options.AddPolicy("User", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
             });
 
             services.AddMvc();
+            //Adding project services
+            services.AddScoped<RecipeService>();
+
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -131,7 +140,7 @@ namespace BackEnd
             app.UseExceptionHandler(
                      builder =>
                      {
-                         builder.Run(
+                        builder.Run(
                         async context =>
                                  {
                                      context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;

@@ -1,13 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BackEnd.Migrations
 {
-    public partial class addingredientstable : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-           
+          
 
             migrationBuilder.CreateTable(
                 name: "Ingredients",
@@ -26,6 +27,8 @@ namespace BackEnd.Migrations
                 {
                     table.PrimaryKey("PK_Ingredients", x => x.Id);
                 });
+
+           
 
             migrationBuilder.CreateTable(
                 name: "MicroElements",
@@ -69,10 +72,15 @@ namespace BackEnd.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+
+           
+
             migrationBuilder.CreateIndex(
                 name: "IX_MicroElements_IngredientId",
                 table: "MicroElements",
                 column: "IngredientId");
+
+       
 
             migrationBuilder.CreateIndex(
                 name: "IX_Vitamins_IngredientId",
@@ -82,16 +90,7 @@ namespace BackEnd.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "MicroElements");
-
-            migrationBuilder.DropTable(
-                name: "Vitamins");
-
-            migrationBuilder.DropTable(
-                name: "Ingredients");
-
-
+           
         }
     }
 }

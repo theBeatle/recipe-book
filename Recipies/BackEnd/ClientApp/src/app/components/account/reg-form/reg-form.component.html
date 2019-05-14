@@ -1,8 +1,48 @@
-<form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)">
-  <input formControlName="Email" placeholder="Email">
-  <input formControlName="Password" placeholder="Password">
+<div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm.value)">
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="text" formControlName="Email" [className]="f.Email.errors ? 'form-control is-invalid' : 'form-control is-valid'" >
+            <div *ngIf="f.Email.touched && f.Email.errors" class="invalid-feedback">
+                <div *ngIf="f.Email.errors.required">Email is required</div>
+                <div *ngIf="f.Email.errors.email">Email is invalid</div>
+            </div>
+        </div>
 
-  <input formControlName="FirstName" placeholder="Name" />
-    <input formControlName="LastName" placeholder="Surname">
-    <button type="submit">Submit</button>
-</form>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" formControlName="Password" [className]="f.Password.errors ? 'form-control is-invalid' : 'form-control is-valid'" >
+            <div *ngIf="f.Password.touched && f.Password.errors" class="invalid-feedback">
+                <div *ngIf="f.Password.errors.required">Password is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ConfirmPassword">Confirm password</label>
+            <input type="password" formControlName="ConfirmPassword" [className]="f.ConfirmPassword.errors ? 'form-control is-invalid' : 'form-control is-valid'">
+            <div *ngIf="f.ConfirmPassword.touched && f.ConfirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.ConfirmPassword.errors.required">ConfirmPassword is required</div>
+                <div *ngIf="f.ConfirmPassword.errors.MatchPassword">MatchPassword</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="FirstName">First Name</label>
+            <input type="text" formControlName="FirstName" [className]="f.FirstName.errors ? 'form-control is-invalid' : 'form-control is-valid'" >
+            <div *ngIf="f.FirstName.touched && f.FirstName.errors" class="invalid-feedback">
+                <div *ngIf="f.FirstName.errors.required">FirstName is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="LastName">LastName</label>
+            <input type="text" formControlName="LastName" [className]="f.LastName.errors ? 'form-control is-invalid' : 'form-control is-valid'" >
+            <div *ngIf="f.LastName.touched && f.LastName.errors" class="invalid-feedback">
+                <div *ngIf="f.LastName.errors.required">LastName is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Register</button>
+            <img *ngIf="loading" class="pl-2" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+        <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    </form>
+</div>
+

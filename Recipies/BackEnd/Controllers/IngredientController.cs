@@ -17,22 +17,6 @@ namespace BackEnd.Controllers
         public IngredientController(DatabaseContext context)
         {
             this._appDbContext = context;
-
-
-            _appDbContext.MicroElements.Add(new MicroElement
-            {
-                Name = "Zinc",
-                Value = 11
-
-
-            });
-
-
-            _appDbContext.SaveChanges();
-
-
-
-
          }
 
         [HttpGet("getAllMicroElements")]
