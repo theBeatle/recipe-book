@@ -16,13 +16,14 @@ namespace BackEnd.Models
         }
 
         public new DbSet<User> Users { get; set; }
+        public DbSet<Ingredient> Ingredients { get; set; }
+        public DbSet<Vitamin> Vitamins { get; set; }
+        public DbSet<MicroElement> MicroElements { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
-
-
         public  DbSet<FeedBackMessage> FeedBackMessages { get; set; }
   
         public new DbSet<Comment> Comments { get; set; }

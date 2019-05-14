@@ -5,8 +5,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
+
+
+
+import { IngredientsService } from './services/ingredients.service';
+import { VitaminsService } from './services/vitamins.service';
+import { MicroElementsService } from './services/micro.elements.service';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { IngredientComponent } from './components/ingredients/ingredient.component';
+import { VitaminComponent } from './components/vitamins/vitamin.component';
+import { MicroElementComponent } from './components/micro-elements/microelement.component';
+
 import { CommonModule } from '@angular/common';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
@@ -54,6 +65,9 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     UserProfileComponent,
     CounterComponent,
     FetchDataComponent,
+    IngredientComponent,
+    VitaminComponent,
+    MicroElementComponent,
     HomeComponent,
     LoginFormComponent,
     EditprofileComponent,
@@ -86,6 +100,8 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
       { path: 'home', component: HomeComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'registration', component: RegistrationFormComponent },
+      { path: 'feature', component: IngredientComponent },
+
       { path: 'user-profile', component: UserProfileComponent, canActivate: [AuthGuard] },
       {path : 'editprofile', component: EditprofileComponent},
       {path : 'myrecipes', component: MyrecipesComponent},
@@ -97,6 +113,9 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
   ],
   providers: [
     HttpClientModule,
+    IngredientsService,
+    VitaminsService,
+    MicroElementsService,
     FetchDataComponent,
     ContactUsComponent,
     LoginFormComponent,
