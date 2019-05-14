@@ -18,7 +18,7 @@ export class Recipe {
 
   creationdate: Date;
 
-  creationDate: string;
+  cookingProcess:string;
 
   gallery: string[];
 

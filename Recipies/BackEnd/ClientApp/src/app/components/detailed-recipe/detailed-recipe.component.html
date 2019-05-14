@@ -8,6 +8,18 @@
      
      <h1 id="htop" style="text-align: center">{{recipe.topic}}</h1>
 
+
+     <app-recipe-galleria [Images]='recipe?.gallery?.photos'></app-recipe-galleria>
+
+
+     <div>
+       <h2 >Description</h2>
+       <p class="p-description">{{recipe?.description}}</p>
+     </div>
+<!-- 
+     <app-recipe-direction [Directions]='recipe?.cookingProcess'></app-recipe-direction> -->
+     
+
         <h2>
         Author: {{recipe?.user?.firstName}}  
        </h2>
@@ -17,7 +29,7 @@
        </h2>
 
        <h2 >Date of publication:
-              {{creationdate}}
+              {{recipe.creationDate | date}}
        </h2>
       
 
@@ -27,18 +39,14 @@
               {{recipe?.viewsCounter}}
        </h2>
       
-        recipe.rating 
+       
       
       <div>
           <h2>Rating:</h2>
           <app-rating [rating]="recipe?.rating" [itemId]='recipe?.id'  (ratingClick)='ratingComponentClick($event)'></app-rating>
       </div> 
       
-      
     
-
-      
-      
    </div>
 
    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">

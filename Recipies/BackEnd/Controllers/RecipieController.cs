@@ -9,6 +9,7 @@ using AutoMapper;
 using System.Linq;
 using BackEnd.ViewModels.RecipeViewModels;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace BackEnd.Controllers
 {
@@ -81,6 +82,7 @@ namespace BackEnd.Controllers
         {
 
             User _user = _appDbContext.Users.First(u => u.Id == userId);
+            
             if (_user.LastVisit != DateTime.Today)
             {
                 Recipe recipe = _appDbContext.Recipes.First(r => r.Id == id);
@@ -108,19 +110,27 @@ namespace BackEnd.Controllers
    
 
         [HttpPost("UpdateRecipeRating")]
-        public IActionResult UpdateRecipeRating(int countstars,[FromBody]int RecipeId)
+        public IActionResult UpdateRecipeRating([FromBody] string data)
         {
 
-            Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
-            if (recipe != null)
-            {
-                _appDbContext.RecipeRatings.Add(new RecipeRating { Recipe = recipe, Star = countstars });
-                _appDbContext.SaveChanges();
-                recipe.Rating = Math.Round( (double) (_appDbContext.RecipeRatings.Count(r => r.Star == 5 && r.Recipe.Id == RecipeId)*5 + _appDbContext.RecipeRatings.Count(r => r.Star == 4 && r.Recipe.Id == RecipeId)*4 + _appDbContext.RecipeRatings.Count(r => r.Star == 3 && r.Recipe.Id == RecipeId)*3 + _appDbContext.RecipeRatings.Count(r => r.Star == 2 && r.Recipe.Id == RecipeId)*2 + _appDbContext.RecipeRatings.Count(r => r.Star == 1 && r.Recipe.Id == RecipeId)*1) / _appDbContext.RecipeRatings.Count(r=>r.Recipe.Id==RecipeId));
-                _appDbContext.Entry(recipe).State = EntityState.Modified;
-                _appDbContext.SaveChanges();
-                return Ok("Raiting updated");
-            }
+            string[] RatingData = data.Split("|");
+            int RecipeId = int.Parse(RatingData[0]);
+            int countstars = int.Parse(RatingData[1]);
+            string userid = RatingData[2];
+
+           
+                Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
+                if (recipe != null)
+                {
+                    _appDbContext.RecipeRatings.Add(new RecipeRating { Recipe = recipe, Star = countstars,User=_appDbContext.Users.First(u=>u.Id==userid)});
+                    _appDbContext.SaveChanges();
+                    recipe.Rating = Math.Round((double)(_appDbContext.RecipeRatings.Count(r => r.Star == 5 && r.Recipe.Id == RecipeId) * 5 + _appDbContext.RecipeRatings.Count(r => r.Star == 4 && r.Recipe.Id == RecipeId) * 4 + _appDbContext.RecipeRatings.Count(r => r.Star == 3 && r.Recipe.Id == RecipeId) * 3 + _appDbContext.RecipeRatings.Count(r => r.Star == 2 && r.Recipe.Id == RecipeId) * 2 + _appDbContext.RecipeRatings.Count(r => r.Star == 1 && r.Recipe.Id == RecipeId) * 1) / _appDbContext.RecipeRatings.Count(r => r.Recipe.Id == RecipeId));
+                    _appDbContext.Entry(recipe).State = EntityState.Modified;
+                    _appDbContext.SaveChanges();
+                    return Ok("Raiting updated");
+                }
+                
+            
             return BadRequest("Not updated");
         }
 

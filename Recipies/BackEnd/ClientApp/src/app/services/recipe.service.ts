@@ -20,7 +20,7 @@ export class RecipeService {
   
   
   url = HOST_URL;
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'}) };
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'}) };
   recipe:Recipe;
   
 
@@ -37,19 +37,21 @@ export class RecipeService {
 
   updateRecipeViewsCounter(RecipeId:number): Observable<any> {
     
-  
-   
-  return this.http.get( this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+RecipeId.toString()+'&userId='+this.aS.currentUserValue.id);
-  
-   
+    console.log("recipeid: "+RecipeId);
+  return this.http.get( this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+RecipeId+'&userId='+this.aS.currentUserValue.id);
   
   }
 
 
 
-  UpdateRecipeRating(RecipeId:number,countstars:number):Observable<any>{
+  UpdateRecipeRating(RecipeId:number,countstars:number){
     console.log("recipeid: "+RecipeId);
-    return this.http.post(this.url+'/api/Recipie/UpdateRecipeRating?countstars='+countstars,RecipeId);
+    console.log("STARS: "+countstars);
+    console.log("user: "+this.aS.currentUserValue.id);
+
+    const body = RecipeId+"|"+countstars+"|"+this.aS.currentUserValue.id;
+    console.log(body);
+    return this.http.post(this.url+'/api/Recipie/UpdateRecipeRating',body.toString(),this.httpOptions);
   }
 
 
