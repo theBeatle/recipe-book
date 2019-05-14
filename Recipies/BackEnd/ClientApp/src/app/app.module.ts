@@ -59,6 +59,7 @@ import { RatingComponent } from './recipe-detailed-info-components/rating/rating
     RecipeFeedbackComponent,
     CreateRecipeComponent,
     RatingComponent,
+   
   ],
 
   imports: [

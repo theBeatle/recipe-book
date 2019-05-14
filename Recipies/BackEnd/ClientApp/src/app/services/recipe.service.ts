@@ -11,6 +11,7 @@ import { HOST_URL } from '../../app/config';
 import { RecipeModel } from '../models/recipe-model';
 import { AuthenticationService } from './authentication.service';
 import { User } from '../models/user';
+import { RecipeRatingModel } from '../models/reciperating-model';
 
 
 @Injectable({
@@ -44,14 +45,12 @@ export class RecipeService {
 
 
 
-  UpdateRecipeRating(RecipeId:number,countstars:number){
-    console.log("recipeid: "+RecipeId);
-    console.log("STARS: "+countstars);
-    console.log("user: "+this.aS.currentUserValue.id);
+  UpdateRecipeRating(model:RecipeRatingModel):Observable<any>{
+    console.log("OnClick!!!");
+    model.UserId=this.aS.currentUserValue.id;
 
-    const body = RecipeId+"|"+countstars+"|"+this.aS.currentUserValue.id;
-    console.log(body);
-    return this.http.post(this.url+'/api/Recipie/UpdateRecipeRating',body.toString(),this.httpOptions);
+    console.log(model);
+    return this.http.post(this.url+'/api/Recipie/UpdateRecipeRating',model,this.httpOptions);
   }
 
 

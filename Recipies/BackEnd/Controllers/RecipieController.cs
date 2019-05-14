@@ -110,27 +110,25 @@ namespace BackEnd.Controllers
    
 
         [HttpPost("UpdateRecipeRating")]
-        public IActionResult UpdateRecipeRating([FromBody] string data)
+        public IActionResult UpdateRecipeRating([FromBody] RatingRecipeViewModel model)
         {
 
-            string[] RatingData = data.Split("|");
-            int RecipeId = int.Parse(RatingData[0]);
-            int countstars = int.Parse(RatingData[1]);
-            string userid = RatingData[2];
+            int RecipeId = model.RecipeId;
 
-           
+            if(_appDbContext.RecipeRatings.Count(r=>r.Recipe == _appDbContext.Recipes.First(x=>x.Id==RecipeId)&&r.User.Id==model.UserId)==0)
+            {
                 Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
                 if (recipe != null)
                 {
-                    _appDbContext.RecipeRatings.Add(new RecipeRating { Recipe = recipe, Star = countstars,User=_appDbContext.Users.First(u=>u.Id==userid)});
+                    _appDbContext.RecipeRatings.Add(new RecipeRating { Recipe = recipe, Star = model.CountStar, User = _appDbContext.Users.First(u => u.Id == model.UserId) });
                     _appDbContext.SaveChanges();
                     recipe.Rating = Math.Round((double)(_appDbContext.RecipeRatings.Count(r => r.Star == 5 && r.Recipe.Id == RecipeId) * 5 + _appDbContext.RecipeRatings.Count(r => r.Star == 4 && r.Recipe.Id == RecipeId) * 4 + _appDbContext.RecipeRatings.Count(r => r.Star == 3 && r.Recipe.Id == RecipeId) * 3 + _appDbContext.RecipeRatings.Count(r => r.Star == 2 && r.Recipe.Id == RecipeId) * 2 + _appDbContext.RecipeRatings.Count(r => r.Star == 1 && r.Recipe.Id == RecipeId) * 1) / _appDbContext.RecipeRatings.Count(r => r.Recipe.Id == RecipeId));
                     _appDbContext.Entry(recipe).State = EntityState.Modified;
                     _appDbContext.SaveChanges();
                     return Ok("Raiting updated");
                 }
-                
-            
+            }
+               
             return BadRequest("Not updated");
         }
 

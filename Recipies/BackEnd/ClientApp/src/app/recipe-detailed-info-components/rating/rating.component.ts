@@ -1,6 +1,8 @@
 import { Component, Input,  OnInit ,EventEmitter,Output} from '@angular/core';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { rS } from '@angular/core/src/render3';
+import {RecipeRatingModel} from 'src/app/models/reciperating-model'
+import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 @Component({
   selector: 'app-rating',
@@ -14,7 +16,7 @@ export class RatingComponent implements OnInit {
   @Input() itemId: number;
   @Output() ratingClick: EventEmitter<any> = new EventEmitter<any>();
   inputName: string;
-
+  model:RecipeRatingModel;
  
   ngOnInit() {
     this.inputName = this.itemId + '_rating';
@@ -28,10 +30,13 @@ export class RatingComponent implements OnInit {
       itemId: this.itemId,
       rating: rating
     });
+   
 
+    this.model=new RecipeRatingModel();
+    this.model.CountStar=this.rating;
+    this.model.RecipeId=this.itemId;
 
-    
-   this.recipeService.UpdateRecipeRating(this.itemId,this.rating).subscribe(
+   this.recipeService.UpdateRecipeRating(this.model).subscribe(
     () => {this.message = 'Recipe updated!'; },
     () => {this.message = '400 - BAD REQUEST!'; }
     );

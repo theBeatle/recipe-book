@@ -4,7 +4,7 @@ import { Country } from 'src/app/models/country';
 
 
 export class Recipe {
-  country: any;
+  country: Country;
 
   category: Category;
 
