@@ -3,6 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+
+import {RecipeComponent} from './recipes/recipe.component';
+import { RecipeService } from './services/recipe.service';
+
 
 
 
@@ -51,6 +56,7 @@ import { RecipeListComponent } from './components/recipe-list/recipe-list.compon
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
 import { RecipeService } from './services/recipe.service';
+ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
@@ -65,6 +71,7 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     UserProfileComponent,
     CounterComponent,
     FetchDataComponent,
+    RecipeComponent,
     IngredientComponent,
     VitaminComponent,
     MicroElementComponent,
@@ -108,7 +115,11 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
       {path : 'favourite-recipes', component: FavouriteRecipesComponent},
       {path : 'recipe-list', component: RecipeListComponent},
 
-      { path: 'contact', component: ContactUsComponent}
+     
+      { path: 'contact', component: ContactUsComponent},
+      { path: 'registration', component: RegistrationFormComponent },
+      { path: 'recipes', component: RecipeComponent }
+
     ])
   ],
   providers: [
@@ -116,12 +127,14 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     IngredientsService,
     VitaminsService,
     MicroElementsService,
+    RecipeService,   
     FetchDataComponent,
     ContactUsComponent,
     LoginFormComponent,
     UserProfileComponent,
     RegistrationFormComponent,
     RecipeService,
+    RecipeComponent,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
