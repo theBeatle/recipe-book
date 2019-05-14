@@ -133,19 +133,23 @@
           <div style="margin-top: 10px;">
       <div class="row" >
 
-      <div *ngFor="let item of myRecipes" class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem; margin: 5px; margin-left: 4%;" routerLinkActive="active">
+      <div *ngFor="let item of myRecipes" class="card text-white bg-primary mb-3 " style=" margin: 5px; margin-left: 4%;" routerLinkActive="active">
+          <div class="card-body " >
 
-        <div class="card-header" style="width: 300px; height: 300px; ">Recipe</div>
-          <div class="card-body " style="width: 300px; height: 300px; ">
             <h4 class="card-title">Topic: {{item.topic}}</h4>
             <p class="card-text descr" >Description: {{item.description}}</p>
             <p class="card-text">Country: {{item.countryName}}</p>
             <p class="card-text">Category: {{item.categoryName}}</p>
-           
+
+            <div calss="row">
+         <button class="btn btn-info" style="width:100% " routerLink="/recipe-edit/{{item.id}}">Edit</button></div>
+            <button class="btn btn-secondary" style="width:100% ">Delete</button></div>
+
           </div>
-          <div class="card-footer">
-              <button class="btn btn-primary" routerLink="/recipe-edit/{{item.id}}">Edit</button>
-            </div>
+        </div>
+
+
+
 
         </div>
 

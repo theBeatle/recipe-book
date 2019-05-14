@@ -2,7 +2,6 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { HttpEventType, HttpClient } from '@angular/common/http';
 import { GalleryService } from './../../services/gallery.service';
 
-import { s } from '@angular/core/src/render3';
 import { Gallery } from '../../models/gallery';
 import { Observable } from 'rxjs';
 

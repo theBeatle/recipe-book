@@ -41,9 +41,7 @@ display: inline-block;
 .storange{
  color:rgb(180, 82, 2);
 }
-.stCard{
-  height: 250px;
-}
+
 .divv{
   /* https://i.pinimg.com/originals/33/d4/b5/33d4b5305f347050697fec9388a2e7ea.jpg */
   background-image: url("https://7770003.ru/netcat_files/957_90905.jpg");

@@ -2,12 +2,7 @@ import { Category } from './../models/category';
 import { Country } from './../models/country';
 import { EditRecipe } from './../models/edit-recipe.viewmodel';
 import { map } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
 
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Recipe } from '../models/recipe';
-import { Observable } from 'rxjs';
-import { HOST_URL } from '../../app/config';
 import { RecipeModel } from '../models/recipe-model';
 import { AuthenticationService } from './authentication.service';
 
@@ -35,6 +30,7 @@ export class RecipeService {
   }
 
   // all?category=1&name=shit&page=1&sortOrder=1
+   
   getAllRecipies(
     page: number,
     category?: number,
@@ -64,8 +60,25 @@ export class RecipeService {
       })
     );
   }
+  getMyRecipes():Observable<Recipe[]> {
+   // model.uid =this.aS.currentUserValue.id;  model:RecipeModel
+    return this.http.get<Recipe[]>(this.url+'/api/Recipe/getMyRecipes')
+ }
   CreateRecipe(model: RecipeModel): Observable<any> {
     model.uid = this.aS.currentUserValue.id;
     return this.http.post(HOST_URL + '/api/Recipe/CreateRecipe', model);
   }
+
+
+  deleteRecipe(id: number) {
+   return this.http.delete(this.url + '/api/Recipe/' + id);
+  }
 }
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Recipe} from '../models/recipe';
+import { HOST_URL } from '../../app/config';
+
+

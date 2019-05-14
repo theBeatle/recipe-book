@@ -108,6 +108,8 @@ namespace BackEnd.Controllers
         }
 
 
+
+
         private bool IsModelValid(CreateRecipeViewModel model)
         {
             var category = this._appDbContext.Categories.FirstOrDefault(x => x.Id.ToString() == model.category);
@@ -120,6 +122,47 @@ namespace BackEnd.Controllers
                 return false;
             }
         }
+        [HttpGet("getRecipes")]
+        public IEnumerable<Recipe> getRecipes()
+        {
+            return _appDbContext.Recipes.ToList();
+        }
+
+        [HttpGet("{id}")]
+        public Recipe Get(int id)
+        {
+            Recipe recipe = _appDbContext.Recipes.FirstOrDefault(x => x.Id == id);
+            return recipe;
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]Recipe recipe)
+        {
+            if (ModelState.IsValid)
+            {
+                _appDbContext.Recipes.Add(recipe);
+                _appDbContext.SaveChanges();
+                return Ok(recipe);
+            }
+            return BadRequest(ModelState);
+        }
+      
+        [HttpDelete(@"{id}")]
+        public IActionResult deleteRecipe(int id)
+        {
+            Recipe recipe = _appDbContext.Recipes.FirstOrDefault(x => x.Id == id);
+
+            if (recipe != null)
+            {
+                _appDbContext.Recipes.Remove(recipe);
+                _appDbContext.SaveChanges();
+            }
+            return Ok(recipe);
+        }
+
+
+
+
     }
    
 }

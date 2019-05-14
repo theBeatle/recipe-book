@@ -1,3 +1,4 @@
+<header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse" aria-label="Toggle navigation"
     [attr.aria-expanded]="isExpanded" (click)="toggle()">
@@ -8,21 +9,20 @@
             <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
                 <a class="nav-link " [routerLink]='["/"]'>Home</a>
               </li>
-              <li class="nav-item" [routerLinkActive]='["link-active"]'>
-                <a class="nav-link " [routerLink]='["/counter"]'>Counter</a>
-              </li>
-              <li class="nav-item" [routerLinkActive]='["link-active"]'>
-                <a class="nav-link " [routerLink]='["/fetch-data"]'>Fetch data</a>
-              </li>
-              <li class="nav-item" [routerLinkActive]='["link-active"]'>
-                  <a class="nav-link " [routerLink]='["/user-profile"]'> User profile</a>
-                </li>
+
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
                 <a class="nav-link " [routerLink]='["/recipe-list"]'>All Recipies</a>
               </li>
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
                   <a class="nav-link " [routerLink]='["/create"]'>CreateRecipe</a>
+
               </li>
+              <li class="nav-item" [routerLinkActive]='["link-active"]'>
+                <a class="nav-link " [routerLink]='["/user-profile"]'> User profile</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]='["link-active"]'>
+              <a class="nav-link" [routerLink]='["/contact"]'>Contact us</a>
+            </li>
         </ul>
     </div>
     <div class="mx-auto order-0">
@@ -41,9 +41,7 @@
         </li>
       </ng-template>
 
-      <li class="nav-item" [routerLinkActive]='["link-active"]'>
-        <a class="nav-link" [routerLink]='["/contact"]'>Contact us</a>
-      </li>
+
 
       <ng-template #elseBlock>
         <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
@@ -55,5 +53,5 @@
       </ng-template>
     </ul>
   </div>
-
 </nav>
+</header>
