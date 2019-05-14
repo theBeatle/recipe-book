@@ -9,7 +9,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UsersService {
-  user: Observable<User>;
+  user: Observable<User> = new Observable<User>();
   constructor(private http: HttpClient, private auth: AuthenticationService) { }
   GetAuthUser() {
     this.user = this.http.get<User>(HOST_URL + '/api/Users/GetUserById/' + this.auth.currentUserValue.id);
