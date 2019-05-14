@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using AutoMapper;
 using System.Linq;
 using BackEnd.ViewModels.RecipeViewModels;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace BackEnd.Controllers
 {
@@ -74,21 +77,34 @@ namespace BackEnd.Controllers
             return await _recipeService.GetRecipe(category, country, name, page, sortOrder);
         }
 
-        [HttpGet]
-        [Route("ReadRecipeById")]
-        public Recipe GetRecipeById(int RecipeId)
-        {
-            Recipe recipe = new Recipe();
-            recipe.Topic = "Test Recipe";
-            recipe.Rating = 5;
-            recipe.ViewsCounter = 15;
 
-            recipe.Description = "Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description   Recipe Test Description  Recipe Test Description  Recipe Test Description";
-            recipe.CreationDate = DateTime.Now;
-            recipe.Country.Name = "Ukraine";
-            recipe.CookingProcess = "";
-            recipe.Category.Name = "TestCategory";
-            return recipe;
+        [HttpPost]
+        [Route("EditRecipe")]
+        public IActionResult EditRecipe([FromBody] EditRecipeViewModel model)
+        {
+            if (this._recipeService.EditRecipe(model))
+            { 
+                return Ok("Created!");
+            }
+            else
+            {
+                return BadRequest("INVALID!");
+            }
+        }
+       
+
+        [HttpGet]
+        [Route("getRecipeById")]
+        public RecipeListViewModel GetRecipeById(int RecipeId)
+        {
+            var el = this._appDbContext.Recipes
+                                       .Include(a => a.Country)
+                                       .Include(a => a.Category)
+                                       .Include(a => a.Gallery)
+                                       .Include(a => a.User)
+                                       .FirstOrDefault(x => x.Id == RecipeId);
+            var mapped_el = _mapper.Map<RecipeListViewModel>(el);
+            return mapped_el;
         }
 
 

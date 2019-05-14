@@ -1,0 +1,73 @@
+<div class="container">
+  <h1 class="header">Editing recipe</h1>
+  <div class="row mb-3">
+    <div class="col-12">
+      <div class="input-group">
+        <input type="text" class="form-control cs" [(ngModel)]="topic" />
+        <div class="input-group-append">
+          <span class="input-group-text">Topic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-4">
+      <div class="input-group ">
+        <select class="custom-select cs" [(ngModel)]="category">
+          <option *ngFor="let c of categories" [ngValue]="c">{{
+            c.name
+          }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Category</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="input-group">
+        <select class="custom-select cs" [(ngModel)]="country">
+          <option *ngFor="let c of countries" [ngValue]="c">{{
+            c.name
+          }}</option>
+        </select>
+        <div class="input-group-append">
+          <span class="input-group-text">Country</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="height: 500px;">
+    <div class="col-5">
+      <span class="input-group-text label-top">Description</span>
+      <div class="input-group bigtext">
+
+        <textarea type="text" class="form-control cs" [(ngModel)]="description"></textarea>
+      </div>
+    </div>
+
+
+    <div class="col-7">
+      <span class="input-group-text label-top">Cooking Process</span>
+      <div class="input-group bigtext">
+
+        <textarea type="text" class="form-control cs" [(ngModel)]="cookProc"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="row ml-1 mb-2">
+
+    <app-upload-gallery *ngIf="id" [recipeId]="id"></app-upload-gallery>
+  </div>
+  <div class="row mb-2">
+    <div class="col-sm-4">
+      <button type="button"  (click)="clearClick()" class="btn btn-info">Clear</button>
+    </div>
+    <div class="col-sm-4">
+      <button type="button" (click)="defaultClick()" class="btn btn-secondary">Default</button>
+    </div>
+    <div class="col-sm-4">
+      <button type="button" (click)="modifyClick()" class="btn btn-primary">Modify</button>
+    </div>
+  </div>
+</div>

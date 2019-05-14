@@ -1,10 +1,12 @@
-﻿using System;
+﻿using BackEnd.Models;
+using System;
 using System.Collections.Generic;
 
 namespace BackEnd.ViewModels.RecipeViewModels
 {
     public class RecipeListViewModel
     {
+        public int Id { get; set; }
         public string CountryName { get; set; }
 
         public string CategoryName { get; set; }
@@ -21,7 +23,7 @@ namespace BackEnd.ViewModels.RecipeViewModels
 
         public string CookingProcess { get; set; }
 
-        public ICollection<string> Gallery { get; set; }
+        public ICollection<Photo> Gallery { get; set; }
 
         public double Rating { get; set; }
     }

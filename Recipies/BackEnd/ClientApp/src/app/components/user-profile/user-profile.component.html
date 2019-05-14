@@ -104,6 +104,7 @@
             <h4 class="card-title">All rules in the cite</h4>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
+
         </div>
 
       </div>
@@ -132,15 +133,22 @@
           <div style="margin-top: 10px;">
       <div class="row" >
 
-      <div *ngFor="let item of myRecipes" class="card text-white bg-primary mb-3 stCard" style="max-width: 20rem; margin: 5px; margin-left: 4%;">
+      <div *ngFor="let item of myRecipes" class="card text-white bg-primary mb-3 " style=" margin: 5px; margin-left: 4%;" routerLinkActive="active">
+          <div class="card-body " >
 
-        <div class="card-header" style="width: 300px; height: 300px; ">Recipe</div>
-          <div class="card-body " style="width: 300px; height: 300px; ">
             <h4 class="card-title">Topic: {{item.topic}}</h4>
             <p class="card-text descr" >Description: {{item.description}}</p>
             <p class="card-text">Country: {{item.countryName}}</p>
             <p class="card-text">Category: {{item.categoryName}}</p>
+
+            <div calss="row">
+         <button class="btn btn-info" style="width:100% " routerLink="/recipe-edit/{{item.id}}">Edit</button></div>
+            <button class="btn btn-secondary" style="width:100% ">Delete</button></div>
+
           </div>
+        </div>
+
+
 
 
         </div>

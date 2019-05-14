@@ -82,11 +82,22 @@
         *ngFor="let recipe of recipies"
         class="col-sm-4 d-flex card text-white"
       >
+      <ng-container *ngIf="!recipe.gallery[0]; else elseTemplate">
         <img
-          class="card-img-top "
-          src="https://cdn.jamieoliver.com/home/wp-content/uploads/2016/06/2.jpg"
-          alt="Card image cap"
-        />
+        class="card-img-top "
+        src="/assets/defaultimgs/default.jpg"
+        alt="Card image cap"
+      />
+      </ng-container>
+      <ng-template #elseTemplate>
+        <img
+        class="card-img-top "
+        src="https://localhost:44385/Galleries/{{recipe.gallery[0].path}}"
+        alt="Card image cap"
+      />
+      </ng-template>
+
+
         <div class="card-img-overlay">
           <h3 class="card-title">{{ recipe?.topic }}</h3>
           <p class="card-text description">Description: {{ recipe?.description }}</p>

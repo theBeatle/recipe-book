@@ -31,10 +31,10 @@ namespace BackEnd.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}", Name = "GetUserById")]
-        [Authorize]
-        public IActionResult GetUserById(string id)
+       // [Authorize]
+        public async Task<IActionResult> GetUserById(string id)
         {
-            var user = _appDbContext.Users.FirstOrDefault(x => x.Id == id);
+            var user = await this._userManager.FindByIdAsync(id);
             if (user != null)
             {
                 return new OkObjectResult(user);
@@ -53,6 +53,7 @@ namespace BackEnd.Controllers
             {
                 list.Add(new RecipeListViewModel
                 {
+                    Id = el.Id,
                     CategoryName = el.Category.Name,
                     CountryName = el.Country.Name,
                     Topic = el.Topic,

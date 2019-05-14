@@ -1,4 +1,8 @@
+import { Gallery } from "./gallery";
+
 export class Recipe {
+  id: number;
+
   countryName: string;
 
   categoryName: string;
@@ -15,7 +19,7 @@ export class Recipe {
 
   cookingProcess: string;
 
-  gallery: string[];
+  gallery: Gallery[];
 
   rating: number;
 }
