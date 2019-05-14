@@ -47,7 +47,6 @@ namespace BackEnd.Controllers
 
             //var user =await _userManager.FindByNameAsync(User.Identity.Name);
 
-
             var user = new User();
 
             string HashedPassword = _userManager.PasswordHasher.HashPassword(user, model.Password);
@@ -69,6 +68,8 @@ namespace BackEnd.Controllers
             user.Country = model.Country;
 
             await _userManager.UpdateAsync(user);
+
+            await _appDbContext.SaveChangesAsync();
 
             // await _userManager.UpdateAsync(  
 

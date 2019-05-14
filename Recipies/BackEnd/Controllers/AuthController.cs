@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using BackEnd.Helpers;
 using BackEnd.Models;
@@ -8,11 +9,13 @@ using BackEnd.Services.JWT.Auth;
 using BackEnd.Services.JWT.Helpers;
 using BackEnd.Services.JWT.Models;
 using BackEnd.ViewModels;
+using Microsoft.AspNetCore.Http.Features.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BackEnd.Controllers
 {
@@ -32,6 +35,7 @@ namespace BackEnd.Controllers
             _jwtFactory = jwtFactory;
             _jwtOptions = jwtOptions.Value;
             _logger = logger;
+
         }
 
         // POST api/auth/login
@@ -65,7 +69,7 @@ namespace BackEnd.Controllers
             //await _userManager.us(new Claim(ClaimTypes.Name, credentials.Email));
             //ClaimsIdentity.DefaultNameClaimType.
             //identity.AddClaim(new Claim(ClaimTypes.Name, credentials.Email));
-            
+
             return new OkObjectResult(jwt);
         }
 
