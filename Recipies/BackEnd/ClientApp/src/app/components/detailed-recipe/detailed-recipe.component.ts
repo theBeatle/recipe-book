@@ -24,7 +24,7 @@ export class DetailedRecipeComponent implements OnInit {
   
   ngOnInit() {
     
-     this.GetRecipeById('62');
+     this.GetRecipeById('67');
     
      
     
@@ -43,7 +43,7 @@ export class DetailedRecipeComponent implements OnInit {
         console.log(this.recipe.user); // = new User();
         console.log(this.recipe.rating); // = new User();
         this.creationdate="";
-        this.creationdate= w.creationDate.toString().substring(0,10);
+        this.creationdate= w.creationdate.toString().substring(0,10);
        
 
         this.rS.updateRecipeViewsCounter(this.recipe.id).subscribe(
