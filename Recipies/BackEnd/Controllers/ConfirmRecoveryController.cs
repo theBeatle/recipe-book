@@ -58,8 +58,8 @@ namespace BackEnd.Controllers
             return Content("Invalid token!");
         }
 
-        // Generate a random string with a given size  
-        public string RandomString(int size)
+        //Generate a random string with a given size  
+        private string RandomString(int size)
         {
             StringBuilder builder = new StringBuilder();
             Random random = new Random();
@@ -73,13 +73,13 @@ namespace BackEnd.Controllers
         }
 
         //Send new password
-        public void sendEmail(String to, String newPassword)
+        private void sendEmail(String to, String newPassword)
         {
             MailMessage mm = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
-            mm.From = new MailAddress("From", "recipiesmail2@gmail.com", System.Text.Encoding.UTF8);
-            mm.To.Add(new MailAddress(to));
+            mm.From = new MailAddress("recipiesmail2@gmail.com", "recipiesmail2@gmail.com", System.Text.Encoding.UTF8);
+            mm.To.Add(new MailAddress(to, to, System.Text.Encoding.UTF8));
             mm.Subject = "New Password";
             mm.Body = "Your new password: " + newPassword;
             mm.IsBodyHtml = true;

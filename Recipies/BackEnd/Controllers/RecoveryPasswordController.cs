@@ -65,13 +65,13 @@ namespace BackEnd.Controllers
         }
 
         //Send recovery email
-        public void sendEmail(String to, String resetLink)
+        private void sendEmail(String to, String resetLink)
         {
             MailMessage mm = new MailMessage();
             SmtpClient smtp = new SmtpClient();
 
-            mm.From = new MailAddress("From", "recipiesmail2@gmail.com", System.Text.Encoding.UTF8);
-            mm.To.Add(new MailAddress(to));
+            mm.From = new MailAddress("recipiesmail2@gmail.com", "recipiesmail2@gmail.com", System.Text.Encoding.UTF8);
+            mm.To.Add(new MailAddress(to, to, System.Text.Encoding.UTF8));
             mm.Subject = "New Password";
             mm.Body = "Your reset link: " + resetLink;
             mm.IsBodyHtml = true;

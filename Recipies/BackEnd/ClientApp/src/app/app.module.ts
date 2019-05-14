@@ -15,10 +15,8 @@ import { LoginFormComponent } from './components/account/login-form/login-form.c
 import { RegistrationFormComponent } from './components/account/reg-form/reg-form.component';
 import { LoaderComponent } from './components/recipe-list/loader/loader.component';
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { JwtInterceptor } from './helpers/JWT.interceptor';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RecipeService } from './services/recipe.service';
 
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
@@ -43,7 +41,6 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
   ],
 
   imports: [
-    InfiniteScrollModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
@@ -51,7 +48,6 @@ import { RecipeFeedbackComponent } from './components/recipe-feedback/recipe-fee
     BrowserModule,
     CommonModule,
     FormsModule,
-    AngularFontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
