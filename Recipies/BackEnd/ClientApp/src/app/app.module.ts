@@ -28,6 +28,8 @@ import { JwtInterceptor } from './helpers/JWT.interceptor';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { RecipeService } from './services/recipe.service';
 
+import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +45,8 @@ import { RecipeService } from './services/recipe.service';
     ContactUsComponent,
     RecipeFeedbackComponent,
     RecipeEditComponent,
-    UploadGalleryComponent
+    UploadGalleryComponent,
+    CreateRecipeComponent,
   ],
 
   imports: [
@@ -62,6 +65,7 @@ import { RecipeService } from './services/recipe.service';
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       { path: 'counter', component: CounterComponent },
+      { path: 'create', component: CreateRecipeComponent, canActivate: [AuthGuard] },
       { path: 'feedback', component: RecipeFeedbackComponent },
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent },

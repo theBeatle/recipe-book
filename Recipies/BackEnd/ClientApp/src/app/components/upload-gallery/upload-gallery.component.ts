@@ -4,6 +4,7 @@ import { GalleryService } from './../../services/gallery.service';
 
 import { s } from '@angular/core/src/render3';
 import { Gallery } from '../../models/gallery';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-upload-gallery',
@@ -13,7 +14,7 @@ import { Gallery } from '../../models/gallery';
 export class UploadGalleryComponent implements OnInit {
   public progress: number;
   public message: string;
-  public photos: Gallery[];
+  public photos: Observable<Gallery[]>;
 
   @Input('recipeId') recipeId: number;
 
@@ -22,13 +23,19 @@ export class UploadGalleryComponent implements OnInit {
   constructor(private http: HttpClient, private gS: GalleryService) {}
 
   getAllImages() {
-    this.photos = new Array();
-    this.gS.getImages(this.recipeId).subscribe(res => (this.photos = res));
+  //  this.photos = new Array();
+    this.photos = null;
+    this.photos = this.gS.getImages(this.recipeId);//.subscribe(res => (this.photos = res));
+    console.log(this.photos);
   }
 
   clickDeleteImage(id: number) {
-    this.gS.deletePhoto(this.recipeId, id).subscribe();
-    this.getAllImages();
+    this.gS.deletePhoto(this.recipeId, id).subscribe((e) => {
+      this.getAllImages();
+    }, (error) => {
+      this.getAllImages();
+    });
+
   }
 
   ngOnInit() {

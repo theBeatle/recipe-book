@@ -39,7 +39,9 @@ namespace BackEnd
             services.AddDbContext<DatabaseContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
               b => b.MigrationsAssembly("BackEnd")));
-            services.AddDefaultIdentity<User>().AddEntityFrameworkStores<DatabaseContext>();
+            services.AddDefaultIdentity<User>()
+                   .AddRoles<IdentityRole>()
+                   .AddEntityFrameworkStores<DatabaseContext>();
 
             services.AddSingleton<IJwtFactory, JwtFactory>();
             
@@ -107,7 +109,8 @@ namespace BackEnd
             // api user claim policy
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("ApiUser", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                options.AddPolicy("User", policy => policy.RequireClaim(Constants.Strings.JwtClaimIdentifiers.Rol, Constants.Strings.JwtClaims.ApiAccess));
+                options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
             });
 
             services.AddMvc();

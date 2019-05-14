@@ -2,7 +2,7 @@
 
 <div class="row columns">
 
-  <div class=" col-sm-4 d-flex card" *ngFor="let photo of photos" >
+  <div class=" col-sm-4 d-flex card" *ngFor="let photo of photos | async" >
       <button class="btn btcl" (click)="clickDeleteImage(photo.id)"><i class="fas fa-times"></i></button>
     <img
     class="card-img"

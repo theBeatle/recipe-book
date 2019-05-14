@@ -8,6 +8,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Recipe } from '../models/recipe';
 import { Observable } from 'rxjs';
 import { HOST_URL } from '../../app/config';
+import { RecipeModel } from '../models/recipe-model';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +17,7 @@ import { HOST_URL } from '../../app/config';
 export class RecipeService {
   url = HOST_URL;
   recipies: Observable<Recipe[]>;
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private aS: AuthenticationService) {}
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(HOST_URL + '/api/Recipe/getCategories');
@@ -62,5 +63,9 @@ export class RecipeService {
         return data;
       })
     );
+  }
+  CreateRecipe(model: RecipeModel): Observable<any> {
+    model.uid = this.aS.currentUserValue.id;
+    return this.http.post(HOST_URL + '/api/Recipe/CreateRecipe', model);
   }
 }
