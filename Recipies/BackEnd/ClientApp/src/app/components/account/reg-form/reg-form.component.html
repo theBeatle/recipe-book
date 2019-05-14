@@ -11,14 +11,14 @@
 
         <div class="form-group">
             <label for="Password">Password</label>
-            <input type="text" formControlName="Password" [className]="f.Password.errors ? 'form-control is-invalid' : 'form-control is-valid'" >
+            <input type="password" formControlName="Password" [className]="f.Password.errors ? 'form-control is-invalid' : 'form-control is-valid'" >
             <div *ngIf="f.Password.touched && f.Password.errors" class="invalid-feedback">
                 <div *ngIf="f.Password.errors.required">Password is required</div>
             </div>
         </div>
         <div class="form-group">
             <label for="ConfirmPassword">Confirm password</label>
-            <input type="text" formControlName="ConfirmPassword" [className]="f.ConfirmPassword.errors ? 'form-control is-invalid' : 'form-control is-valid'">
+            <input type="password" formControlName="ConfirmPassword" [className]="f.ConfirmPassword.errors ? 'form-control is-invalid' : 'form-control is-valid'">
             <div *ngIf="f.ConfirmPassword.touched && f.ConfirmPassword.errors" class="invalid-feedback">
                 <div *ngIf="f.ConfirmPassword.errors.required">ConfirmPassword is required</div>
                 <div *ngIf="f.ConfirmPassword.errors.MatchPassword">MatchPassword</div>
