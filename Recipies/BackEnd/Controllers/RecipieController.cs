@@ -77,15 +77,15 @@ namespace BackEnd.Controllers
         }
 
 
-        [HttpGet("UpdateRecipeViewsCounter")]
-        public IActionResult UpdateRecipeViewsCounter(int id, string userId)
+        [HttpPost("UpdateRecipeViewsCounter")]
+        public IActionResult UpdateRecipeViewsCounter([FromBody]RecipeViewsCounterModel model)
         {
 
-            User _user = _appDbContext.Users.First(u => u.Id == userId);
+            User _user = _appDbContext.Users.First(u => u.Id == model.UserId);
             
             if (_user.LastVisit != DateTime.Today)
             {
-                Recipe recipe = _appDbContext.Recipes.First(r => r.Id == id);
+                Recipe recipe = _appDbContext.Recipes.First(r => r.Id == model.RecipeId);
                 if (recipe != null)
                 {
                     

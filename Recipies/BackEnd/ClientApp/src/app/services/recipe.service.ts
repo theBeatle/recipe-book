@@ -12,7 +12,7 @@ import { RecipeModel } from '../models/recipe-model';
 import { AuthenticationService } from './authentication.service';
 import { User } from '../models/user';
 import { RecipeRatingModel } from '../models/reciperating-model';
-
+import { ViewsCounterModel } from 'src/app/models/recipeViewsCounterModel';
 
 @Injectable({
   providedIn: 'root'
@@ -36,10 +36,10 @@ export class RecipeService {
   
 
 
-  updateRecipeViewsCounter(RecipeId:number): Observable<any> {
+  updateRecipeViewsCounter(model:ViewsCounterModel): Observable<any> {
     
-    console.log("recipeid: "+RecipeId);
-  return this.http.get( this.url+'/api/Recipie/UpdateRecipeViewsCounter?id='+RecipeId+'&userId='+this.aS.currentUserValue.id);
+   model.UserId=this.aS.currentUserValue.id;
+   return this.http.post( this.url+'/api/Recipie/UpdateRecipeViewsCounter',model);
   
   }
 

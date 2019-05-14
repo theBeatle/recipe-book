@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { HttpResponse } from '@angular/common/http';
 import { rS } from '@angular/core/src/render3';
 import { User } from 'src/app/models/user';
+import { ViewsCounterModel } from 'src/app/models/recipeViewsCounterModel';
+import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
 
 
 @Component({
@@ -20,19 +22,19 @@ export class DetailedRecipeComponent implements OnInit {
   public userid:number;
   public recipe:Recipe=new Recipe();
   public message="";
+  public model:ViewsCounterModel;
+  
   constructor(private rS:RecipeService ) { }
   
   ngOnInit() {
     
      this.GetRecipeById('69');
-     console.log("this.recipeid: "+this.userid);
+     
      
      
     
   }
 
-
-  
 
   GetRecipeById(recipeId:string){
    
@@ -41,16 +43,14 @@ export class DetailedRecipeComponent implements OnInit {
       
         this.recipe=new Recipe;
         this.recipe = w;
-        this.rS.updateRecipeViewsCounter(w.id).subscribe(
+        this.model=new ViewsCounterModel();
+        this.model.RecipeId=w.id;
+        this.rS.updateRecipeViewsCounter(this.model).subscribe(
           () => {this.message = 'Recipe updated!'; },
           () => {this.message = '400 - BAD REQUEST!'; }
           );
        
 
-        
-
-
-      
     });
     
 
