@@ -24,7 +24,7 @@ export class DetailedRecipeComponent implements OnInit {
   
   ngOnInit() {
     
-     this.GetRecipeById('62');
+     this.GetRecipeById('61');
     
      
     

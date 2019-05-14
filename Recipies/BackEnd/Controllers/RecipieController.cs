@@ -108,7 +108,7 @@ namespace BackEnd.Controllers
    
 
         [HttpPost("UpdateRecipeRating")]
-        public IActionResult UpdateRecipeRating(int RecipeId, int countstars)
+        public IActionResult UpdateRecipeRating(int countstars,[FromBody]int RecipeId)
         {
 
             Recipe recipe = _appDbContext.Recipes.First(r => r.Id == RecipeId);
