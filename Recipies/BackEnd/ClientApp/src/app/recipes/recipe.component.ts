@@ -2,6 +2,7 @@ import { Component ,OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { RecipeService } from '../services/recipe.service';
 import { Recipe } from '../models/recipe';
+import { RecipeModel } from '../models/recipe-model';
 
                                                                                                      
 @Component({
@@ -21,11 +22,11 @@ export class RecipeComponent implements OnInit {
 
   ngOnInit() {
     
-    this.loadRecipes();
+    this.loadMyRecipes();
   }
     
-  loadRecipes() {
-     this.recipeService.getMyRecipes()
+  loadMyRecipes() {
+     this.recipeService.getRecipes()
     .subscribe((data: Recipe[]) => {this.recipes = data; console.log(data)});
     }
   
@@ -34,7 +35,7 @@ export class RecipeComponent implements OnInit {
     console.log("Checking passed item: ",event.target.getAttribute('id'));
     console.log("Checking passed item: ",event.target);
     this.recipeService.deleteRecipe(id)
-         .subscribe(data => this.loadRecipes());
+         .subscribe(data => this.loadMyRecipes());
 
  }
   

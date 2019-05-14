@@ -130,11 +130,7 @@ namespace BackEnd.Controllers
             }
             return BadRequest(ModelState);
         }
-        [HttpGet("getMyRecipes")]
-        public IEnumerable<Recipe> getMyRecipes()
-        {
-            return _appDbContext.Recipes.ToList();
-        }
+      
         [HttpDelete(@"{id}")]
         public IActionResult deleteRecipe(int id)
         {

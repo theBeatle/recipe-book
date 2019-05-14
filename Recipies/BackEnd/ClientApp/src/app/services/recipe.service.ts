@@ -22,9 +22,7 @@ export class RecipeService {
     return this.http.get<Country[]>(HOST_URL + '/api/Recipe/getCountries');
   }
   // all?category=1&name=shit&page=1&sortOrder=1
-    getMyRecipes():Observable<Recipe[]> {
-      return this.http.get<Recipe[]>(this.url+'/api/Recipe/getMyRecipes')
-   }
+   
   getAllRecipies(
     page: number,
     category?: number,
@@ -54,6 +52,10 @@ export class RecipeService {
       })
     );
   }
+  getMyRecipes():Observable<Recipe[]> {
+   // model.uid =this.aS.currentUserValue.id;  model:RecipeModel
+    return this.http.get<Recipe[]>(this.url+'/api/Recipe/getMyRecipes')
+ }
   CreateRecipe(model: RecipeModel): Observable<any> {
     model.uid = this.aS.currentUserValue.id;
     return this.http.post(HOST_URL + '/api/Recipe/CreateRecipe', model);
