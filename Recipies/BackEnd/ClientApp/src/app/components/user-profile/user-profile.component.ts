@@ -1,7 +1,9 @@
+import { RecipeService } from './../../services/recipe.service';
 import { Recipe } from './../../models/recipe';
 import { User } from './../../models/user';
 import { ProfileService } from './../../services/profile.service';
 import {Component, OnInit} from '@angular/core/';
+import { Observable } from 'rxjs';
 
 
 
@@ -14,14 +16,21 @@ import {Component, OnInit} from '@angular/core/';
 })
 export class UserProfileComponent implements OnInit {
  user: User = new User();
- myRecipes: Recipe[] = [];
- constructor(private pS: ProfileService) {}
+ myRecipes: Observable<Recipe[]>;
+ constructor(private pS: ProfileService, private rS: RecipeService) {}
  ngOnInit() {
   this.pS.getUserInfo().subscribe((x) => {
     this.user = x as User;
   });
-  this.pS.getRecipes().subscribe((x) => {
-    this.myRecipes = x;
+  this.getMyRecipes();
+
+}
+getMyRecipes() {
+  this.myRecipes = this.pS.getRecipes();
+}
+deleteRecipe(id) {
+  this.rS.deleteRecipe(id).subscribe(() => {
+    this.getMyRecipes();
   });
 }
 }
