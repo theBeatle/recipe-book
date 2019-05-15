@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { RecipeFeedbacksService } from './../../services/recipe-feedbacks.service';
 import { FeedbackRecipe } from 'src/app/models/feedback-recipe';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -9,7 +9,10 @@ import { AuthenticationService } from './../../services/authentication.service';
   templateUrl: './recipe-feedback.component.html',
   styleUrls: ['./recipe-feedback.component.css']
 })
+
 export class RecipeFeedbackComponent implements OnInit {
+
+  @Input() recipeId: number;
   FeedBacks: Array<FeedbackRecipe> = [];
   FeedBackForm: FormGroup;
   isAuth: boolean;
@@ -24,7 +27,7 @@ export class RecipeFeedbackComponent implements OnInit {
       }
       console.log(this.isAuth);
     });
-    this.fS.GetFeedBacks(69).subscribe((x) => {
+    this.fS.GetFeedBacks(this.recipeId).subscribe((x) => {
         this.FeedBacks = x;
     });
     this.FeedBackForm = this.fb.group({
@@ -33,9 +36,9 @@ export class RecipeFeedbackComponent implements OnInit {
   }
   SendFeedBack() {
     const value = this.FeedBackForm.value;
-    this.fS.SendFeedBack(value.Text, 69);
+    this.fS.SendFeedBack(value.Text,this.recipeId );
     this.FeedBackForm.reset();
-    this.fS.GetFeedBacks(69).subscribe((x) => {
+    this.fS.GetFeedBacks(this.recipeId).subscribe((x) => {
       this.FeedBacks = x;
   });
   }

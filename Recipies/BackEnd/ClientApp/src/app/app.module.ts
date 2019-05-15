@@ -1,10 +1,13 @@
-import { AuthGuard } from './guard/auth.guard';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
+import { AuthGuard } from './guard/auth.guard';
+
+
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-recipe.component';
 import { RecipeComponent } from './recipes/recipe.component';
 import { RecipeService } from './services/recipe.service';
 import { IngredientsService } from './services/ingredients.service';
@@ -45,7 +48,7 @@ import { RecipeIngradientsComponent } from './recipe-detailed-info-components/re
 import { RecipeDirectionsComponent } from './recipe-detailed-info-components/recipe-directions/recipe-directions.component';
 
 
-import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-recipe.component';
+
 
 
 import { RatingComponent } from './recipe-detailed-info-components/rating/rating.component';
@@ -56,7 +59,7 @@ import { RatingComponent } from './recipe-detailed-info-components/rating/rating
     NavMenuComponent,
     RecipeGalleriaComponent,
     RecipeIngradientsComponent,
-    RecipeDirectionsComponent,
+    DetailedRecipeComponent,
 
   
     
@@ -70,16 +73,17 @@ import { RatingComponent } from './recipe-detailed-info-components/rating/rating
     EditprofileComponent,
     MyrecipesComponent,
     FavouriteRecipesComponent,
-    DetailedRecipeComponent,
+   
     RecipeListComponent,
     LoaderComponent,
     ContactUsComponent,
-    RecipeFeedbackComponent,
+    
     RecipeEditComponent,
     UploadGalleryComponent,
     CreateRecipeComponent,
     RatingComponent,
-   
+    RecipeDirectionsComponent,
+    RecipeFeedbackComponent
   ],
 
   imports: [
@@ -102,6 +106,7 @@ import { RatingComponent } from './recipe-detailed-info-components/rating/rating
         component: CreateRecipeComponent,
         canActivate: [AuthGuard]
       },
+      { path:'recipecomp',component:DetailedRecipeComponent},
       { path: 'feedback', component: RecipeFeedbackComponent },
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent },
@@ -120,7 +125,7 @@ import { RatingComponent } from './recipe-detailed-info-components/rating/rating
       { path: 'registration', component: RegistrationFormComponent },
       { path: 'contact', component: ContactUsComponent},
       { path: 'registration', component: RegistrationFormComponent },
-      { path:'recipecomp',component:DetailedRecipeComponent},
+     
 
       { path: 'recipes', component: RecipeComponent }
     ])

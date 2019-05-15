@@ -6,7 +6,7 @@
    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12"  style="border-right-style:solid;border-color: #A6ABB3;border-width: 0.1rem;;">
 
      
-     <h1 id="htop" style="text-align: center">{{recipe.topic}}</h1>
+     <h1 id="htop" style="text-align: center">{{recipe?.topic}}</h1>
 
 
      <app-recipe-galleria [Images]='recipe?.gallery'></app-recipe-galleria>
@@ -21,7 +21,8 @@
        <app-recipe-ingradients [Ingredients]='recipe'></app-recipe-ingradients>
      </div> -->
  
-     <!-- <app-recipe-direction [Directions]='recipe?.cookingProcess'></app-recipe-direction>  -->
+    
+     <!-- <app-recipe-directions [Directions]='recipe?.cookingProcess'></app-recipe-directions>  -->
      
 
         <h2>
@@ -33,7 +34,7 @@
        </h2>
 
        <h2 >Date of publication:
-              {{recipe.creationDate | date}}
+              {{recipe?.creationDate | date}}
        </h2>
       
 
@@ -45,16 +46,16 @@
       
        
       
-      <div>
-          <h2>Rating:</h2>
-          <app-rating [rating]="recipe?.rating" [itemId]='recipe?.id'  (OnClick)='onClick($event)'></app-rating>
-      </div> 
+       <div>
+        <h2>Rating:</h2>
+        <app-rating [rating]="recipe?.rating" [itemId]='recipe?.id'  (OnClick)='onClick($event)'></app-rating>
+    </div> 
       
     
    </div>
 
    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-    <app-recipe-feedback></app-recipe-feedback>
+    <app-recipe-feedback [recipeId]="69"></app-recipe-feedback>
    </div> 
 
   </div>

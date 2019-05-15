@@ -10,12 +10,15 @@ import { parseCookieValue } from '@angular/common/src/cookie';
 export class RecipeDirectionsComponent implements OnInit {
 
 
-  @Input() Directions: string;
+  @Input() Directions:string;
+
   cookingprocess:string[];
+
   constructor() { }
 
   ngOnInit() {
    
+  
    this.cookingprocess=this.ParsecookingProcess(this.Directions);
   }
 
@@ -24,9 +27,8 @@ export class RecipeDirectionsComponent implements OnInit {
      
      let arr:Array<string>;
     
-      // arr = CookingProcess.split("|", 50);
-      arr.push("aaaa");
-      arr.push("bbbb");
+       arr = CookingProcess.split("|", 50);
+      
      return arr;
     
 }

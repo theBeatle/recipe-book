@@ -15,37 +15,36 @@ import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group
   styleUrls: ['./detailed-recipe.component.css']
 })
 export class DetailedRecipeComponent implements OnInit {
-
-
-
-  public creationdate:string;
+  public recipe:Recipe;
   public userid:number;
-  public recipe:Recipe=new Recipe();
+  
   public message="";
   public model:ViewsCounterModel;
+  public RecipeId:number;
   
   constructor(private rS:RecipeService ) { }
   
   ngOnInit() {
     
+    
      this.GetRecipeById('69');
-     
-    
-     
-    
+     console.log(this.recipe);
+  
   }
 
 
   GetRecipeById(recipeId:string){
+  
    
-    
     this.rS.getRecipeById(recipeId).subscribe( w => {
-      
-        this.recipe=new Recipe;
+        
+      this.recipe=new Recipe();
         this.recipe = w;
+        
        
+        
         this.model=new ViewsCounterModel();
-        this.model.RecipeId=w.id;
+      
         this.rS.updateRecipeViewsCounter(this.model).subscribe(
           () => {this.message = 'Recipe updated!'; },
           () => {this.message = '400 - BAD REQUEST!'; }
