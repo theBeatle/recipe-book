@@ -20,12 +20,12 @@ namespace BackEnd.Controllers
             _context = context;
         }
 
-        /* // GET: api/FeedBackMessages
+         // GET: api/FeedBackMessages
          [HttpGet]
          public async Task<ActionResult<IEnumerable<FeedBackMessage>>> GetFeedBackMessage()
          {
-             return await _context.FeedBackMessage.ToListAsync();
-         }*/
+             return await _context.FeedBackMessages.ToListAsync();
+         }
 
 
 
