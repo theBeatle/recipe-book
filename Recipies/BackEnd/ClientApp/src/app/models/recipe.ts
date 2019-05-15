@@ -16,7 +16,7 @@ export class Recipe {
 
   userName:string;
 
-  viewscounter: number;
+  viewsCounter: number;
 
   creationDate: Date;
 

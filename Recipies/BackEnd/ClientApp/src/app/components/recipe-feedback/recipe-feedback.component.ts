@@ -36,10 +36,16 @@ export class RecipeFeedbackComponent implements OnInit {
   }
   SendFeedBack() {
     const value = this.FeedBackForm.value;
-    this.fS.SendFeedBack(value.Text,this.recipeId );
+    this.fS.SendFeedBack(value.Text,this.recipeId ).subscribe( _ => {
+      this.FeedBackForm.reset();
+      this.fS.GetFeedBacks(this.recipeId).subscribe((x) => {
+        this.FeedBacks = x;
+    });
+   
+  },_ => {
     this.FeedBackForm.reset();
     this.fS.GetFeedBacks(this.recipeId).subscribe((x) => {
       this.FeedBacks = x;
-  });
+  })} );
   }
 }

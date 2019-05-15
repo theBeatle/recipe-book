@@ -7,6 +7,8 @@ import { rS } from '@angular/core/src/render3';
 import { User } from 'src/app/models/user';
 import { ViewsCounterModel } from 'src/app/models/recipeViewsCounterModel';
 import { modelGroupProvider } from '@angular/forms/src/directives/ng_model_group';
+import { Gallery } from 'src/app/models/gallery';
+import { GalleryService } from 'src/app/services/gallery.service';
 
 
 @Component({
@@ -21,14 +23,20 @@ export class DetailedRecipeComponent implements OnInit {
   public message="";
   public model:ViewsCounterModel;
   public RecipeId:number;
-  
-  constructor(private rS:RecipeService ) { }
-  
+  photos: Observable<Gallery[]>
+  constructor(private rS:RecipeService, private gS:GalleryService ) { }
+  getAllImages(recipeId:number) {
+    //  this.photos = new Array();
+      this.photos = null;
+
+      this.photos = this.gS.getImages(this.recipe.id);//.subscribe(res => (this.photos = res));
+    }
   ngOnInit() {
     
     
-     this.GetRecipeById('69');
-     console.log(this.recipe);
+     this.GetRecipeById('74');
+    
+     
   
   }
 
@@ -39,13 +47,15 @@ export class DetailedRecipeComponent implements OnInit {
     this.rS.getRecipeById(recipeId).subscribe( w => {
         
       this.recipe=new Recipe();
-        this.recipe = w;
+
+      this.recipe = w;
         
-       
-        
-        this.model=new ViewsCounterModel();
       
-        this.rS.updateRecipeViewsCounter(this.model).subscribe(
+        
+      this.model=new ViewsCounterModel();
+      this.model.RecipeId=w.id;
+     
+      this.rS.updateRecipeViewsCounter(this.model).subscribe(
           () => {this.message = 'Recipe updated!'; },
           () => {this.message = '400 - BAD REQUEST!'; }
           );

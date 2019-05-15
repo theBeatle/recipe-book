@@ -27,7 +27,7 @@ export class RecipeDirectionsComponent implements OnInit {
      
      let arr:Array<string>;
     
-       arr = CookingProcess.split("|", 50);
+       arr = CookingProcess.split("\n", 50);
       
      return arr;
     

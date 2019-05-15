@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Gallery } from 'src/app/models/gallery';
 
 @Component({
   selector: 'app-recipe-galleria',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class RecipeGalleriaComponent implements OnInit {
   
-  @Input() Images:string[];
+  @Input() Images:Gallery[];
  
   
   constructor() { }

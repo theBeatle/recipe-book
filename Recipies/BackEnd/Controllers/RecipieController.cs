@@ -84,8 +84,7 @@ namespace BackEnd.Controllers
 
             User _user = _appDbContext.Users.First(u => u.Id == model.UserId);
             
-            if (_user.LastVisit != DateTime.Today)
-            {
+         
                 Recipe recipe = _appDbContext.Recipes.First(r => r.Id == model.RecipeId);
                 if (recipe != null)
                 {
@@ -98,8 +97,8 @@ namespace BackEnd.Controllers
                     
 
                 }
-            }
-
+            
+    
             return Ok("updated");
 
             

@@ -13,10 +13,8 @@ export class RecipeFeedbacksService {
   GetFeedBacks(id: number): Observable<FeedbackRecipe[]> {
     return this.http.get<FeedbackRecipe[]>(HOST_URL + '/api/RecipeFeedBacks/GetComments/' + id);
   }
-  SendFeedBack(text: string, rid: number) {
+  SendFeedBack(text: string, rid: number): Observable<any> {
     const body = {text: text, uid: this.AuthS.currentUserValue.id, rid: rid };
-    this.http.post(HOST_URL + '/api/RecipeFeedBacks/PostComment', body ).subscribe((x) => {
-     console.log('ok');
-    });
+    return this.http.post(HOST_URL + '/api/RecipeFeedBacks/PostComment', body );
   }
 }
