@@ -133,7 +133,7 @@
           <div style="margin-top: 10px;">
       <div class="row" >
 
-      <div *ngFor="let item of myRecipes" class="card text-white bg-primary mb-3 " style=" margin: 5px; margin-left: 4%;" routerLinkActive="active">
+      <div *ngFor="let item of myRecipes | async" class="card text-white bg-primary mb-3 " style=" margin: 5px; margin-left: 4%;" routerLinkActive="active">
           <div class="card-body " >
 
             <h4 class="card-title">Topic: {{item.topic}}</h4>
@@ -143,7 +143,7 @@
 
             <div calss="row">
          <button class="btn btn-info" style="width:100% " routerLink="/recipe-edit/{{item.id}}">Edit</button></div>
-            <button class="btn btn-secondary" style="width:100% ">Delete</button></div>
+            <button class="btn btn-secondary" style="width:100%" (click)="deleteRecipe(item.id)" >Delete</button></div>
 
           </div>
         </div>
