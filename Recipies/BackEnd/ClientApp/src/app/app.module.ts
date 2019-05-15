@@ -1,10 +1,13 @@
-import { AuthGuard } from './guard/auth.guard';
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  
+import { AuthGuard } from './guard/auth.guard';
+
+
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { DetailedRecipeComponent } from './components/detailed-recipe/detailed-recipe.component';
 import { RecipeComponent } from './recipes/recipe.component';
 import { RecipeService } from './services/recipe.service';
 import { IngredientsService } from './services/ingredients.service';
@@ -38,11 +41,28 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { CreateRecipeComponent } from './components/create-recipe/create-recipe.component';
 
+
+
+import { RecipeGalleriaComponent } from './recipe-detailed-info-components/recipe-galleria/recipe-galleria.component';
+import { RecipeIngradientsComponent } from './recipe-detailed-info-components/recipe-ingradients/recipe-ingradients.component';
+import { RecipeDirectionsComponent } from './recipe-detailed-info-components/recipe-directions/recipe-directions.component';
+
+
+
+
+
+import { RatingComponent } from './recipe-detailed-info-components/rating/rating.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationFormComponent,
     NavMenuComponent,
+    RecipeGalleriaComponent,
+    RecipeIngradientsComponent,
+    DetailedRecipeComponent,
+
+  
+    
     UserProfileComponent,
     RecipeComponent,
     IngredientComponent,
@@ -53,13 +73,17 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
     EditprofileComponent,
     MyrecipesComponent,
     FavouriteRecipesComponent,
+   
     RecipeListComponent,
     LoaderComponent,
     ContactUsComponent,
-    RecipeFeedbackComponent,
+    
     RecipeEditComponent,
     UploadGalleryComponent,
-    CreateRecipeComponent
+    CreateRecipeComponent,
+    RatingComponent,
+    RecipeDirectionsComponent,
+    RecipeFeedbackComponent
   ],
 
   imports: [
@@ -74,6 +98,7 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
     HttpClientModule,
     InfiniteScrollModule,
     AppRoutingModule,
+   
     RouterModule.forRoot([
       { path: '', component: HomeComponent, canActivate: [AuthGuard] },
       {
@@ -81,6 +106,7 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
         component: CreateRecipeComponent,
         canActivate: [AuthGuard]
       },
+      { path:'recipecomp',component:DetailedRecipeComponent},
       { path: 'feedback', component: RecipeFeedbackComponent },
       { path: 'login', component: LoginFormComponent },
       { path: 'home', component: HomeComponent },
@@ -97,6 +123,10 @@ import { CreateRecipeComponent } from './components/create-recipe/create-recipe.
       { path: 'favourite-recipes', component: FavouriteRecipesComponent },
       { path: 'recipe-list', component: RecipeListComponent },
       { path: 'registration', component: RegistrationFormComponent },
+      { path: 'contact', component: ContactUsComponent},
+      { path: 'registration', component: RegistrationFormComponent },
+     
+
       { path: 'recipes', component: RecipeComponent }
     ])
   ],

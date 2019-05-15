@@ -1,4 +1,5 @@
 import { Gallery } from "./gallery";
+import { User } from "./user";
 
 export class Recipe {
   id: number;
@@ -13,13 +14,17 @@ export class Recipe {
 
   userId: string;
 
+  userName:string;
+
   viewsCounter: number;
 
   creationDate: Date;
 
-  cookingProcess: string;
+  cookingProcess:string;
 
   gallery: Gallery[];
 
   rating: number;
+
+  
 }

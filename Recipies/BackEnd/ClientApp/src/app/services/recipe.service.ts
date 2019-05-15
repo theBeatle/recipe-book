@@ -5,14 +5,49 @@ import { map } from 'rxjs/operators';
 
 import { RecipeModel } from '../models/recipe-model';
 import { AuthenticationService } from './authentication.service';
+import { User } from '../models/user';
+import { RecipeRatingModel } from '../models/reciperating-model';
+import { ViewsCounterModel } from 'src/app/models/recipeViewsCounterModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
+  
+  
   url = HOST_URL;
-  recipies: Observable<Recipe[]>;
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json-patch+json'}) };
+  recipe:Recipe;
+  
+
   constructor(private http: HttpClient, private aS: AuthenticationService) {}
+
+ 
+
+  
+
+
+  updateRecipeViewsCounter(model:ViewsCounterModel): Observable<any> {
+    
+   model.UserId=this.aS.currentUserValue.id;
+   return this.http.post( this.url+'/api/Recipie/UpdateRecipeViewsCounter',model);
+  
+  }
+
+
+
+  UpdateRecipeRating(model:RecipeRatingModel):Observable<any>{
+    console.log("OnClick!!!");
+    model.UserId=this.aS.currentUserValue.id;
+
+    console.log(model);
+    return this.http.post(this.url+'/api/Recipie/UpdateRecipeRating',model,this.httpOptions);
+  }
+
+
+
+  recipies: Observable<Recipe[]>;
+  
 
   getCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(HOST_URL + '/api/Recipe/getCategories');
@@ -22,7 +57,7 @@ export class RecipeService {
     return this.http.get<Country[]>(HOST_URL + '/api/Recipe/getCountries');
   }
   getRecipeById(id) {
-    return this.http.get<Recipe>(HOST_URL + '/api/Recipe/getRecipeById?RecipeId=' + id);
+    return this.http.get<Recipe>(HOST_URL + '/api/Recipie/getRecipeById?RecipeId=' + id);
   }
 
   editRecipe(model: EditRecipe) {

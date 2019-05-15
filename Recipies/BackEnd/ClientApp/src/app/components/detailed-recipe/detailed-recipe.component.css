@@ -1,0 +1,92 @@
+
+
+h2{
+    font-size: 1.5rem; 
+    color:black;
+    margin-top: 2rem;
+}
+
+
+.p-description{
+    color: #323C41;
+    font-size: 1.3rem;
+}
+
+
+
+@media screen and (min-width: 641px) and (max-width: 1025px) {
+
+    .pt{
+    color: #A6ABB3;
+    font-size: 1.3rem;
+    }
+    .ct{
+        color: rgb(147, 154, 167);
+        font-size: 1.3rem;
+    }
+    .tt{
+        color:#323C41;
+        font-size:  1.3rem;
+    }
+    
+    .p-description{
+        color: #323C41;
+        font-size: 1.3rem;
+    }
+
+    h2{
+        font-size: 1.3rem; 
+        color:black
+    }
+
+   
+     
+    #htop{
+        font-size: 1.6rem;
+    }
+    
+    }
+
+
+
+    @media screen and (max-width: 640px)  {
+
+        .pt{
+        color: #A6ABB3;
+        font-size: 1rem;
+        }
+        .ct{
+            color: rgb(147, 154, 167);
+            font-size: 1rem;
+        }
+        .tt{
+            color:#323C41;
+            font-size:  1rem;
+        }
+        
+        .p-description{
+            color: #323C41;
+            font-size: 0.9rem;
+        }
+    
+    
+    
+        h2{
+            font-size: 1rem; 
+            color:black
+        }
+    
+       
+
+
+        #htop{
+            font-size: 1.3rem;
+        }
+        
+        }
+
+
+
+
+        
+      
