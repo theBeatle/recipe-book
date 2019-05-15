@@ -29,6 +29,10 @@ namespace BackEnd.ViewModels.Mappings
                     opts => opts.MapFrom(
                         src => src.User.Id
                     ))
+                     .ForMember(dest => dest.UserName,
+                    opts => opts.MapFrom(
+                        src => src.User.FirstName
+                    ))
                     .ReverseMap();
 
         }

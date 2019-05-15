@@ -24,7 +24,7 @@ export class RecipeFeedbackComponent implements OnInit {
       }
       console.log(this.isAuth);
     });
-    this.fS.GetFeedBacks(1).subscribe((x) => {
+    this.fS.GetFeedBacks(69).subscribe((x) => {
         this.FeedBacks = x;
     });
     this.FeedBackForm = this.fb.group({
@@ -33,9 +33,9 @@ export class RecipeFeedbackComponent implements OnInit {
   }
   SendFeedBack() {
     const value = this.FeedBackForm.value;
-    this.fS.SendFeedBack(value.Text, 1);
+    this.fS.SendFeedBack(value.Text, 69);
     this.FeedBackForm.reset();
-    this.fS.GetFeedBacks(1).subscribe((x) => {
+    this.fS.GetFeedBacks(69).subscribe((x) => {
       this.FeedBacks = x;
   });
   }

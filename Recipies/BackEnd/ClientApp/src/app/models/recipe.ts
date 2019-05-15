@@ -1,4 +1,5 @@
 import { Gallery } from "./gallery";
+import { User } from "./user";
 
 export class Recipe {
   id: number;
@@ -12,6 +13,8 @@ export class Recipe {
   description: string;
 
   userId: string;
+
+  userName:string;
 
   viewscounter: number;
 

@@ -7,6 +7,7 @@ namespace BackEnd.ViewModels.RecipeViewModels
     public class RecipeListViewModel
     {
         public int Id { get; set; }
+
         public string CountryName { get; set; }
 
         public string CategoryName { get; set; }
@@ -16,6 +17,8 @@ namespace BackEnd.ViewModels.RecipeViewModels
         public string Description { get; set; }
 
         public string UserId { get; set; }
+
+        public string UserName { get; set; }
 
         public int ViewsCounter { get; set; }
 

@@ -9,7 +9,7 @@
      <h1 id="htop" style="text-align: center">{{recipe.topic}}</h1>
 
 
-     <app-recipe-galleria [Images]='recipe?.gallery?.photos'></app-recipe-galleria>
+     <app-recipe-galleria [Images]='recipe?.gallery'></app-recipe-galleria>
 
 
      <div>
@@ -20,12 +20,12 @@
      <!-- <div>
        <app-recipe-ingradients [Ingredients]='recipe'></app-recipe-ingradients>
      </div> -->
-<!-- 
-     <app-recipe-direction [Directions]='recipe?.cookingProcess'></app-recipe-direction> -->
+ 
+     <!-- <app-recipe-direction [Directions]='recipe?.cookingProcess'></app-recipe-direction>  -->
      
 
         <h2>
-        Author: {{recipe?.user?.firstName}}  
+        Author: {{recipe?.userName}}  
        </h2>
   
        <h2>
@@ -54,7 +54,7 @@
    </div>
 
    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
-    <h1>Hello world from chat</h1>
+    <app-recipe-feedback></app-recipe-feedback>
    </div> 
 
   </div>
