@@ -12,7 +12,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "7.2.14",
+    "@angular/animations": "^7.2.14",
     "@angular/common": "7.2.14",
     "@angular/compiler": "7.2.14",
     "@angular/core": "7.2.14",
@@ -23,17 +23,20 @@
     "@angular/platform-server": "7.2.14",
     "@angular/router": "7.2.14",
     "@auth0/angular-jwt": "^2.1.0",
-    "@ng-bootstrap/ng-bootstrap": "^4.1.1",
+    "@fortawesome/angular-fontawesome": "^0.3.0",
     "@nguniversal/module-map-ngfactory-loader": "6.0.0",
+    "@types/jquery": "^3.3.29",
+    "angular-font-awesome": "^3.1.2",
     "aspnet-prerendering": "^3.0.1",
     "bootstrap": "4.3.1",
     "core-js": "^2.5.4",
     "extend": "^3.0.2",
+    "font-awesome": "^4.7.0",
     "jquery": "3.3.1",
     "lodash": "^4.17.11",
+    "ngx-infinite-scroll": "^7.1.0",
     "popper.js": "^1.14.3",
     "rxjs": "^6.5.1",
-    "service": "^0.1.4",
     "webpack-dev-server": "^3.3.1",
     "zone.js": "^0.8.29"
   },
@@ -53,10 +56,10 @@
     "karma-coverage-istanbul-reporter": "~1.4.2",
     "karma-jasmine": "~1.1.1",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "node-sass": "^4.12.0",
     "typescript": "~3.2.4"
   },
   "optionalDependencies": {
-    "node-sass": "^4.9.3",
     "protractor": "~5.4.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1"

@@ -1,0 +1,107 @@
+
+  
+
+
+<div class="container">
+        <div class="text-center text-primary" style="margin:10px;">
+                <h3>Create your recipe</h3>
+             </div>
+             <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                  </div>
+        <div class="row">
+                <div class="col-sm-12">
+                  
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+            <div>
+                <label class="form-control-label " style="margin-top:5px;" for="topic">Topic</label>
+                <input type="text" formControlName="topic" [className]="f.topic.errors ? 'form-control is-invalid' : 'form-control is-valid'" id="topic">
+                <div *ngIf="f.topic.touched && f.topic.errors" class="invalid-feedback">
+                    <div *ngIf="f.topic.errors.required">Topic is required</div>
+                </div>
+            </div> 
+        </form>
+                </div>
+          
+       </div>
+    
+        <div class="row"> 
+                <div class="col-sm-6">
+                        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+                                <div>
+                                        <label for="country">Country</label>
+                                        <select  formControlName="country" class="form-control" id="country">
+                                            <option *ngFor="let item of CountryList" value="{{item.id}}">{{item.name}}</option>
+                                        </select>
+                                    </div>    
+                        </form>   
+                </div>
+
+
+                <div class="col-sm-6">
+
+                        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+                                <div>
+                                        <label for="category">Category</label>
+                                        <select  formControlName="category" class="form-control" id="category">
+                                            <option *ngFor="let item of CategoryList" value="{{item.id}}">{{item.name}}</option>
+                                        </select>
+                                    </div>
+                        </form>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-sm-6">
+                        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+                                <div >
+                                        <label class="form-control-label" for="Desc">Description</label>
+                                        <textarea type="text" style="resize: none; height:400px;" formControlName="description" [className]="f.description.errors ? 'form-control is-invalid' : 'form-control is-valid'"
+                                            id="Desc"></textarea>
+                                        <div *ngIf="f.description.touched && f.description.errors" class="invalid-feedback">
+                                            <div *ngIf="f.description.errors.required">Description is required</div>
+                                        </div>
+                                    </div>
+                        </form>
+                </div>
+                <div class="col-sm-6">
+                        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+
+                                <div>
+                                        <label class="form-control-label" for="cookingProcess">CookingProcess</label>
+                                        <textarea type="text" style="resize: none;height:400px;" formControlName="cookingProcess" [className]="f.cookingProcess.errors ? 'form-control is-invalid' : 'form-control is-valid'"
+                                            id="cookingProcess"></textarea>
+                                        <div *ngIf="f.cookingProcess.touched && f.cookingProcess.errors" class="invalid-feedback">
+                                            <div *ngIf="f.cookingProcess.errors.required">CookingProcess is required</div>
+                                        </div>
+                                    </div>
+                        </form>                            
+
+                </div>
+                
+
+        </div>
+        <div class="row">
+
+                <div class="col-sm-4">
+                        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+                                <button  style="width:100%;" class="btn btn-primary">Clear</button>
+                        </form>
+
+                </div>
+                <div class="col-sm-4">
+                        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+                                <button [disabled]="!recipeForm.valid" style="width:100%;" class="btn btn-primary">ADD</button>
+                        </form>
+                </div>
+                <div class="col-sm-4">
+                        <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" class="form-group has-danger">
+                                <button  style="width:100%;" class="btn btn-primary">Preview</button>
+                        </form>
+                </div>
+                
+
+        </div>
+
+  
+</div>
+

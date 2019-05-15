@@ -1,5 +1,4 @@
 
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse" aria-label="Toggle navigation"
     [attr.aria-expanded]="isExpanded" (click)="toggle()">
@@ -16,6 +15,12 @@
               <li class="nav-item" [routerLinkActive]='["link-active"]'>
                 <a class="nav-link " [routerLink]='["/fetch-data"]'>Fetch data</a>
               </li>
+              <li class="nav-item" [routerLinkActive]='["link-active"]'>
+                <a class="nav-link " [routerLink]='["/recipe-list"]'>All Recipies</a>
+              </li>
+              <li class="nav-item" [routerLinkActive]='["link-active"]'>
+                  <a class="nav-link " [routerLink]='["/create"]'>CreateRecipe</a>
+              </li>
         </ul>
     </div>
     <div class="mx-auto order-0">
@@ -26,10 +31,17 @@
         <ul class="navbar-nav ml-auto">
       <div *ngIf="(isAuthorized ); then thenBlock else elseBlock"></div>
         <ng-template #thenBlock>
+            <li class="nav-item" >
+              <a class="nav-link">{{fullName}}</a>
+            </li>
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link" [routerLink]='["/login"]'>Log Out</a>
           </li>
-        </ng-template>
+          </ng-template>
+
+          <li class="nav-item" [routerLinkActive]='[link-active]' >
+            <a class="nav-link" [routerLink]='["/contact"]'>Contact us</a>
+          </li>
 
         <ng-template #elseBlock>
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
@@ -37,9 +49,6 @@
         </li>
         <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
           <a class="nav-link " [routerLink]='["/registration"]'>Sign Up</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-          <a class="nav-link " [routerLink]='["/data-edit"]'>Data Edit</a>
         </li>
       </ng-template>
     </ul>

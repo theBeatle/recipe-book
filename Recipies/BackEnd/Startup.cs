@@ -17,9 +17,7 @@ using System.Net;
 using BackEnd.Services.JWT.Auth;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
-using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
-using Microsoft.AspNetCore.Builder.Internal;
+using BackEnd.Services;
 
 namespace BackEnd
 {
@@ -50,6 +48,7 @@ namespace BackEnd
             services.AddAutoMapper();
 
             var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
+
 
             services.AddCors(options =>
             {
@@ -110,6 +109,10 @@ namespace BackEnd
             });
 
             services.AddMvc();
+            //Adding project services
+            services.AddScoped<RecipeService>();
+
+
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -147,24 +150,6 @@ namespace BackEnd
             app.UseStaticFiles();
             app.UseMvc();
 
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    //spa.UseAngularCliServer(npmScript: "start");
-
-                    //Time limit extended
-                    spa.Options.StartupTimeout = new TimeSpan(days: 0, hours: 0, minutes: 1, seconds: 30);
-                    //Time limit extended
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
-
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
@@ -176,17 +161,7 @@ namespace BackEnd
 
             app.UseAuthentication();
             app.UseMvc();
-        }
-
-        private static void InitializeMigrations(IApplicationBuilder app)
-        {
-            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-            {
-                DatabaseContext dbContext = serviceScope.ServiceProvider.GetRequiredService<DatabaseContext>();
-                dbContext.Database.Migrate();
-
-                // TODO: Use dbContext if you want to do seeding etc.
-            }
+         
         }
     }
 }

@@ -19,6 +19,137 @@ namespace BackEnd.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("BackEnd.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Text");
+
+                    b.Property<DateTime>("Time");
+
+                    b.Property<int?>("recipeId");
+
+                    b.Property<string>("userId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("recipeId");
+
+                    b.HasIndex("userId");
+
+                    b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.FeedBackMessage", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Text");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("FeedBackMessages");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Gallery", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Galleries");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Photo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GalleryId");
+
+                    b.Property<string>("Path");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GalleryId");
+
+                    b.ToTable("Photos");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Recipe", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CategoryId");
+
+                    b.Property<string>("CookingProcess");
+
+                    b.Property<int?>("CountryId");
+
+                    b.Property<DateTime>("CreationDate");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int?>("GalleryId");
+
+                    b.Property<double>("Rating");
+
+                    b.Property<string>("Topic");
+
+                    b.Property<string>("UserId");
+
+                    b.Property<int>("ViewsCounter");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("GalleryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Recipes");
+                });
+
             modelBuilder.Entity("BackEnd.Models.User", b =>
                 {
                     b.Property<string>("Id")
@@ -26,12 +157,8 @@ namespace BackEnd.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
-                    b.Property<string>("Age");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
-
-                    b.Property<string>("Country");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
@@ -41,8 +168,6 @@ namespace BackEnd.Migrations
                     b.Property<string>("FirstName");
 
                     b.Property<string>("IdentityId");
-
-                    b.Property<byte[]>("Image");
 
                     b.Property<string>("LastName");
 
@@ -198,6 +323,43 @@ namespace BackEnd.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Comment", b =>
+                {
+                    b.HasOne("BackEnd.Models.Recipe", "recipe")
+                        .WithMany("Comments")
+                        .HasForeignKey("recipeId");
+
+                    b.HasOne("BackEnd.Models.User", "user")
+                        .WithMany()
+                        .HasForeignKey("userId");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Photo", b =>
+                {
+                    b.HasOne("BackEnd.Models.Gallery")
+                        .WithMany("Photos")
+                        .HasForeignKey("GalleryId");
+                });
+
+            modelBuilder.Entity("BackEnd.Models.Recipe", b =>
+                {
+                    b.HasOne("BackEnd.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("BackEnd.Models.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("CountryId");
+
+                    b.HasOne("BackEnd.Models.Gallery", "Gallery")
+                        .WithMany()
+                        .HasForeignKey("GalleryId");
+
+                    b.HasOne("BackEnd.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
