@@ -36,7 +36,7 @@ namespace BackEnd.Controllers
         //private Task<User> GetCurrentUserAsync() => _userManager.GetUserAsync();
 
         [HttpPut("update")]
-        public async Task<IActionResult> EditData([FromBody]UserDataEditViewModel model)
+        public async Task<IActionResult> EditData([FromBody]UserDataEditViewModel model, [FromBody]User auth_user)
         {
             if (!ModelState.IsValid)
             {

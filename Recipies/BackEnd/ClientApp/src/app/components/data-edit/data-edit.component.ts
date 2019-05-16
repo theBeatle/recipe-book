@@ -3,6 +3,9 @@ import { DataEditService } from '../../services/data-edit.service'
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UserEditData } from '../../models/user-data-edit'
 import { ElementRef } from '@angular/core';
+import { UsersService } from '../../services/users.service';
+import { User } from 'src/app/models/user';
+import { Observable } from 'rxjs/internal/Observable';
 
 
 @Component({
@@ -22,8 +25,9 @@ export class DataEditComponent implements OnInit {
   UserEdit: FormGroup;
   submitted = false;
   countries = new Array();
+  user228: Observable<User>;
 
-  constructor(private DES: DataEditService, private fb: FormBuilder) { }
+  constructor(private DES: DataEditService, private fb: FormBuilder, private US: UsersService) { }
 
   ngOnInit() {
     this.UserEdit = this.fb.group({
@@ -48,7 +52,10 @@ export class DataEditComponent implements OnInit {
     }
     // this.UserEdit.setValue({Age: this.Age.nativeElement.textContent});
     // this.UserEdit.setValue({Image: this.FileInput.nativeElement.files[0]});
+    this.user228 = this.US.GetAuthUser();
     const contact = this.UserEdit.value;
+    this.user228.subscribe(val => console.log(val));
+    
     this.updateUser(contact as UserEditData);
   }
 

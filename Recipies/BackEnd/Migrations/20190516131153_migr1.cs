@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BackEnd.Migrations
 {
-    public partial class Init : Migration
+    public partial class migr1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,6 +76,20 @@ namespace BackEnd.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Countries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FeedBackMessages",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Text = table.Column<string>(nullable: true),
+                    Date = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FeedBackMessages", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -222,10 +236,10 @@ namespace BackEnd.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Topic = table.Column<string>(nullable: true),
                     CountryId = table.Column<int>(nullable: true),
                     UserId = table.Column<string>(nullable: true),
                     CategoryId = table.Column<int>(nullable: true),
+                    Topic = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     ViewsCounter = table.Column<int>(nullable: false),
                     CreationDate = table.Column<DateTime>(nullable: false),
@@ -384,6 +398,9 @@ namespace BackEnd.Migrations
 
             migrationBuilder.DropTable(
                 name: "Comments");
+
+            migrationBuilder.DropTable(
+                name: "FeedBackMessages");
 
             migrationBuilder.DropTable(
                 name: "Photos");
