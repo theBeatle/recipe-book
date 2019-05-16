@@ -65,8 +65,6 @@ namespace BackEnd.Controllers
 
             user.NickName = model.NickName;
 
-            user.Country = model.Country;
-
             await _userManager.UpdateAsync(user);
 
             await _appDbContext.SaveChangesAsync();

@@ -18,6 +18,7 @@ using BackEnd.Services.JWT.Auth;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using BackEnd.Services;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
 
 namespace BackEnd
 {
@@ -149,6 +150,25 @@ namespace BackEnd
             app.UseDefaultFiles();
             app.UseStaticFiles();
             app.UseMvc();
+
+            app.UseSpa(spa =>
+            {
+                // To learn more about options for serving an Angular SPA from ASP.NET Core,
+                // see https://go.microsoft.com/fwlink/?linkid=864501
+
+                spa.Options.SourcePath = "ClientApp";
+
+                if (env.IsDevelopment())
+                {
+                    //spa.UseAngularCliServer(npmScript: "start");
+
+                    //Time limit extended
+                    spa.Options.StartupTimeout = new TimeSpan(days: 0, hours: 0, minutes: 1, seconds: 30);
+                    //Time limit extended
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
+
 
             app.UseSwagger();
 
